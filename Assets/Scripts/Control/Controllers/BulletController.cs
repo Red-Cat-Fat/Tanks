@@ -27,6 +27,10 @@ public class BulletController : MonoBehaviour {
         {
             GameManager.Instance.poolManager.Despawn(gameObject);
         }
+    }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        GameManager.Instance.poolManager.Despawn(gameObject);
     }
 }

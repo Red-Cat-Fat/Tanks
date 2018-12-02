@@ -16,15 +16,16 @@ public class UnitData : MonoBehaviour {
     public void Start()
     {
         lifeParameters = GetComponent<LifeParameters>();
-        if(lifeParameters == null)
+        if (lifeParameters == null)
         {
-            Debug.LogError("LifeParameters (in "+ gameObject.name +") is null");
+            Debug.LogError("LifeParameters in " + gameObject.name + " is null");
         }
     }
 
     public void Update()
     {
-        UpdateAll();
+        UpdateModification();
+        UpdateLifeParameters();
     }
 
     public void UpdateAll()
@@ -52,7 +53,10 @@ public class UnitData : MonoBehaviour {
                 }
                 else
                 {
-                    Destroy(gameObject);
+                    if (gameObject.GetComponent<PlayerController>() == null)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
         }

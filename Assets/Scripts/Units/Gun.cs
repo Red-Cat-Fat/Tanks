@@ -3,67 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour {
-    public GameObject bullet;
-    public bool fire = true;
     public float timeReload = 1f;
+    public GameObject bullet;
     public GameObject pointGeneratorBullet;
 
-    private PoolManager poolManager;
     private float lastFire = 0;
+    private IController controller;
     private Team _team = Team.Computer;
 
     public void Start()
     {
-        poolManager = GameManager.Instance.poolManager;
-
         if (pointGeneratorBullet == null)
         {
             pointGeneratorBullet = gameObject;
         }
-
+        controller = gameObject.GetComponent<IController>();
         UnitData unitData = gameObject.GetComponent<UnitData>();
-        if (unitData != null)
-        {
-            _team = unitData.team;
-        }
+        _team = unitData.team;
     }
 
     private void Update()
     {
         lastFire += Time.deltaTime;
-        GameObject target = FindTarget();
-        if (target != null && lastFire > timeReload)
+        if (lastFire > timeReload)
         {
-            GameObject newBullet = poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
-            DealingDamage dealingDamageBullet = newBullet.GetComponent<DealingDamage>();
-            dealingDamageBullet.SetTeam(_team);
-            lastFire = 0;
-        }
-    }
-    private GameObject FindTarget()
-    {
-        int layerMask = 1 << 2;
-        layerMask = ~layerMask;
-        RaycastHit hit;
-        if (Physics.Raycast(pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
-        {
-            Debug.DrawRay(pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            GameObject target = hit.collider.gameObject;
-            UnitData targetUnitData = target.GetComponent<UnitData>();
-            if (targetUnitData != null)
+            if (controller.CanFire)
             {
-                if (targetUnitData.team != _team)
-                {
-
-                    return target;
-                }
+                Fire();
             }
         }
-        else
-        {
-            Debug.DrawRay(pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
-        }
-        return null;
     }
+
+    public void Fire()
+    {
+        GameObject newBullet = GameManager.Instance.poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
+        DealingDamage dealingDamageBullet = newBullet.GetComponent<DealingDamage>();
+        dealingDamageBullet.SetTeam(_team);
+        lastFire = 0;
+    }
+
+    
 }
