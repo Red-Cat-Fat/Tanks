@@ -38,8 +38,18 @@ public class PlayerController : MonoBehaviour, IController {
             Vector3 direct = Vector3.RotateTowards(transform.forward, vectorMove, moveSpeed, 0f);
             _rigidbody.transform.rotation = Quaternion.LookRotation(direct);
         }
+
         MoveToPoint moveToPoint = GetComponent<MoveToPoint>();
         moveToPoint.MoveTo(vectorMove + _rigidbody.transform.position);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartFire();
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            StopFire();
+        }
         //_rigidbody.transform.position = (vectorMove + _rigidbody.transform.position);
     }
 
