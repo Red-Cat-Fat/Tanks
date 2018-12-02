@@ -4,20 +4,19 @@ using UnityEngine.AI;
 public class MoveToPoint : MonoBehaviour {
     public float speed = 1f;
     public Vector3 moveEnd;
-    public bool dieAfterFinish;
+    public bool CanMove = false;
     public bool fixedPositionY = true;
 
     private Vector3 _moveStart;
     private Rigidbody _rigidbody;
     private float _lifeTime = 0;
     private float _flyTime = 1f;
-    private bool _moved = true;
 
     public void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _moveStart = transform.position;
-        if (_moved && moveEnd != null)
+        if (CanMove && moveEnd != null)
         {
             MoveTo(_moveStart, moveEnd);
         }
@@ -30,13 +29,13 @@ public class MoveToPoint : MonoBehaviour {
     public void OnEnable()
     {
         _moveStart = transform.position;
-        _moved = true;
+        CanMove = true;
     }
 
     public void FixedUpdate()
     {
         _lifeTime += Time.fixedDeltaTime;
-        if (_moved && _moveStart != null && moveEnd != null)
+        if (CanMove && _moveStart != null && moveEnd != null)
         {
             float posY = _rigidbody.transform.position.y;
             _rigidbody.transform.position = Vector3.Lerp(_moveStart, moveEnd, _lifeTime / _flyTime);
@@ -46,11 +45,7 @@ public class MoveToPoint : MonoBehaviour {
             }
             if (_lifeTime > _flyTime)
             {
-                _moved = false;
-                if (dieAfterFinish)
-                {
-                    GameManager.Instance.poolManager.Despawn(gameObject);
-                }
+                CanMove = false;
             }
         }
     }
@@ -58,6 +53,10 @@ public class MoveToPoint : MonoBehaviour {
     public void MoveTo(Vector3 moveStart, GameObject moveEnd)
     {
         MoveTo(moveStart, moveEnd.transform.position);
+    }
+    public void MoveTo(Vector3 moveEnd)
+    {
+        MoveTo(gameObject.transform.position, moveEnd);
     }
 
     public void MoveTo(Vector3 moveStart, Vector3 moveEnd)
@@ -68,16 +67,6 @@ public class MoveToPoint : MonoBehaviour {
         transform.LookAt(moveEnd);
         float dist = Vector3.Distance(_moveStart, moveEnd);
         _flyTime = dist / speed;
-        _moved = true;
-    }
-    public void MoveTo(Vector3 moveEnd)
-    {
-        _lifeTime = 0;
-        _moveStart = gameObject.transform.position;
-        this.moveEnd = moveEnd;
-        transform.LookAt(moveEnd);
-        float dist = Vector3.Distance(_moveStart, moveEnd);
-        _flyTime = dist / speed;
-        _moved = true;
+        CanMove = true;
     }
 }
