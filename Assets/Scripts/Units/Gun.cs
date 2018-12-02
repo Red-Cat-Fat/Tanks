@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour {
 
     public void Start()
     {
-        //poolManager = GameManager.Instance.poolManager;
+        poolManager = GameManager.Instance.poolManager;
 
         if (pointGeneratorBullet == null)
         {
@@ -39,7 +39,8 @@ public class Gun : MonoBehaviour {
         GameObject target = FindTarget();
         if (target != null && lastFire > timeReload)
         {
-            GameObject newBullet = Instantiate(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);//poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
+            GameObject newBullet = poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
+            //Instantiate(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);//
             Debug.Log("Bullet " + newBullet.name + " generation by " + gameObject.name);
 
             MoveToPoint moveToPointBullet = newBullet.GetComponent<MoveToPoint>();
