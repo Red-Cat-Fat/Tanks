@@ -26,11 +26,6 @@ public class Gun : MonoBehaviour {
         {
             _team = unitData.team;
         }
-        else
-        {
-            Debug.LogError("UnitData is null in " + gameObject.name);
-        }
-
     }
 
     private void Update()
@@ -40,18 +35,9 @@ public class Gun : MonoBehaviour {
         if (target != null && lastFire > timeReload)
         {
             GameObject newBullet = poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
-            //Instantiate(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);//
-            Debug.Log("Bullet " + newBullet.name + " generation by " + gameObject.name);
-
-            MoveToPoint moveToPointBullet = newBullet.GetComponent<MoveToPoint>();
-            if (moveToPointBullet != null)
-            {
-                moveToPointBullet.MoveTo(pointGeneratorBullet.transform.position, target);
-
-                DealingDamage dealingDamageBullet = newBullet.GetComponent<DealingDamage>();
-                dealingDamageBullet.SetTeam(_team);
-                lastFire = 0;
-            }
+            DealingDamage dealingDamageBullet = newBullet.GetComponent<DealingDamage>();
+            dealingDamageBullet.SetTeam(_team);
+            lastFire = 0;
         }
     }
     private GameObject FindTarget()
@@ -68,6 +54,7 @@ public class Gun : MonoBehaviour {
             {
                 if (targetUnitData.team != _team)
                 {
+
                     return target;
                 }
             }

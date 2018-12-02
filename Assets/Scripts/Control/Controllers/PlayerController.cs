@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour, IController {
     private Rigidbody _rigidbody;
     public float moveSpeed = 10;
 
     private Vector3 vectorMove = Vector3.zero;
+    private bool _canFire = false;
+
+    public bool CanFire
+    {
+        get
+        {
+            return _canFire;
+        }
+    }
     // Use this for initialization
     void Start () {
         _rigidbody = GetComponent<Rigidbody>();
@@ -29,7 +38,18 @@ public class PlayerController : MonoBehaviour {
             Vector3 direct = Vector3.RotateTowards(transform.forward, vectorMove, moveSpeed, 0f);
             _rigidbody.transform.rotation = Quaternion.LookRotation(direct);
         }
+        MoveToPoint moveToPoint = GetComponent<MoveToPoint>();
+        moveToPoint.MoveTo(vectorMove + _rigidbody.transform.position);
+        //_rigidbody.transform.position = (vectorMove + _rigidbody.transform.position);
+    }
 
-        _rigidbody.transform.position = (vectorMove + _rigidbody.transform.position);
+    public void StartFire()
+    {
+        _canFire = true;
+    }
+
+    public void StopFire()
+    {
+        _canFire = false;
     }
 }

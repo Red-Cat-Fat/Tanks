@@ -22,6 +22,11 @@ public class UnitData : MonoBehaviour {
         }
     }
 
+    public void Update()
+    {
+        UpdateAll();
+    }
+
     public void UpdateAll()
     {
         UpdateModification();
@@ -38,13 +43,18 @@ public class UnitData : MonoBehaviour {
 
     public void UpdateLifeParameters()
     {
-        if (lifeParameters!=null && !lifeParameters.isLife())
-        {
-            GameManager.Instance.poolManager.Despawn(gameObject);
-        }
-        if(gameObject.GetComponent<PoolObject>() == null)
-        {
-            //Destroy(this);
+        if (!lifeParameters.isLife()) {
+            if (lifeParameters != null)
+            {
+                if (gameObject.GetComponent<PoolObject>() != null)
+                {
+                    GameManager.Instance.poolManager.Despawn(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 
