@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
     public int Score = 0;
 
     public static GameManager Instance { get; private set; }
-    public GameObject baseTower;
+    public const float sizeGameGrid = 5f;
 
     private void Awake()
     {

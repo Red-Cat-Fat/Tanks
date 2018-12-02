@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Team
+{
+    PlayerOne,
+    PlayerTwo,
+    Computer
+}
 public class UnitData : MonoBehaviour {
-    public int team = 0;
+    public Team team;
     public IModification modification;
     private LifeParameters lifeParameters;
 

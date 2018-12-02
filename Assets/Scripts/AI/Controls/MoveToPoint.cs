@@ -5,6 +5,7 @@ public class MoveToPoint : MonoBehaviour {
     public float speed = 1f;
     public Vector3 moveEnd;
     public bool dieAfterFinish;
+    public bool fixedPositionY = true; 
 
     private Vector3 _moveStart;
     private Rigidbody _rigidbody;
@@ -37,13 +38,18 @@ public class MoveToPoint : MonoBehaviour {
         _lifeTime += Time.fixedDeltaTime;
         if (_moved && _moveStart!=null && moveEnd!=null)
         {
+            float posY = _rigidbody.transform.position.y;
             _rigidbody.transform.position = Vector3.Lerp(_moveStart, moveEnd, _lifeTime / _flyTime);
+            if (fixedPositionY)
+            {
+                _rigidbody.transform.position = new Vector3(_rigidbody.transform.position.x, posY, _rigidbody.transform.position.z);
+            }
             if (_lifeTime > _flyTime)
             {
                 _moved = false;
                 if (dieAfterFinish)
                 {
-                    Destroy(this);
+                    GameManager.Instance.poolManager.Despawn(gameObject);
                 }
             }
         }
@@ -59,6 +65,7 @@ public class MoveToPoint : MonoBehaviour {
         _lifeTime = 0;
         _moveStart = moveStart;
         this.moveEnd = moveEnd;
+        transform.LookAt(moveEnd);
         float dist = Vector3.Distance(moveStart, moveEnd);
         _flyTime = dist / speed;
         _moved = true;

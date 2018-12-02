@@ -5,7 +5,7 @@ using UnityEngine;
 public class DealingDamage : MonoBehaviour {
     public float damagSize = 0;
     public TypeAttack typeAttack = TypeAttack.NormalType;
-    private int _team = 0;
+    private Team _team;
     private Damage damage;
 	// Use this for initialization
 	void Start () {
@@ -29,7 +29,7 @@ public class DealingDamage : MonoBehaviour {
         }
     }
 
-    public void SetTeam(int team)
+    public void SetTeam(Team team)
     {
         _team = team;
     }

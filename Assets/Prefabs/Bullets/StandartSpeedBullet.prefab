@@ -137,10 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8edc06799150754d80c17a09f21beb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeFlyToEndPoint: 0.3
-  moveEnd: {fileID: 0}
+  speed: 100
+  moveEnd: {x: 0, y: 0, z: 0}
   dieAfterFinish: 0
-  _moved: 1
 --- !u!135 &135103878085370694
 SphereCollider:
   m_ObjectHideFlags: 1

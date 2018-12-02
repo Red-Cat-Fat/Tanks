@@ -45,7 +45,7 @@ public class UnitGenerator : MonoBehaviour {
                     MoveToPointByNavMesh unitMoveToPointByNavMesh = unit.GetComponent<MoveToPointByNavMesh>();
                     if (unitMoveToPointByNavMesh != null)
                     {
-                        unitMoveToPointByNavMesh.point = GameManager.Instance.baseTower;
+                        //unitMoveToPointByNavMesh.point = GameManager.Instance.baseTower;
                     }
                 }
             }

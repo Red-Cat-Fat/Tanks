@@ -7,121 +7,74 @@ public class Gun : MonoBehaviour {
     public bool fire = true;
     public float timeReload = 1f;
     public GameObject pointGeneratorBullet;
-    public GameObject turret;
-    private List<GameObject> targets = new List<GameObject>();
+
     private PoolManager poolManager;
     private float lastFire = 0;
+    private Team _team = Team.Computer;
 
     public void Start()
     {
-        poolManager = GameManager.Instance.poolManager;
+        //poolManager = GameManager.Instance.poolManager;
+
         if (pointGeneratorBullet == null)
         {
             pointGeneratorBullet = gameObject;
         }
+
+        UnitData unitData = gameObject.GetComponent<UnitData>();
+        if (unitData != null)
+        {
+            _team = unitData.team;
+        }
+        else
+        {
+            Debug.LogError("UnitData is null in " + gameObject.name);
+        }
+
     }
 
     private void Update()
     {
         lastFire += Time.deltaTime;
-        try
+        GameObject target = FindTarget();
+        if (target != null && lastFire > timeReload)
         {
-            GameObject target = FindTarget();
-            if (target!=null && lastFire > timeReload)
+            GameObject newBullet = Instantiate(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);//poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
+            Debug.Log("Bullet " + newBullet.name + " generation by " + gameObject.name);
+
+            MoveToPoint moveToPointBullet = newBullet.GetComponent<MoveToPoint>();
+            if (moveToPointBullet != null)
             {
-                if (turret != null)
-                {
-                    turret.transform.LookAt(target.transform.position, Vector3.up);
-                }
-
-                GameObject newBullet = poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
-
-                Debug.Log(gameObject.name + " create bullet");
-                MoveToPoint moveToPointBullet = newBullet.GetComponent<MoveToPoint>();
-                if (moveToPointBullet != null)
-                {
-                    moveToPointBullet.MoveTo(pointGeneratorBullet.transform.position, target);
-                }
+                moveToPointBullet.MoveTo(pointGeneratorBullet.transform.position, target);
 
                 DealingDamage dealingDamageBullet = newBullet.GetComponent<DealingDamage>();
-                if (dealingDamageBullet != null)
-                {
-                    UnitData unitData = gameObject.GetComponent<UnitData>();
-                    if (unitData != null)
-                    {
-                        dealingDamageBullet.SetTeam(unitData.team);
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Try get UnitData is faled (" + gameObject.name + ")");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning("Try get DealingDamage is faled (" + gameObject.name + ")");
-                }
+                dealingDamageBullet.SetTeam(_team);
                 lastFire = 0;
             }
         }
-        catch
-        {
-            Debug.LogError("Error in target " + targets[0].name);
-        }
     }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        GameObject collisionGameObject = other.gameObject;
-        if (collisionGameObject != null)
-        {
-            UnitData collisionUnitData = collisionGameObject.GetComponent<UnitData>();
-            UnitData thisUnitData = gameObject.GetComponent<UnitData>();
-            if (collisionUnitData != null && thisUnitData != null)
-            {
-                if (collisionUnitData.team != thisUnitData.team)
-                {
-                    targets.Add(collisionUnitData.gameObject);
-
-                    MoveToPointByNavMesh moveToPointByNavMesh = this.gameObject.GetComponent<MoveToPointByNavMesh>();
-                    if (moveToPointByNavMesh != null)
-                    {
-                        moveToPointByNavMesh.StopMove();
-                    }
-                }
-            }
-            else
-            {
-                if(thisUnitData == null)
-                {
-                    Debug.LogWarning("Try get UnitData is faled (" + gameObject.name + ")");
-                }
-            }
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        for (int i = 0; i < targets.Count; i++)
-        {
-            if (targets[i] == other.gameObject)
-            {
-                targets.RemoveAt(i);
-            }
-        }
-    }
-
     private GameObject FindTarget()
     {
-        for (int i = 0; i < targets.Count; i++)
+        int layerMask = 1 << 2;
+        layerMask = ~layerMask;
+        RaycastHit hit;
+        if (Physics.Raycast(pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
-            if (!targets[i].gameObject.activeSelf)
+            Debug.DrawRay(pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            GameObject target = hit.collider.gameObject;
+            UnitData targetUnitData = target.GetComponent<UnitData>();
+            if (targetUnitData != null)
             {
-                targets.RemoveAt(i);
+                if (targetUnitData.team != _team)
+                {
+                    return target;
+                }
             }
-            else
-            {
-                return targets[i];
-            }
+        }
+        else
+        {
+            Debug.DrawRay(pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            Debug.Log("Did not Hit");
         }
         return null;
     }
