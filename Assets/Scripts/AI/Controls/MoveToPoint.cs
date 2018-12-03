@@ -50,15 +50,6 @@ public class MoveToPoint : MonoBehaviour {
         }
     }
 
-    public void MoveTo(Vector3 moveStart, GameObject moveEnd)
-    {
-        MoveTo(moveStart, moveEnd.transform.position);
-    }
-    public void MoveTo(Vector3 moveEnd)
-    {
-        MoveTo(gameObject.transform.position, moveEnd);
-    }
-
     public void MoveTo(Vector3 moveStart, Vector3 moveEnd)
     {
         _lifeTime = 0;
@@ -69,4 +60,13 @@ public class MoveToPoint : MonoBehaviour {
         _flyTime = dist / speed;
         CanMove = true;
     }
+    public void MoveTo(Vector3 moveStart, GameObject moveEnd)
+    {
+        MoveTo(moveStart, moveEnd.transform.position);
+    }
+    public void MoveTo(Vector3 moveEnd)
+    {
+        MoveTo(gameObject.transform.position, moveEnd);
+    }
+
 }

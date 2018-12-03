@@ -12,6 +12,7 @@ public class TurretController : MonoBehaviour, IController
     private bool _canFire = false;
     private Gun[] _guns;
     private Rigidbody _rigidbody;
+    private Vector3 position;
     private Team _team = Team.Computer;
 
 
@@ -27,6 +28,7 @@ public class TurretController : MonoBehaviour, IController
     {
         _guns = GetComponents<Gun>();
         _rigidbody = GetComponent<Rigidbody>();
+        position = _rigidbody.transform.position;
         UnitData unitData = gameObject.GetComponent<UnitData>();
         _team = unitData.team;
     }
@@ -34,11 +36,11 @@ public class TurretController : MonoBehaviour, IController
     public void Update()
     {
         _lifeTime += Time.deltaTime;
+        FindTarget();
         if (!_canFire)
         {
             Move();
         }
-        FindTarget();
     }
     public GameObject FindTarget()
     {
@@ -73,6 +75,7 @@ public class TurretController : MonoBehaviour, IController
         if (_lifeTime > FrequencyRotation)
         {
             _rigidbody.transform.Rotate(0, SpeedRotation, 0);
+            _rigidbody.position = position;
             _lifeTime -= FrequencyRotation;
         }
     }
