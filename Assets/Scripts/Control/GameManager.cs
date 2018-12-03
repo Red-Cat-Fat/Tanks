@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 
     public PoolManager poolManager;
     public PoolPrespawnData[] Prespawns;
+    public AIManager aiManager;
     public int Score = 0;
 
     public static GameManager Instance { get; private set; }

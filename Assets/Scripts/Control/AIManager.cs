@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class AIManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public List<GameObject> units = new List<GameObject>();
+
+    public void AddUnit(GameObject unit)
+    {
+        units.Add(unit);
+    }
 }
