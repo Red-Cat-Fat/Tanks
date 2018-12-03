@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4112159097663466}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PointBulletGeneratorDoubleTankTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,12 +38,14 @@ GameObject:
   - component: {fileID: 23734338230490734}
   - component: {fileID: 65734334360394970}
   - component: {fileID: 54607436545044296}
+  - component: {fileID: 114874828071148828}
   - component: {fileID: 114616079937196270}
   - component: {fileID: 114898958279333362}
   - component: {fileID: 114044781868541080}
   - component: {fileID: 114909737511756230}
   - component: {fileID: 114749913261359022}
-  m_Layer: 0
+  - component: {fileID: 114396465635075346}
+  m_Layer: 11
   m_Name: DoubleTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +60,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4383876778594778}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PointBulletGeneratorDoubleTankOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,8 +73,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666320364870510}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0000000010324019, y: 0.00438817, z: -0.000000013498614,
+    w: 0.9999904}
+  m_LocalPosition: {x: -0.046220563, y: -0.00000023841858, z: 39.99228}
   m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_Children:
   - {fileID: 4383876778594778}
@@ -186,6 +189,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
+--- !u!114 &114396465635075346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666320364870510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9c494ff2c1e964298458a34dccb48c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedRotation: 45
+  FrequencyRotation: 1
+  findTargetInLayer:
+    serializedVersion: 2
+    m_Bits: 4294964219
 --- !u!114 &114616079937196270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,10 +231,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e06e5c1321c2744c96b9023121b6f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1258208076699856, guid: 10c45ad547dd0b84c91b8a4530e384c1, type: 2}
-  fire: 1
   timeReload: 1
+  bullet: {fileID: 1258208076699856, guid: 10c45ad547dd0b84c91b8a4530e384c1, type: 2}
   pointGeneratorBullet: {fileID: 1515731326603668}
+--- !u!114 &114874828071148828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666320364870510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36cdb4a6744a4cc40bf6d4bc261c8210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114898958279333362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   moveEnd: {x: 0, y: 0, z: 40}
-  dieAfterFinish: 0
+  CanMove: 0
   fixedPositionY: 1
 --- !u!114 &114909737511756230
 MonoBehaviour:
@@ -242,7 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e06e5c1321c2744c96b9023121b6f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1258208076699856, guid: 10c45ad547dd0b84c91b8a4530e384c1, type: 2}
-  fire: 1
   timeReload: 1
+  bullet: {fileID: 1258208076699856, guid: 10c45ad547dd0b84c91b8a4530e384c1, type: 2}
   pointGeneratorBullet: {fileID: 1826004367158228}

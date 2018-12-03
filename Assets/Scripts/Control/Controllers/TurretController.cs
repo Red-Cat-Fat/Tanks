@@ -6,6 +6,7 @@ public class TurretController : MonoBehaviour, IController
 {
     public float SpeedRotation = 45f;
     public float FrequencyRotation = 3f;
+    public LayerMask findTargetInLayer;
 
     private float _lifeTime = 0;
     private bool _canFire = false;
@@ -33,18 +34,18 @@ public class TurretController : MonoBehaviour, IController
     public void Update()
     {
         _lifeTime += Time.deltaTime;
-        Move();
+        if (!_canFire)
+        {
+            Move();
+        }
         FindTarget();
     }
-
     public GameObject FindTarget()
     {
-        int layerMask = 1 << 2;
-        layerMask = ~layerMask;
         RaycastHit hit;
         for (int i = 0; i < _guns.Length; i++)
         {
-            if (Physics.Raycast(_guns[i].pointGeneratorBullet.transform.position, _guns[i].pointGeneratorBullet.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(_guns[i].pointGeneratorBullet.transform.position, _guns[i].pointGeneratorBullet.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, findTargetInLayer))
             {
                 Debug.DrawRay(_guns[i].pointGeneratorBullet.transform.position, _guns[i].pointGeneratorBullet.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
                 GameObject target = hit.collider.gameObject;

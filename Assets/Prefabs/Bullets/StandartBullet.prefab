@@ -22,11 +22,11 @@ GameObject:
   - component: {fileID: 33976763733942680}
   - component: {fileID: 135256950047459568}
   - component: {fileID: 23459304453498726}
-  - component: {fileID: 114520441780489052}
   - component: {fileID: 114404068653079362}
   - component: {fileID: 54209044852311820}
   - component: {fileID: 114798270371411234}
   - component: {fileID: 114640187386486692}
+  - component: {fileID: 114988189217097582}
   m_Layer: 10
   m_Name: StandartBullet
   m_TagString: Untagged
@@ -42,7 +42,7 @@ Transform:
   m_GameObject: {fileID: 1258208076699856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.16346, y: 0.5, z: 21.063}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,20 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagSize: 10
   typeAttack: 0
---- !u!114 &114520441780489052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1258208076699856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8edc06799150754d80c17a09f21beb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 60
-  moveEnd: {x: 0, y: 0, z: 0}
-  dieAfterFinish: 0
 --- !u!114 &114640187386486692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,6 +138,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cdb4a6744a4cc40bf6d4bc261c8210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114988189217097582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258208076699856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1552ef970330db418319cb39cc2e910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 50
+  LifeTime: 10
 --- !u!135 &135256950047459568
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -162,5 +161,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}

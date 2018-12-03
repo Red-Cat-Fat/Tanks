@@ -37,6 +37,14 @@ public class Gun : MonoBehaviour {
     public void Fire()
     {
         GameObject newBullet = GameManager.Instance.poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
+        if (_team == Team.Computer)
+        {
+            newBullet.layer = 10;
+        }
+        else
+        {
+            newBullet.layer = 8;
+        }
         DealingDamage dealingDamageBullet = newBullet.GetComponent<DealingDamage>();
         dealingDamageBullet.SetTeam(_team);
         lastFire = 0;

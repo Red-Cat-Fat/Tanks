@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4233100053794376}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PointBulletGeneratorPlayerOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114142857984578126}
   - component: {fileID: 114123344796773500}
   - component: {fileID: 114282400758331546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,8 +56,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820742803304692}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.8, y: 0, z: -0.2}
+  m_LocalRotation: {x: -7.8998907e-19, y: 1, z: -1.08559245e-10, w: -0.000000007277032}
+  m_LocalPosition: {x: 31.058174, y: 0, z: -39.041203}
   m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_Children:
   - {fileID: 4233100053794376}
@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061097342688404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: 24.3}
+  m_LocalPosition: {x: -0, y: 8, z: 28.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4145396582368276}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e06e5c1321c2744c96b9023121b6f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeReload: 1
+  timeReload: 0.5
   bullet: {fileID: 1258208076699856, guid: 10c45ad547dd0b84c91b8a4530e384c1, type: 2}
   pointGeneratorBullet: {fileID: 1061097342688404}
 --- !u!114 &114142857984578126
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 70
-  moveEnd: {x: 32.22164, y: 0, z: 3.06465}
-  dieAfterFinish: 0
+  moveEnd: {x: 31.058174, y: 0, z: -39.041203}
+  CanMove: 1
   fixedPositionY: 1
 --- !u!114 &114282400758331546
 MonoBehaviour:
