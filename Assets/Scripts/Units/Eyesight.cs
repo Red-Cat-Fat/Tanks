@@ -8,10 +8,10 @@ public class Eyesight : MonoBehaviour {
     public float VisibleDistance = 20.0f;
     public LayerMask visibleMask;
 
+    //Отрисовывает угол обзора юнита (работает только если танк смотрит по (0,0,0))
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        //Gizmos.DrawSphere(Points[i].transform.position, 3f);
         Vector3 vector3 = GetAngleView();
         
         Gizmos.DrawLine(CurrentEyes.transform.position, CurrentEyes.transform.position + vector3);
@@ -21,7 +21,7 @@ public class Eyesight : MonoBehaviour {
 
     private Vector3 GetAngleView()
     {
-        Vector3 vector3 = new Vector3(Mathf.Sin(VisibleAngle/2 * Mathf.Deg2Rad) * VisibleDistance, 0, Mathf.Cos(VisibleAngle/2 * Mathf.Deg2Rad) * VisibleDistance);
+        Vector3 vector3 = new Vector3(Vector3.forward.x + Mathf.Sin(VisibleAngle/2 * Mathf.Deg2Rad) * VisibleDistance, 0, Vector3.forward.z + Mathf.Cos(VisibleAngle/2 * Mathf.Deg2Rad) * VisibleDistance);
         return vector3;
     }
 
@@ -41,7 +41,7 @@ public class Eyesight : MonoBehaviour {
         {
             if (unit != null && unit != gameObject && unit.activeInHierarchy && IsVisibleUnit(unit))
             {
-                Debug.DrawRay(unit.transform.position, gameObject.transform.position, Color.green);
+                Debug.DrawRay(gameObject.transform.position, unit.transform.position - gameObject.transform.position, Color.green);
                 result.Add(unit);
             }
         }
@@ -107,11 +107,11 @@ public class Eyesight : MonoBehaviour {
         }
         if (result)
         {
-            Debug.DrawRay(from.position, point, Color.white);
+            Debug.DrawRay(from.position, point - from.position, Color.green);
         }
         else
         {
-            Debug.DrawRay(from.position, point, Color.red);
+            Debug.DrawRay(from.position,  point - from.position, Color.red);
         }
         return result;
     }

@@ -37,6 +37,7 @@ public class Gun : MonoBehaviour {
     public void Fire()
     {
         GameObject newBullet = GameManager.Instance.poolManager.Spawn(bullet, pointGeneratorBullet.transform.position, pointGeneratorBullet.transform.rotation);
+        Debug.Log(gameObject.name + " fire!!!");
         if (_team == Team.Computer)
         {
             newBullet.layer = 10;

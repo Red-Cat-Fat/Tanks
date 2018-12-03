@@ -8,7 +8,8 @@ public class PatrolController : MonoBehaviour, IController {
     private PatrolWayPoint _currentPatrolWayTarget;
     private GameObject _target;
     private Eyesight _eyesight;
-    
+
+    public float distance = 5f;
     public PatrolWay patrolWay;
     public bool CanFire
     {
@@ -42,6 +43,7 @@ public class PatrolController : MonoBehaviour, IController {
         {
             for (int i = 0; i < targets.Count; i++)
             {
+                Debug.DrawLine(transform.position, targets[i].transform.position, Color.yellow);
                 if (targets[i].GetComponent<PlayerController>() != null)
                 {
                     return targets[i];

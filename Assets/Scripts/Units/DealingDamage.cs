@@ -17,12 +17,18 @@ public class DealingDamage : MonoBehaviour {
         LifeParameters lifeParameters = collision.gameObject.GetComponent<LifeParameters>();
         if (lifeParameters != null)
         {
+            Brick targetBrick = collision.gameObject.GetComponent<Brick>();
+            if (targetBrick != null)
+            {
+                lifeParameters.SetDamage(damage);
+            }
             UnitData targetUnitData = collision.gameObject.GetComponent<UnitData>();
             if (targetUnitData != null)
             {
                 if (targetUnitData.team != _team)
                 {
                     lifeParameters.SetDamage(damage);
+
                     GameManager.Instance.poolManager.Despawn(gameObject);
                 }
             }

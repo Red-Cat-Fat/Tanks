@@ -69,7 +69,7 @@ public class PatrolWay : MonoBehaviour {
                 return currentPatrolWayPoint;  
             }
         }
-        return null;
+        return currentPatrolWayPoint;
     }
 
     void OnDrawGizmos()
