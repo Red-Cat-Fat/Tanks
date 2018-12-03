@@ -29,7 +29,7 @@ public class MoveToPoint : MonoBehaviour {
     public void OnEnable()
     {
         _moveStart = transform.position;
-        CanMove = true;
+        CanMove = false;
     }
 
     public void FixedUpdate()
