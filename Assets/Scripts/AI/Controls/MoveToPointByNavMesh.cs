@@ -23,7 +23,7 @@ public class MoveToPointByNavMesh : MonoBehaviour, IMove
     }
     public void MoveTo(Vector3 moveStart, Vector3 moveEnd)
     {
-        LookAt(moveEnd);
+        
         _navMeshAgent.SetDestination(moveEnd);
     }
     public void MoveTo(Vector3 moveStart, GameObject moveEnd)

@@ -59,6 +59,7 @@ public class PatrolController : MonoBehaviour, IController {
         if (_target != null)
         {
             _moveToPoint.MoveTo(_target.transform.position);
+            _moveToPoint.LookAt(_target);
         }
         else
         {
@@ -71,6 +72,7 @@ public class PatrolController : MonoBehaviour, IController {
             if (Vector3.Distance(transform.position, _currentPatrolWayTarget.transform.position) < distance)
             {
                 _currentPatrolWayTarget = patrolWay.GetNextPoint();
+                _moveToPoint.LookAt(_currentPatrolWayTarget.gameObject);
             }
         }
     }
@@ -83,15 +85,5 @@ public class PatrolController : MonoBehaviour, IController {
     public void StopFire()
     {
         _canFire = false;
-    }
-    
-    public void ConnectToPatrolWayPoint(GameObject go)
-    {
-        PatrolWayPoint collosionPoint = go.GetComponent<PatrolWayPoint>();
-        if (collosionPoint != null)
-        {
-            _currentPatrolWayTarget = patrolWay.IsTrueWay(collosionPoint);
-            _moveToPoint.MoveTo(_currentPatrolWayTarget.transform.position);
-        }
     }
 }

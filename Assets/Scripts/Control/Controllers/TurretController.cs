@@ -60,6 +60,10 @@ public class TurretController : MonoBehaviour, IController
                         return target;
                     }
                 }
+                else
+                {
+                    StopFire();
+                }
             }
             else
             {
