@@ -35,7 +35,7 @@ public class PatrolWay : MonoBehaviour {
         return null;
     }
 
-    private PatrolWayPoint GetNextPoint()
+    public PatrolWayPoint GetNextPoint()
     {
         _index++;
         if (_index >= Points.Length)

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 65717582706467022}
   - component: {fileID: 114665315452949822}
   - component: {fileID: 114346060604196012}
+  - component: {fileID: 114484872122313366}
   m_Layer: 0
   m_Name: BrickBlock
   m_TagString: Untagged
@@ -38,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1330889739621670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45, y: 0, z: 65}
-  m_LocalScale: {x: 0.625, y: 0.625, z: 0.625}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,7 +92,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1330889739621670}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8673f0f496d4c3d4492c95ecdda9e545, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -109,6 +110,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 20
+  NormalAttackProtection: 0
+  FireAttackProtection: 0
+  IceAttackProtection: 0
+--- !u!114 &114484872122313366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330889739621670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a871dbd62c9dd44873c1152f769898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 10
   NormalAttackProtection: 0
   FireAttackProtection: 0
   IceAttackProtection: 0

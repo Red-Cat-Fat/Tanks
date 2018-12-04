@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatrolController : MonoBehaviour, IController {
     private bool _canFire = false;
-    private MoveToPoint _moveToPoint;
+    private IMove _moveToPoint;
     private PatrolWayPoint _currentPatrolWayTarget;
     private GameObject _target;
     private Eyesight _eyesight;
@@ -21,8 +21,9 @@ public class PatrolController : MonoBehaviour, IController {
     
     void Start()
     {
-        _moveToPoint = GetComponent<MoveToPoint>();
+        _moveToPoint = GetComponent<IMove>();
         _currentPatrolWayTarget = patrolWay.GetCurrentPoint();
+        _moveToPoint.MoveTo(_currentPatrolWayTarget.gameObject);
         _eyesight = GetComponent<Eyesight>();
     }
     
@@ -67,6 +68,10 @@ public class PatrolController : MonoBehaviour, IController {
                 _currentPatrolWayTarget = patrolWay.GetPointByIndex(0);
             }
             _moveToPoint.MoveTo(_currentPatrolWayTarget.transform.position);
+            if (Vector3.Distance(transform.position, _currentPatrolWayTarget.transform.position) < distance)
+            {
+                _currentPatrolWayTarget = patrolWay.GetNextPoint();
+            }
         }
     }
 

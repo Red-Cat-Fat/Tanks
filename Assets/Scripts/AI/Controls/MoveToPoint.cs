@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveToPoint : MonoBehaviour {
+public class MoveToPoint : MonoBehaviour, IMove {
     public float speed = 1f;
     public Vector3 moveEnd;
     public bool CanMove = false;
@@ -35,7 +35,7 @@ public class MoveToPoint : MonoBehaviour {
     public void FixedUpdate()
     {
         _lifeTime += Time.fixedDeltaTime;
-        if (CanMove && _moveStart != null && moveEnd != null)
+        if (CanMove && moveEnd != null)
         {
             float posY = _rigidbody.transform.position.y;
             _rigidbody.transform.position = Vector3.Lerp(_moveStart, moveEnd, _lifeTime / _flyTime);

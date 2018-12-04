@@ -8,7 +8,7 @@ public class HunterController : MonoBehaviour, IController
     public float distance = 3f;
 
     private bool _canFire = true;
-    private MoveToPoint _moveToPoint;
+    private IMove _moveToPoint;
     public bool CanFire
     {
         get
@@ -19,7 +19,7 @@ public class HunterController : MonoBehaviour, IController
 
     public void Start()
     {
-        _moveToPoint = GetComponent<MoveToPoint>();
+        _moveToPoint = GetComponent<IMove>();
     }
 
     public void Update()
