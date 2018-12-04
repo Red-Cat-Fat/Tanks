@@ -35,11 +35,18 @@ public class PoolManager : MonoBehaviour {
         var poolObject = go.GetComponent<PoolObject>();
         if (poolObject != null)
         {
-            poolObject.Pool.Despawn(poolObject);
+            try
+            {
+                poolObject.Pool.Despawn(poolObject);
+            }
+            catch
+            {
+                GameObject.Destroy(go.gameObject);
+            }
         }
         else
         {
-            GameObject.Destroy(go);
+            GameObject.Destroy(go.gameObject);
         }
     }
 

@@ -41,7 +41,6 @@ public class Eyesight : MonoBehaviour {
         {
             if (unit != null && unit != gameObject && unit.activeInHierarchy && IsVisibleUnit(unit))
             {
-                Debug.DrawRay(gameObject.transform.position, unit.transform.position - gameObject.transform.position, Color.green);
                 result.Add(unit);
             }
         }
@@ -88,6 +87,7 @@ public class Eyesight : MonoBehaviour {
 
     public bool IsAvailablePoint(Transform from, Vector3 point, float angle, float distance)
     {
+        //return Vector3.Distance(from.position, point) <= distance;
         bool result = false;
 
         if (from != null && Vector3.Distance(from.position, point) <= distance)
@@ -104,14 +104,6 @@ public class Eyesight : MonoBehaviour {
             {
                 result = true;
             }
-        }
-        if (result)
-        {
-            Debug.DrawRay(from.position, point - from.position, Color.green);
-        }
-        else
-        {
-            Debug.DrawRay(from.position,  point - from.position, Color.red);
         }
         return result;
     }

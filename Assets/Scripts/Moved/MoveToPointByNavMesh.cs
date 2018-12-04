@@ -6,11 +6,16 @@ using UnityEngine.AI;
 public class MoveToPointByNavMesh : MonoBehaviour, IMove
 {
     public float moveSpeed = 10f;
+    [SerializeField]
     private NavMeshAgent _navMeshAgent;
     // Use this for initialization
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        if(_navMeshAgent == null)
+        {
+            Debug.LogError("In " + gameObject.name + " NavMeshAgent is null");
+        }
         _navMeshAgent.speed = moveSpeed;
     }
     public void LookAt(GameObject target)
@@ -21,21 +26,12 @@ public class MoveToPointByNavMesh : MonoBehaviour, IMove
     {
         transform.LookAt(target);
     }
-    public void MoveTo(Vector3 moveStart, Vector3 moveEnd)
-    {
-        
-        _navMeshAgent.SetDestination(moveEnd);
-    }
-    public void MoveTo(Vector3 moveStart, GameObject moveEnd)
-    {
-        MoveTo(moveStart, moveEnd.transform.position);
-    }
     public void MoveTo(GameObject moveEnd)
     {
-        MoveTo(gameObject.transform.position, moveEnd);
+        _navMeshAgent.SetDestination(moveEnd.transform.position);
     }
     public void MoveTo(Vector3 moveEnd)
     {
-        MoveTo(gameObject.transform.position, moveEnd);
+        _navMeshAgent.SetDestination(moveEnd);
     }
 }

@@ -16,7 +16,7 @@ public class MoveToPoint : MonoBehaviour, IMove {
     {
         _rigidbody = GetComponent<Rigidbody>();
         _moveStart = transform.position;
-        if (CanMove && moveEnd != null)
+        if (CanMove)
         {
             MoveTo(_moveStart, moveEnd);
         }
@@ -35,7 +35,7 @@ public class MoveToPoint : MonoBehaviour, IMove {
     public void FixedUpdate()
     {
         _lifeTime += Time.fixedDeltaTime;
-        if (CanMove && moveEnd != null)
+        if (CanMove)
         {
             float posY = _rigidbody.transform.position.y;
             _rigidbody.transform.position = Vector3.Lerp(_moveStart, moveEnd, _lifeTime / _flyTime);

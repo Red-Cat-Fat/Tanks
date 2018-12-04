@@ -5,11 +5,12 @@ using UnityEngine;
 public class PatrolController : MonoBehaviour, IController {
     private bool _canFire = false;
     private IMove _moveToPoint;
-    private PatrolWayPoint _currentPatrolWayTarget;
+    public PatrolWayPoint _currentPatrolWayTarget;
     private GameObject _target;
-    private Eyesight _eyesight;
+    public Eyesight _eyesight;
 
-    public float distance = 5f;
+    public float distanceToCheckPoint = 1f;
+    public float distanceToStop = 1f;
     public PatrolWay patrolWay;
     public bool CanFire
     {
@@ -23,8 +24,14 @@ public class PatrolController : MonoBehaviour, IController {
     {
         _moveToPoint = GetComponent<IMove>();
         _currentPatrolWayTarget = patrolWay.GetCurrentPoint();
-        _moveToPoint.MoveTo(_currentPatrolWayTarget.gameObject);
+        if (_currentPatrolWayTarget != null)
+        {
+            _moveToPoint.MoveTo(_currentPatrolWayTarget.gameObject);
+        }
         _eyesight = GetComponent<Eyesight>();
+        if (_eyesight == null) { 
+            Debug.LogError("In " + gameObject.name + " Eyesight is null");
+        }
     }
     
     void Update()
@@ -39,18 +46,20 @@ public class PatrolController : MonoBehaviour, IController {
 
     public GameObject FindTarget()
     {
-        List<GameObject> targets = _eyesight.GetVisibleUnits();
-        if (targets!=null && targets.Count > 0)
-        {
-            for (int i = 0; i < targets.Count; i++)
+            List<GameObject> targets = _eyesight.GetVisibleUnits();
+            Debug.Log(gameObject.name + " find " + targets.Count + " targets");
+            if (targets != null)
             {
-                Debug.DrawLine(transform.position, targets[i].transform.position, Color.yellow);
-                if (targets[i].GetComponent<PlayerController>() != null)
+                for (int i = 0; i < targets.Count; i++)
                 {
-                    return targets[i];
+                    Debug.DrawLine(transform.position, targets[i].transform.position, Color.yellow);
+                    if (targets[i].GetComponent<PlayerController>() != null || targets[i].GetComponent<Brick>() != null)
+                    {
+                        return targets[i];
+                    }
                 }
             }
-        }
+        
         return null;
     }
 
@@ -58,7 +67,10 @@ public class PatrolController : MonoBehaviour, IController {
     {
         if (_target != null)
         {
-            _moveToPoint.MoveTo(_target.transform.position);
+            if (Vector3.Distance(_target.transform.position, transform.position) > distanceToStop)
+            {
+                _moveToPoint.MoveTo(_target.transform.position);
+            }
             _moveToPoint.LookAt(_target);
         }
         else
@@ -69,7 +81,7 @@ public class PatrolController : MonoBehaviour, IController {
                 _currentPatrolWayTarget = patrolWay.GetPointByIndex(0);
             }
             _moveToPoint.MoveTo(_currentPatrolWayTarget.transform.position);
-            if (Vector3.Distance(transform.position, _currentPatrolWayTarget.transform.position) < distance)
+            if (Vector3.Distance(transform.position, _currentPatrolWayTarget.transform.position) < distanceToCheckPoint)
             {
                 _currentPatrolWayTarget = patrolWay.GetNextPoint();
                 _moveToPoint.LookAt(_currentPatrolWayTarget.gameObject);

@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour, IController {
     void Start () {
         _rigidbody = GetComponent<Rigidbody>();
         vectorMove = transform.position;
+        GameManager.Instance.ShowMessage("Захватите вышку справа");
     }
 	
 	// Update is called once per frame

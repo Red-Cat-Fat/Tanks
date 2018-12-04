@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeParameters : MonoBehaviour {
+public class LifeParameters : MonoBehaviour
+{
     public float healthPoints = 100f;
+    public float maxHealthPoints = 100f;
 
     public float NormalAttackProtection = 0;
     public float FireAttackProtection = 0;

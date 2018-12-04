@@ -37,14 +37,15 @@ GameObject:
   - component: {fileID: 33749412619249498}
   - component: {fileID: 23746099045261364}
   - component: {fileID: 65833184026557160}
+  - component: {fileID: 54009121375433768}
+  - component: {fileID: 195652556567323738}
   - component: {fileID: 114003993677162374}
   - component: {fileID: 114269478104990028}
   - component: {fileID: 114364233373293294}
   - component: {fileID: 114019032799687726}
-  - component: {fileID: 114717660614646942}
   - component: {fileID: 114667922461239486}
+  - component: {fileID: 114717660614646942}
   - component: {fileID: 114860749848978498}
-  - component: {fileID: 195652556567323738}
   m_Layer: 11
   m_Name: HeavyTank
   m_TagString: Untagged
@@ -149,6 +150,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427010112025792}
   m_Mesh: {fileID: 4300000, guid: 28bad55131908b0438da088e15ccc2b8, type: 3}
+--- !u!54 &54009121375433768
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427010112025792}
+  serializedVersion: 2
+  m_Mass: 200
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65833184026557160
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -198,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 200
+  maxHealthPoints: 100
   NormalAttackProtection: 0
   FireAttackProtection: 0
   IceAttackProtection: 0
@@ -224,7 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4342a1935b5f9f9439b7772cee8a91ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distanceToCheckPoint: 1
+  distanceToStop: 10
   patrolWay: {fileID: 0}
 --- !u!114 &114717660614646942
 MonoBehaviour:

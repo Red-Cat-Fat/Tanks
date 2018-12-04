@@ -8,7 +8,6 @@ public class HunterController : MonoBehaviour, IController
     public float distance = 3f;
 
     private bool _canFire = true;
-    private bool _canMove = true;
     private IMove _moveToPoint;
     public bool CanFire
     {
