@@ -16,7 +16,7 @@ namespace Game.Controllers.Units
 		
 		public Vector3 GetNewTargetPosirionVector3()
 		{
-			var directionMoveVector = InputSystem.Instance.GetDirectionVector3();
+			var directionMoveVector = InputManager.Instance.GetDirectionVector3();
 			_moveTargetVector3 = transform.position + directionMoveVector;
 			return _moveTargetVector3;
 		}

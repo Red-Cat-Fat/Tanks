@@ -13,7 +13,7 @@ namespace Game.Controllers.TanksInput
 		SwipeMouse,
 		VirtualJoystick
 	}
-	public class InputSystem : SingletonBehaviour<InputSystem>
+	public class InputManager : SingletonBehaviour<InputManager>
 	{
 		[SerializeField] private InputTypeEnum _currentInputTypeEnum = InputTypeEnum.Swipe;
 		private IInputType _currentInputType;
