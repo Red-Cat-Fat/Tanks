@@ -38,7 +38,7 @@ namespace Game.Controllers.TanksInput
 		public Vector3 GetDirectionVector3()
 		{
 			var retValue = _directionVector3;
-			//_directionVector3 = Vector3.zero; 
+			_directionVector3 = Vector3.zero; 
 			return retValue;
 		}
 	}

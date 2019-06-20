@@ -25,14 +25,11 @@ namespace Game.Controllers.TanksInput
 			}
 			else
 			{
-				if (_isTouched)
-				{
-					var swipe = _lastTouchVector2 - _startTouchVector2;
-					_directionVector3 = new Vector3(swipe.x, 0, swipe.y);
-					_isTouched = false;
-				}
+				if (!_isTouched) return;
+				var swipe = _lastTouchVector2 - _startTouchVector2;
+				_directionVector3 = new Vector3(swipe.x, 0, swipe.y);
+				_isTouched = false;
 			}
-
 		}
 
 		public Vector3 GetDirectionVector3()
