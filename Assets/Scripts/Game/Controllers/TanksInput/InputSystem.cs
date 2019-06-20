@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.HelpModules;
+using MyNamespace;
 using UnityEngine;
 
 namespace Game.Controllers.TanksInput
@@ -9,7 +10,8 @@ namespace Game.Controllers.TanksInput
 	public enum InputTypeEnum
 	{
 		Swipe,
-		SwipeMouse
+		SwipeMouse,
+		VirtualJoystick
 	}
 	public class InputSystem : SingletonBehaviour<InputSystem>
 	{
@@ -26,6 +28,9 @@ namespace Game.Controllers.TanksInput
 					break;
 				case InputTypeEnum.SwipeMouse:
 					_currentInputType = new SwipeMouseInputType();
+					break;
+				case InputTypeEnum.VirtualJoystick:
+					_currentInputType = new VirtualJoystickInputType();
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();
