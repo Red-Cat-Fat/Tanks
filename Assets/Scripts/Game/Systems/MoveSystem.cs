@@ -45,6 +45,7 @@ namespace Game.Systems
 
 		private void Move(Vector3 newPositionVector3)
 		{
+			transform.LookAt(newPositionVector3);
 			_unitsRigidbody?.MovePosition(newPositionVector3);
 		}
 	}
