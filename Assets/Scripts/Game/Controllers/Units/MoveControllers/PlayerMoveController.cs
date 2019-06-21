@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Game.Controllers.TanksInput;
 using UnityEngine;
 
-namespace Game.Controllers.Units
+namespace Game.Controllers.MoveControllers.Units
 {
 	public enum TypePlayerController
 	{
