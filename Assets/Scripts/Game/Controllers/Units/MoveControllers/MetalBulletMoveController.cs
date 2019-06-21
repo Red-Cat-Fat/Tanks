@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Controllers.MoveControllers.Units
+namespace Game.Controllers.Units.MoveControllers
 {
 	public class MetalBulletMoveController : MonoBehaviour, IMoveController
 	{
