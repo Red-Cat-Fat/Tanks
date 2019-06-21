@@ -8,8 +8,9 @@ namespace Game.Systems
 {
 	public class MoveSystem : MonoBehaviour
 	{
-		[SerializeField] private float _speedMove = 3f;
-		[SerializeField] private float _speedRotate = 3f;
+		public float SpeedMove = 3f;
+		public float SpeedRotate = 3f;
+
 		private IController _unitsController;
 		private Rigidbody _unitsRigidbody;
 
@@ -35,21 +36,18 @@ namespace Game.Systems
 
 		private void Move(float deltaTime)
 		{
-			var newPositionVector3 = _unitsController.GetNewTargetPosirionVector3();
-			if (newPositionVector3 == transform.position) return;
+			var directionVector3 = _unitsController.GetNewTargetPosirionVector3();
+			if(directionVector3 == Vector3.zero) return;
 
-			var directionVector3 = newPositionVector3 - transform.position;
-			var distanceToTargetPoint = directionVector3.magnitude;
-			var timeMoveToPoint = distanceToTargetPoint / _speedMove;
-			var procent = deltaTime / timeMoveToPoint;
-			var teleportToPosition = Vector3.Lerp(transform.position, newPositionVector3, procent);
-
+			var procent = deltaTime / 1;
+			var newPositionVector3 = transform.position + directionVector3 * SpeedMove * procent;
+			
 			var rotation = Vector3.Dot(transform.forward, directionVector3) <= 0
 				? Quaternion.LookRotation(-directionVector3)
 				: Quaternion.LookRotation(directionVector3);
-			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * _speedRotate);
+			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * SpeedRotate);
 
-			Move(teleportToPosition, teleportToRotation);
+			Move(newPositionVector3, teleportToRotation);
 		}
 
 		private void Move(Vector3 newPositionVector3, Quaternion rotationQuaternion)

@@ -37,13 +37,12 @@ namespace Game.Controllers.Units
 					return directionMoveVector;
 				case TypePlayerController.ThridPerson:
 
-					var resultVector = transform.position 
-					                   + transform.forward * directionMoveVector.z
+					var resultVector = transform.forward * directionMoveVector.z
 					                   + transform.right * directionMoveVector.x;
 
 					return resultVector;
 				case TypePlayerController.TopDown:
-					return transform.position + directionMoveVector;
+					return directionMoveVector;
 				default:
 					return directionMoveVector;
 			}
