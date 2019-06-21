@@ -18,6 +18,7 @@ namespace Game.Controllers.Units.DamageControllers
 		public void SetDamage(GameObject targetGameObject)
 		{
 			_setDamageEvent?.Invoke(targetGameObject);
+			DestroyAfterDamage();
 		}
 
 		private void OnCollisionEnter(Collision collision)
@@ -29,6 +30,11 @@ namespace Game.Controllers.Units.DamageControllers
 			if(healthSystem == null) { return; }
 
 			SetDamage(targetGameObject);
+		}
+
+		private void DestroyAfterDamage()
+		{
+			Destroy(gameObject);
 		}
 	}
 }
