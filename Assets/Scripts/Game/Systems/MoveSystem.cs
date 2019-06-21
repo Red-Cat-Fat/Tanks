@@ -11,13 +11,13 @@ namespace Game.Systems
 		public float SpeedMove = 3f;
 		public float SpeedRotate = 3f;
 
-		private IController _unitsController;
+		private IMoveController _unitsMoveController;
 		private Rigidbody _unitsRigidbody;
 
 		private void Start()
 		{
-			_unitsController = GetComponent<IController>();
-			if (_unitsController == null)
+			_unitsMoveController = GetComponent<IMoveController>();
+			if (_unitsMoveController == null)
 			{
 				Debug.LogError("UnitController on " + gameObject.name + " is null");
 			}
@@ -36,7 +36,7 @@ namespace Game.Systems
 
 		private void Move(float deltaTime)
 		{
-			var directionVector3 = _unitsController.GetNewTargetPosirionVector3();
+			var directionVector3 = _unitsMoveController.GetNewTargetPosirionVector3();
 			if(directionVector3 == Vector3.zero) return;
 
 			var procent = deltaTime / 1;

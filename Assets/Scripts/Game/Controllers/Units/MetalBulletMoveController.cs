@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Controllers.Units
 {
-	public class MetalBulletController : MonoBehaviour, IController
+	public class MetalBulletMoveController : MonoBehaviour, IMoveController
 	{
 		public Vector3 GetNewTargetPosirionVector3()
 		{

@@ -12,7 +12,7 @@ namespace Game.Controllers.Units
 		ThridPerson,
 		TopDown
 	}
-	public class PlayerController : MonoBehaviour, IController
+	public class PlayerMoveController : MonoBehaviour, IMoveController
 	{
 		public TypePlayerController CurrentTypePlayerController = TypePlayerController.ThridPerson;
 		private Vector3 _moveTargetVector3;

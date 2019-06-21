@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Controllers.Units
 {
-	public interface IController
+	public interface IMoveController
 	{
 		Vector3 GetNewTargetPosirionVector3();
 	}
