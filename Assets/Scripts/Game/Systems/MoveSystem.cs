@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Game.Controllers.MoveControllers.Units;
+using Game.Controllers.Units.MoveControllers;
 using UnityEngine;
 
 namespace Game.Systems
