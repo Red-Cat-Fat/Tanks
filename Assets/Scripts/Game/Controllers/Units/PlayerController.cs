@@ -1,12 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Game.Controllers.TanksInput;
 using UnityEngine;
 
 namespace Game.Controllers.Units
 {
+	public enum TypePlayerController
+	{
+		FirstPerson,
+		ThridPerson,
+		TopDown
+	}
 	public class PlayerController : MonoBehaviour, IController
 	{
+		public TypePlayerController CurrentTypePlayerController = TypePlayerController.ThridPerson;
 		private Vector3 _moveTargetVector3;
 
 		private void Start()
@@ -17,8 +25,28 @@ namespace Game.Controllers.Units
 		public Vector3 GetNewTargetPosirionVector3()
 		{
 			var directionMoveVector = InputManager.Instance.GetDirectionVector3();
-			_moveTargetVector3 = transform.position + directionMoveVector;
+			_moveTargetVector3 = ConvertToXPerson(directionMoveVector);
 			return _moveTargetVector3;
+		}
+
+		private Vector3 ConvertToXPerson(Vector3 directionMoveVector)
+		{
+			switch (CurrentTypePlayerController)
+			{
+				case TypePlayerController.FirstPerson:
+					return directionMoveVector;
+				case TypePlayerController.ThridPerson:
+
+					var resultVector = transform.position 
+					                   + transform.forward * directionMoveVector.z
+					                   + transform.right * directionMoveVector.x;
+
+					return resultVector;
+				case TypePlayerController.TopDown:
+					return transform.position + directionMoveVector;
+				default:
+					return directionMoveVector;
+			}
 		}
 	}
 }
