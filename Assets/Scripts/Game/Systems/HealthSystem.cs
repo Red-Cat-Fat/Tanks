@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Controllers.Units.HealthControllers;
 using UnityEngine;
 
 namespace Game.Systems
@@ -8,16 +9,25 @@ namespace Game.Systems
 	public class HealthSystem : MonoBehaviour
 	{
 		public float HealthPoint = 100f;
-		public Action DeadEvent;
-
+		private IHealthController _currentHealthController;
+		private Action DeadEvent;
 		private void Start()
 		{
-			DeadEvent += OnDead;
+			_currentHealthController = GetComponent<IHealthController>();
+			if (_currentHealthController == null)
+			{
+				Debug.LogError("IHealthController in "+ gameObject.name + "is null");
+			}
+			else
+			{
+				DeadEvent += OnDead;
+				_currentHealthController.AddDeadEvent(ref DeadEvent);
+			}
 		}
 
-		public void SetDamage(float value)
+		public void SetDamage(float inputDamage)
 		{
-			HealthPoint -= value;
+			HealthPoint-=_currentHealthController.GetCurrentDamage(inputDamage);
 			if (HealthPoint <= 0)
 			{
 				DeadEvent?.Invoke();
