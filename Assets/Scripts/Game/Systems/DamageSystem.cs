@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Game.Controllers.Units.DamageControllers;
 using UnityEngine;
 
 namespace Game.Systems
@@ -7,11 +9,23 @@ namespace Game.Systems
 	public class DamageSystem : MonoBehaviour
 	{
 		public float DamageValue = 100;
-
-		public void SetDamage(GameObject gameObject)
+		private void Start()
 		{
-			var healthSystemWarior = gameObject.GetComponent<HealthSystem>();
-			healthSystemWarior.SetDamage(DamageValue);
+			var damageController = GetComponent<IDamageController>();
+			if (damageController == null)
+			{
+				Debug.LogError("damageController in " + gameObject.name + " is null");
+			}
+			else
+			{
+				damageController.SetDamageEvent(OnSetDamage);
+			}
+		}
+		
+		public void OnSetDamage(GameObject targetGameObject)
+		{
+			var healthSystemWarior = targetGameObject.GetComponent<HealthSystem>();
+			healthSystemWarior?.SetDamage(DamageValue);
 		}
 	}
 }
