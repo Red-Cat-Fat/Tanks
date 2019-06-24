@@ -38,21 +38,25 @@ namespace Game.Systems
 			var directionVector3 = _unitsMoveController.GetNewTargetPosirionVector3();
 			if(directionVector3 == Vector3.zero) return;
 
-			var procent = deltaTime / 1;
-			var newPositionVector3 = transform.position + directionVector3 * SpeedMove * procent;
-			
-			var rotation = Vector3.Dot(transform.forward, directionVector3) <= 0
-				? Quaternion.LookRotation(-directionVector3)
-				: Quaternion.LookRotation(directionVector3);
+			var direction = Vector3.Dot(transform.forward, directionVector3) <= 0 ? -1 : 1;
+			var rotation = Quaternion.LookRotation(directionVector3 * direction);
 			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * SpeedRotate);
+			Rotate(teleportToRotation);
 
-			Move(newPositionVector3, teleportToRotation);
+			var procent = deltaTime / 1 * direction;
+			var newPositionVector3 = transform.position + transform.forward * directionVector3.magnitude * SpeedMove * procent;
+			
+			Move(newPositionVector3);
 		}
 
-		private void Move(Vector3 newPositionVector3, Quaternion rotationQuaternion)
+		private void Move(Vector3 newPositionVector3)
+		{
+			_unitsRigidbody?.MovePosition(newPositionVector3);
+		}
+
+		private void Rotate(Quaternion rotationQuaternion)
 		{
 			_unitsRigidbody.rotation = rotationQuaternion;
-			_unitsRigidbody?.MovePosition(newPositionVector3);
 		}
 	}
 }
