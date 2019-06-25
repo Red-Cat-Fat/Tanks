@@ -4,18 +4,11 @@ using UnityEngine;
 
 namespace Game.Controllers.Units.GunControllers
 {
-	public class BaseGunController : MonoBehaviour
+	public class BaseGunController : MonoBehaviour, IGunController
 	{
-		// Start is called before the first frame update
-		private void Start()
+		public bool IsFire()
 		{
-
-		}
-
-		// Update is called once per frame
-		private void Update()
-		{
-
+			return true;
 		}
 	}
 }
