@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4270892100453346946}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.70710784}
   m_LocalPosition: {x: 0, y: 0, z: -1.05}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4270892100491097641}
   m_RootOrder: 0
@@ -86,12 +86,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4270892100491097641}
+  - component: {fileID: 2167972362042114301}
   - component: {fileID: 4270892100491097654}
   - component: {fileID: 4270892100491097655}
   - component: {fileID: 4270892100491097643}
   - component: {fileID: 4270892100491097640}
   - component: {fileID: 4270892100491097645}
   - component: {fileID: 4270892100491097642}
+  - component: {fileID: 5655247859763931937}
   m_Layer: 0
   m_Name: MetalBullet
   m_TagString: Untagged
@@ -114,6 +116,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2167972362042114301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270892100491097652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ba389cbd73c5144a07a45b92db9c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedMove: 100
+  _speedRotation: 3
 --- !u!114 &4270892100491097654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7469b234f11a14dbce88a307d28488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMove: 100
-  SpeedRotate: 3
 --- !u!136 &4270892100491097643
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -150,7 +164,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -194,4 +208,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d82fdf2dc0f3442b4b2b33076e3037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageValue: 10
+--- !u!114 &5655247859763931937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270892100491097652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e101f66167b4395498373941a4ef7c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageValue: 100

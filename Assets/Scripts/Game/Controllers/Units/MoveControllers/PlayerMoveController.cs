@@ -12,21 +12,14 @@ namespace Game.Controllers.Units.MoveControllers
 		ThridPerson,
 		TopDown
 	}
-	public class PlayerMoveController : MonoBehaviour, IMoveController
+	public class PlayerMoveController : BaseMoveController
 	{
 		public TypePlayerController CurrentTypePlayerController = TypePlayerController.ThridPerson;
-		private Vector3 _moveTargetVector3;
 
-		private void Start()
-		{
-			_moveTargetVector3 = transform.position;
-		}
-		
-		public Vector3 GetNewTargetPosirionVector3()
+		public override Vector3 CulculateTarget()
 		{
 			var directionMoveVector = InputManager.Instance.GetDirectionVector3();
-			_moveTargetVector3 = ConvertToXPerson(directionMoveVector);
-			return _moveTargetVector3;
+			return ConvertToXPerson(directionMoveVector);
 		}
 
 		private Vector3 ConvertToXPerson(Vector3 directionMoveVector)

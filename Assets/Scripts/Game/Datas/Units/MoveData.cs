@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveData : MonoBehaviour
+namespace Game.Data.Units
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public class MoveData : MonoBehaviour
+	{
+		[SerializeField] private float _speedMove = 3f;
+		[SerializeField] private float _speedRotation = 3f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		public float GetSpeedMove()
+		{
+			return _speedMove;
+		}
+
+		public float GetSpeedRotation()
+		{
+			return _speedRotation;
+		}
+	}
 }
