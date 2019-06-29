@@ -6,6 +6,7 @@ namespace Game.Controllers.Units.GunControllers
 {
 	public interface IGunController
 	{
-		bool IsFire();
+		bool IsCanFire();
+		void Fire();
 	}
 }
