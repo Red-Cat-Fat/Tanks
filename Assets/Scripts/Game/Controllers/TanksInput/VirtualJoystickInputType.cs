@@ -11,8 +11,9 @@ namespace Game.Controllers.TanksInput
 		protected bool IsTouched = false;
 		protected Vector2 StartTouchVector2;
 		protected Vector2 LastTouchVector2;
-		protected bool IsMoved = false;
-		
+		protected bool JustClicked = false;
+		private float _keepTime = 0f;
+
 		public override void CheckInput()
 		{
 			if (Input.GetMouseButton(0))
@@ -22,10 +23,9 @@ namespace Game.Controllers.TanksInput
 			else
 			{
 				IsTouched = false;
-				CheckClicked();
 				LastInputVector2 = Vector2.zero;
 			}
-
+			CheckClicked();
 		}
 
 		protected void CalculateInput(Vector2 inputVector2)
@@ -44,16 +44,41 @@ namespace Game.Controllers.TanksInput
 				case CommandInputType.none:
 					break;
 				case CommandInputType.Swipe:
+					JustClicked = false;
 					LastInputVector2 = swipe;
+					break;
+				case CommandInputType.Click:
+					JustClicked = true;
 					break;
 			}
 		}
 
 		protected void CheckClicked()
 		{
-			if (!IsTouched)
+			if (IsTouched)
 			{
-				Clicked = GetTypeCommand(LastInputVector2) == CommandInputType.Click && IsMoved;
+				if (JustClicked)
+				{
+					_keepTime += Time.deltaTime;
+					if (_keepTime > InputSettings.ClickKeepTimeStart)
+					{
+						Clicked = true;
+						JustClicked = false;
+					}
+				}
+				else
+				{
+					_keepTime = 0f;
+				}
+			}
+			else
+			{
+				_keepTime = 0f;
+				if (JustClicked)
+				{
+					Clicked = true;
+					JustClicked = false;
+				}
 			}
 		}
 	}

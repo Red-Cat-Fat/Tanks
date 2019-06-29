@@ -16,8 +16,8 @@ namespace Game.Controllers.TanksInput
 			else
 			{
 				IsTouched = false;
-				CheckClicked();
 			}
+			CheckClicked();
 		}
 	}
 }
