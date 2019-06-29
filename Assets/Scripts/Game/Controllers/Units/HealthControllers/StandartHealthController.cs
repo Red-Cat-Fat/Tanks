@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Data.Units;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,16 +8,29 @@ namespace Game.Controllers.Units.HealthControllers
 {
 	public class StandartHealthController : MonoBehaviour, IHealthController
 	{
-		public GameObject DestroyedGameObject;
-		public void AddDeadEvent(ref Action actionEvent)
+		private HealthData _healthData;
+		private void Start()
 		{
-			actionEvent += () => { Instantiate(DestroyedGameObject, transform.position, transform.rotation); };
-			//no nothing
+			_healthData = GetComponent<HealthData>();
+			if (_healthData == null)
+			{
+				Debug.LogError("HealthData in " + gameObject.name + "is null");
+			}
 		}
 
-		public float GetCurrentDamage(float inputDamage)
+		public void AddDeadEvent(ref Action actionEvent)
 		{
-			return inputDamage;
+			actionEvent += () => { Instantiate(_healthData.GetDestroyedGameObject(), transform.position, transform.rotation); };
+		}
+
+		public bool IsDead()
+		{
+			return _healthData.IsDead();
+		}
+
+		public void SetDamage(float inputDamage)
+		{
+			_healthData.SetDamage(inputDamage);
 		}
 	}
 }

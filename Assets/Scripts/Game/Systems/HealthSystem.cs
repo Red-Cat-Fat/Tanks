@@ -8,7 +8,6 @@ namespace Game.Systems
 {
 	public class HealthSystem : MonoBehaviour
 	{
-		public float HealthPoint = 100f;
 		private IHealthController _currentHealthController;
 		private Action DeadEvent;
 		private void Start()
@@ -27,8 +26,8 @@ namespace Game.Systems
 
 		public void SetDamage(float inputDamage)
 		{
-			HealthPoint-=_currentHealthController.GetCurrentDamage(inputDamage);
-			if (HealthPoint <= 0)
+			_currentHealthController.SetDamage(inputDamage);
+			if (_currentHealthController.IsDead())
 			{
 				DeadEvent?.Invoke();
 			}
