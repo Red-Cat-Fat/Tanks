@@ -8,7 +8,6 @@ namespace Game.Systems
 {
 	public class DamageSystem : MonoBehaviour
 	{
-		public float DamageValue = 100;
 		private void Start()
 		{
 			var damageController = GetComponent<IDamageController>();
@@ -22,10 +21,10 @@ namespace Game.Systems
 			}
 		}
 		
-		public void OnSetDamage(GameObject targetGameObject)
+		public void OnSetDamage(GameObject targetGameObject, float damage)
 		{
 			var healthSystemWarior = targetGameObject.GetComponent<HealthSystem>();
-			healthSystemWarior?.SetDamage(DamageValue);
+			healthSystemWarior?.SetDamage(damage);
 		}
 	}
 }
