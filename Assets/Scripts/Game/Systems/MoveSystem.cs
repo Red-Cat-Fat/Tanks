@@ -38,7 +38,7 @@ namespace Game.Systems
 			var directionVector3 = _unitsMoveController.GetNewTargetPosirionVector3();
 			if(directionVector3 == Vector3.zero) return;
 
-			var direction = Vector3.Dot(transform.forward, directionVector3) <= 0 ? -1 : 1;
+			var direction = Vector3.Dot(transform.forward, directionVector3) <= 0 ? -1 : 1;//нужно для езды задом
 			var rotation = Quaternion.LookRotation(directionVector3 * direction);
 			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * SpeedRotate);
 			Rotate(teleportToRotation);

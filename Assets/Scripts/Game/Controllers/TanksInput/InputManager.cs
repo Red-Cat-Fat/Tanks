@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.HelpModules;
-using MyNamespace;
 using UnityEngine;
 
 namespace Game.Controllers.TanksInput
@@ -40,6 +39,11 @@ namespace Game.Controllers.TanksInput
 		public Vector3 GetDirectionVector3()
 		{
 			return _currentInputType.GetDirectionVector3();
+		}
+
+		public bool IsClicked()
+		{
+			return _currentInputType.IsClicked();
 		}
 
 		public void CheckInput()

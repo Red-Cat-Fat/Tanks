@@ -1,43 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Game.Controllers.TanksInput;
+using Game.Settings;
 using UnityEngine;
 
-namespace MyNamespace
+namespace Game.Controllers.TanksInput
 {
-	public class VirtualJoystickInputType : MonoBehaviour, IInputType
+	public class VirtualJoystickInputType : BaseInputType
 	{
-		private Vector3 _directionVector3 = Vector3.zero;
-		private bool _isTouched = false;
-		private Vector2 _startTouchVector2;
-		private Vector2 _lastTouchVector2;
-
-		public void CheckInput()
+		protected bool IsTouched = false;
+		protected Vector2 StartTouchVector2;
+		protected Vector2 LastTouchVector2;
+		protected bool IsMoved = false;
+		
+		public override void CheckInput()
 		{
 			if (Input.GetMouseButton(0))
 			{
-				if (!_isTouched)
-				{
-					_startTouchVector2 = Input.mousePosition;
-					_isTouched = true;
-				}
-
-				_lastTouchVector2 = Input.mousePosition;
-
-				var swipe = _lastTouchVector2 - _startTouchVector2;
-				_directionVector3 = new Vector3(swipe.x, 0, swipe.y);
+				CalculateInput(Input.mousePosition);
 			}
 			else
 			{
-				_directionVector3 = Vector3.zero;
-				_isTouched = false;
+				IsTouched = false;
+				CheckClicked();
+				LastInputVector2 = Vector2.zero;
+			}
+
+		}
+
+		protected void CalculateInput(Vector2 inputVector2)
+		{
+			if (!IsTouched)
+			{
+				StartTouchVector2 = inputVector2;
+				IsTouched = true;
+			}
+
+			LastTouchVector2 = inputVector2;
+			var swipe = LastTouchVector2 - StartTouchVector2;
+			var typeInput = GetTypeCommand(swipe);
+			switch (typeInput)
+			{
+				case CommandInputType.none:
+					break;
+				case CommandInputType.Swipe:
+					LastInputVector2 = swipe;
+					break;
 			}
 		}
 
-		public Vector3 GetDirectionVector3()
+		protected void CheckClicked()
 		{
-			var retValue = _directionVector3.normalized;
-			return retValue;
+			if (!IsTouched)
+			{
+				Clicked = GetTypeCommand(LastInputVector2) == CommandInputType.Click && IsMoved;
+			}
 		}
 	}
 }

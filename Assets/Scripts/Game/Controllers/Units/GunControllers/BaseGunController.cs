@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Game.Controllers.TanksInput;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace Game.Controllers.Units.GunControllers
 	{
 		public bool IsFire()
 		{
-			return true;
+			return InputManager.Instance.IsClicked();
 		}
 	}
 }
