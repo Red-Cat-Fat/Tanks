@@ -9,5 +9,6 @@ namespace Game.Settings
 	{
 		public static float ClickMagnitudeMaxSize = 0.1f;
 		public static float ClickKeepTimeStart = 0.3f;
+		public static float StepInJoystickByBackMoved = -0.3f;
 	}
 }

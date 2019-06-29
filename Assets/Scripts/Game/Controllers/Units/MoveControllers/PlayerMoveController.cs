@@ -19,7 +19,7 @@ namespace Game.Controllers.Units.MoveControllers
 		public override Vector3 CulculateTarget()
 		{
 			var directionMoveVector = InputManager.Instance.GetDirectionVector3();
-			return ConvertToXPerson(directionMoveVector);
+			return ConvertToXPerson(directionMoveVector) + transform.position;
 		}
 
 		private Vector3 ConvertToXPerson(Vector3 directionMoveVector)
