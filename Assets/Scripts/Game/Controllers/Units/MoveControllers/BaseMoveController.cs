@@ -1,4 +1,5 @@
-﻿using Game.Data.Units;
+﻿using Editor.LogSystem;
+using Game.Data.Units;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,7 @@ namespace Game.Controllers.Units.MoveControllers
 		protected virtual void Start()
 		{
 			_moveData = GetComponent<MoveData>();
-			if (_moveData == null)
-			{
-				Debug.LogError("MoveData on " + gameObject.name + " is null");
-			}
+			Log.CheckForNull(_moveData, gameObject);
 			_moveTargetVector3 = Vector3.zero;
 		}
 

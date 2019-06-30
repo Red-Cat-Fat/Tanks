@@ -1,4 +1,5 @@
-﻿using Game.Controllers.TanksInput;
+﻿using Editor.LogSystem;
+using Game.Controllers.TanksInput;
 using Game.Data.Units;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,10 +14,7 @@ namespace Game.Controllers.Units.GunControllers
 		private void Start()
 		{
 			GunData = GetComponent<GunData>();
-			if (GunData == null)
-			{
-				Debug.LogError("GunData on " + gameObject.name + " is null");
-			}
+			Log.CheckForNull(GunData, gameObject);
 		}
 
 		private void Update()

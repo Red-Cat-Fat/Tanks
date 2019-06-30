@@ -1,4 +1,5 @@
-﻿using Game.Data.Units;
+﻿using Editor.LogSystem;
+using Game.Data.Units;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,10 +13,7 @@ namespace Game.Controllers.Units.HealthControllers
 		private void Start()
 		{
 			_healthData = GetComponent<HealthData>();
-			if (_healthData == null)
-			{
-				Debug.LogError("HealthData in " + gameObject.name + "is null");
-			}
+			Log.CheckForNull(_healthData, gameObject);
 		}
 
 		public void AddDeadEvent(ref Action actionEvent)
