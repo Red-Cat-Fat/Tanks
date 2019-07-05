@@ -10,12 +10,12 @@ namespace Game.Controllers.Units.MoveControllers
 	public abstract class BaseMoveController : MonoBehaviour, IMoveController
 	{
 		private Vector3 _moveTargetVector3 = Vector3.zero;
-		protected MoveData _moveData;
+		protected MoveData MoveData;
 
 		protected virtual void Start()
 		{
-			_moveData = GetComponent<MoveData>();
-			Log.CheckForNull(_moveData, gameObject);
+			MoveData = GetComponent<MoveData>();
+			Log.CheckForNull(MoveData, gameObject);
 			_moveTargetVector3 = Vector3.zero;
 		}
 
@@ -31,7 +31,7 @@ namespace Game.Controllers.Units.MoveControllers
 
 			var directionForwardBack = Vector3.Dot(transform.forward, directionVector3) <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			var procent = Time.fixedDeltaTime / 1 * directionForwardBack;
-			var speed = _moveData.GetSpeedMove();
+			var speed = MoveData.GetSpeedMove();
 			var newPositionVector3 = transform.position + (transform.forward * speed * procent);
 			return newPositionVector3;
 		}
@@ -43,7 +43,7 @@ namespace Game.Controllers.Units.MoveControllers
 
 			var direction = Vector3.Dot(transform.forward, directionVector3) <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			var rotation = Quaternion.LookRotation(directionVector3 * direction);
-			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.fixedDeltaTime * _moveData.GetSpeedRotation());
+			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.fixedDeltaTime * MoveData.GetSpeedRotation());
 			return teleportToRotation;
 		}
 	}
