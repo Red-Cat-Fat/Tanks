@@ -4,6 +4,7 @@ namespace Game.Renderer.Camera
 {
 	public class FollowCameraData : MonoBehaviour
 	{
+		[SerializeField] private bool _isRotate = true;
 		[SerializeField] private GameObject _anchorPoint;
 		[SerializeField] private GameObject _followObject;
 		[SerializeField] private float _moveSpeed;
@@ -16,7 +17,7 @@ namespace Game.Renderer.Camera
 
 		public GameObject GetFollowObject()
 		{
-			return _followObject;
+			return _isRotate ? _followObject : null;\
 		}
 
 		public float GetMoveSpeed()
@@ -26,7 +27,7 @@ namespace Game.Renderer.Camera
 
 		public float GetRotateSpeed()
 		{
-			return _rotateSpeed;
+			return _isRotate ? _rotateSpeed : 0;
 		}
 	}
 }

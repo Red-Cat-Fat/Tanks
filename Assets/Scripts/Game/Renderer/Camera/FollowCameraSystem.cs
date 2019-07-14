@@ -38,7 +38,11 @@ namespace Game.Renderer.Camera
 			}
 			var roteteSpeed = _followCameraData.GetRotateSpeed();
 			var rotateProgress = roteteSpeed * _moveTime;
-			LookAt(followObject.transform.position, rotateProgress);
+
+			if (followObject != null)
+			{
+				LookAt(followObject.transform.position, rotateProgress);
+			}
 		}
 
 		private void LookAt(Vector3 position, float progress)
