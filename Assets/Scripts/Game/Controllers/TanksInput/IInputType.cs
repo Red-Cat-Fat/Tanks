@@ -17,6 +17,7 @@ namespace Game.Controllers.TanksInput
 	{
 		bool IsClicked();
 		Vector3 GetDirectionVector3();
+		Vector2 GetDirectionVector2();
 		void CheckInput();
 	}
 
@@ -25,6 +26,11 @@ namespace Game.Controllers.TanksInput
 		protected Vector2 LastInputVector2;
 		protected bool Clicked = false;
 		public abstract void CheckInput();
+
+		public virtual Vector2 GetDirectionVector2()
+		{
+			return LastInputVector2.normalized;
+		}
 
 		public virtual Vector3 GetDirectionVector3()
 		{
@@ -53,5 +59,6 @@ namespace Game.Controllers.TanksInput
 				return CommandInputType.Swipe;
 			}
 		}
+
 	}
 }

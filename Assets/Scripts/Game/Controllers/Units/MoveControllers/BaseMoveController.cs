@@ -29,7 +29,8 @@ namespace Game.Controllers.Units.MoveControllers
 			var directionVector3 = CulculateTarget() - transform.position;
 			if (directionVector3 == Vector3.zero) return transform.position;
 
-			var directionForwardBack = Vector3.Dot(transform.forward, directionVector3) <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
+			var directionForwardBack = Vector3.Dot(transform.forward, directionVector3) 
+				<= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			var procent = Time.fixedDeltaTime / 1 * directionForwardBack;
 			var speed = MoveData.GetSpeedMove();
 			var newPositionVector3 = transform.position + (transform.forward * speed * procent);

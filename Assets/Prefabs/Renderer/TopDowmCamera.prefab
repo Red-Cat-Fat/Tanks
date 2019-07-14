@@ -10,7 +10,42 @@ PrefabInstance:
     - target: {fileID: 4463416808182345365, guid: 498124c454de417418dcd0fdd16f7ecc,
         type: 3}
       propertyPath: m_Name
-      value: Main Camera TopDowmCamera
+      value: TopDowmCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
+        type: 3}
+      propertyPath: _anchorPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
+        type: 3}
+      propertyPath: _followObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
+        type: 3}
+      propertyPath: _rotateSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
+        type: 3}
+      propertyPath: _isRotate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463416808182345352, guid: 498124c454de417418dcd0fdd16f7ecc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463416808182345355, guid: 498124c454de417418dcd0fdd16f7ecc,
+        type: 3}
+      propertyPath: orthographic size
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 4463416808182345354, guid: 498124c454de417418dcd0fdd16f7ecc,
         type: 3}
@@ -65,36 +100,6 @@ PrefabInstance:
     - target: {fileID: 4463416808182345354, guid: 498124c454de417418dcd0fdd16f7ecc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463416808182345352, guid: 498124c454de417418dcd0fdd16f7ecc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
-        type: 3}
-      propertyPath: _anchorPoint
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
-        type: 3}
-      propertyPath: _followObject
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
-        type: 3}
-      propertyPath: _moveSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
-        type: 3}
-      propertyPath: _rotateSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463416808182345353, guid: 498124c454de417418dcd0fdd16f7ecc,
-        type: 3}
-      propertyPath: _isRotate
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

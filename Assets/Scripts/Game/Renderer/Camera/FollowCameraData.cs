@@ -17,7 +17,7 @@ namespace Game.Renderer.Camera
 
 		public GameObject GetFollowObject()
 		{
-			return _isRotate ? _followObject : null;\
+			return _isRotate ? _followObject : null;
 		}
 
 		public float GetMoveSpeed()
