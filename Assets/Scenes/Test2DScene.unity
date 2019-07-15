@@ -178,6 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedMove: 3
   _speedRotation: 3
+  _vectorForwardDirectionType: 1
+  _vectorNormalDirectionType: 0
 --- !u!50 &391729596
 Rigidbody2D:
   serializedVersion: 4
