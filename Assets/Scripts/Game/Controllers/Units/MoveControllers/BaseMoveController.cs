@@ -43,12 +43,12 @@ namespace Game.Controllers.Units.MoveControllers
 			var directionVector3 = CulculateTarget() - transform.position;
 			if (directionVector3 == Vector3.zero) return transform.rotation;
 
-			var direction = Vector3.Dot(transform.forward, directionVector3)
+			var direction = Vector3.Dot(MoveData.GetForwardDirectionVector3(transform), directionVector3)
 			                <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			
 			var rotationAngle = Mathf.Atan2(directionVector3.y, directionVector3.x);
 			rotationAngle = rotationAngle * Mathf.Rad2Deg;
-			var rotation = Quaternion.AngleAxis(rotationAngle* direction, axisVector3);
+			var rotation = Quaternion.AngleAxis(rotationAngle + (direction == -1? 180 : 0), axisVector3);
 
 			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.fixedDeltaTime * MoveData.GetSpeedRotation());
 			return teleportToRotation;
