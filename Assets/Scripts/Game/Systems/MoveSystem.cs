@@ -1,48 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Editor.LogSystem;
 using Game.Controllers.Units.MoveControllers;
+using Game.Data.Units;
 using UnityEngine;
 
 namespace Game.Systems
 {
 	public class MoveSystem : MonoBehaviour
 	{
-		private IMoveController _unitsMoveController;
+		protected IMoveController UnitsMoveController;
 		private Rigidbody _unitsRigidbody;
+		protected MoveData UnitsMoveData;
+
+		protected void InitialBaseMoveSystemField()
+		{
+			UnitsMoveController = GetComponent<IMoveController>();
+			UnitsMoveData = GetComponent<MoveData>();
+			Log.CheckForNull(UnitsMoveController, gameObject, typeof(IMoveController));
+			Log.CheckForNull(UnitsMoveData, gameObject, typeof(MoveData));
+		}
 
 		private void Start()
 		{
-			_unitsMoveController = GetComponent<IMoveController>();
-			if (_unitsMoveController == null)
-			{
-				Debug.LogError("UnitController on " + gameObject.name + " is null");
-			}
-
+			InitialBaseMoveSystemField();
 			_unitsRigidbody = GetComponent<Rigidbody>();
-			if (_unitsRigidbody == null)
-			{
-				Debug.LogError("Rigidbody on " + gameObject.name + " is null");
-			}
+			Log.CheckForNull(_unitsRigidbody, gameObject, typeof(Rigidbody));
 		}
 
 		private void FixedUpdate()
 		{
-			_unitsMoveController.CulculateTarget();
-			var position = _unitsMoveController.GetNextPosirionVector3(transform.forward);
-			var rotation = _unitsMoveController.GetNextRotationQuaternion(Vector3.up);
+			UpdateTransform();
+		}
+
+		protected virtual void UpdateTransform()
+		{
+			UnitsMoveController.CulculateTarget();
+
+			var forwardVector3 = UnitsMoveData.GetForwardDirectionVector3(transform);
+			var position = UnitsMoveController.GetNextPosirionVector3(forwardVector3);
+
+			var normalDirectionVector3 = UnitsMoveData.GetNormalDirectionVector3();
+			var rotation = UnitsMoveController.GetNextRotationQuaternion(normalDirectionVector3);
 
 			Move(position);
 			Rotate(rotation);
 		}
-		
-		private void Move(Vector3 newPositionVector3)
+
+		protected virtual void Move(Vector3 newPositionVector3)
 		{
 			_unitsRigidbody?.MovePosition(newPositionVector3);
 		}
 
-		private void Rotate(Quaternion rotationQuaternion)
+		protected virtual void Rotate(Quaternion rotationQuaternion)
 		{
-			_unitsRigidbody.rotation = rotationQuaternion;
+			transform.rotation = rotationQuaternion;
 		}
 	}
 }
