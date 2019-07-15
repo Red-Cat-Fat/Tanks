@@ -31,7 +31,7 @@ namespace Game.Controllers.Units.MoveControllers
 				case TypePlayerController.FirstPerson:
 					return directionMoveVector;
 				case TypePlayerController.ThridPerson:
-					var resultVector = transform.forward * directionMoveVector.z
+					var resultVector = UnitMoveData.GetForwardDirectionVector3(transform) * directionMoveVector.z
 					                   + transform.right * directionMoveVector.x;
 					return resultVector;
 				case TypePlayerController.TopDown:

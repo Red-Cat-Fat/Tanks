@@ -12,12 +12,12 @@ namespace Game.Controllers.Units.MoveControllers
 {
 	public abstract class BaseMoveController : MonoBehaviour, IMoveController
 	{
-		protected MoveData MoveData;
+		protected MoveData UnitMoveData;
 
 		protected virtual void Start()
 		{
-			MoveData = GetComponent<MoveData>();
-			Log.CheckForNull(MoveData, gameObject, typeof(MoveData));
+			UnitMoveData = GetComponent<MoveData>();
+			Log.CheckForNull(UnitMoveData, gameObject, typeof(MoveData));
 		}
 
 		public virtual Vector3 CulculateTarget()
@@ -33,7 +33,7 @@ namespace Game.Controllers.Units.MoveControllers
 			var directionForwardBack = Vector3.Dot(forvardVector3, directionVector3) 
 			                           <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			var procent = Time.fixedDeltaTime / 1 * directionForwardBack;
-			var speed = MoveData.GetSpeedMove();
+			var speed = UnitMoveData.GetSpeedMove();
 			var newPositionVector3 = transform.position + (forvardVector3 * speed * procent);
 			return newPositionVector3;
 		}
@@ -43,14 +43,14 @@ namespace Game.Controllers.Units.MoveControllers
 			var directionVector3 = CulculateTarget() - transform.position;
 			if (directionVector3 == Vector3.zero) return transform.rotation;
 
-			var direction = Vector3.Dot(MoveData.GetForwardDirectionVector3(transform), directionVector3)
+			var direction = Vector3.Dot(UnitMoveData.GetForwardDirectionVector3(transform), directionVector3)
 			                <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			
 			var rotationAngle = Mathf.Atan2(directionVector3.y, directionVector3.x);
 			rotationAngle = rotationAngle * Mathf.Rad2Deg;
 			var rotation = Quaternion.AngleAxis(rotationAngle + (direction == -1? 180 : 0), axisVector3);
 
-			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.fixedDeltaTime * MoveData.GetSpeedRotation());
+			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.fixedDeltaTime * UnitMoveData.GetSpeedRotation());
 			return teleportToRotation;
 		}
 	}
