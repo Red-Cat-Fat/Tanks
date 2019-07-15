@@ -12,7 +12,7 @@ namespace Game.Renderer.Camera
 		private void Start()
 		{
 			_followCameraData = GetComponent<FollowCameraData>();
-			Log.CheckForNull(_followCameraData, gameObject);
+			Log.CheckForNull(_followCameraData, gameObject, typeof(FollowCameraData));
 		}
 
 		private void FixedUpdate()

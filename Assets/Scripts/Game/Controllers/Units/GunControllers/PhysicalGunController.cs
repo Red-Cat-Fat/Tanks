@@ -14,7 +14,7 @@ namespace Game.Controllers.Units.GunControllers
 		private void Start()
 		{
 			GunData = GetComponent<GunData>();
-			Log.CheckForNull(GunData, gameObject);
+			Log.CheckForNull(GunData, gameObject, typeof(GunData));
 		}
 
 		private void Update()

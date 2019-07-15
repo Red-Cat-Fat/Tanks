@@ -17,7 +17,7 @@ namespace Game.Controllers.Units.MoveControllers
 		protected virtual void Start()
 		{
 			MoveData = GetComponent<MoveData>();
-			Log.CheckForNull(MoveData, gameObject);
+			Log.CheckForNull(MoveData, gameObject, typeof(MoveData));
 		}
 
 		public virtual Vector3 CulculateTarget()

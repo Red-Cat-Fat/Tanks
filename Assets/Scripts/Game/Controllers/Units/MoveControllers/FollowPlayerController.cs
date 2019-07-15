@@ -13,7 +13,7 @@ namespace Game.Controllers.Units.MoveControllers
 		{
 			base.Start();
 			_player = GameManager.Instance.PlayerGameObject;
-			Log.CheckForNull(_player, gameObject);
+			Log.CheckForNull(_player, gameObject, typeof(GameObject));
 		}
 		public override Vector3 CulculateTarget()
 		{

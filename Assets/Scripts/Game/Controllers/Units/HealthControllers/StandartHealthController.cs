@@ -13,7 +13,7 @@ namespace Game.Controllers.Units.HealthControllers
 		private void Start()
 		{
 			_healthData = GetComponent<HealthData>();
-			Log.CheckForNull(_healthData, gameObject);
+			Log.CheckForNull(_healthData, gameObject, typeof(HealthData));
 		}
 
 		public void AddDeadEvent(ref Action actionEvent)

@@ -15,7 +15,7 @@ namespace Game.Controllers.Units.DamageControllers
 		private void Start()
 		{
 			_damageData = GetComponent<DamageData>();
-			Log.CheckForNull(_damageData, gameObject);
+			Log.CheckForNull(_damageData, gameObject, typeof(DamageData));
 		}
 		
 		private void OnCollisionEnter(Collision collision)

@@ -10,7 +10,7 @@ namespace Game.Controllers.Units.MoveControllers
 		private void Start()
 		{
 			_moveData = GetComponent<MoveData>();
-			Log.CheckForNull(_moveData, gameObject);
+			Log.CheckForNull(_moveData, gameObject, typeof(MoveData));
 		}
 
 		public Vector3 CulculateTarget()
