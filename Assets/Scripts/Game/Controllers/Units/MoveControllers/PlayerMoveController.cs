@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Controllers.TanksInput;
+using Game.Controllers.Units.MoveControllers;
 using UnityEngine;
 
 namespace Game.Controllers.Units.MoveControllers
@@ -12,6 +13,7 @@ namespace Game.Controllers.Units.MoveControllers
 		ThridPerson,
 		TopDown
 	}
+
 	public class PlayerMoveController : BaseMoveController
 	{
 		public TypePlayerController CurrentTypePlayerController = TypePlayerController.ThridPerson;

@@ -29,7 +29,7 @@ namespace Game.Systems
 		{
 			_unitsMoveController.CulculateTarget();
 			var position = _unitsMoveController.GetNextPosirionVector3();
-			var rotation = _unitsMoveController.GetNextRotationQuaternion();
+			var rotation = _unitsMoveController.GetNextRotationQuaternion(Vector3.up);
 
 			Move(position);
 			Rotate(rotation);

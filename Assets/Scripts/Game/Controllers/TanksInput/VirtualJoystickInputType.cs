@@ -46,7 +46,6 @@ namespace Game.Controllers.TanksInput
 				case CommandInputType.Swipe:
 					JustClicked = false;
 					LastInputVector2 = swipe;
-					Debug.Log(swipe);
 					break;
 				case CommandInputType.Click:
 					JustClicked = true;

@@ -10,7 +10,8 @@ namespace Game.Controllers.TanksInput
 	{
 		Swipe,
 		SwipeMouse,
-		VirtualJoystick
+		VirtualJoystick,
+		VirtualJoystick2D
 	}
 	public class InputManager : SingletonBehaviour<InputManager>
 	{
@@ -30,6 +31,9 @@ namespace Game.Controllers.TanksInput
 					break;
 				case InputTypeEnum.VirtualJoystick:
 					_currentInputType = new VirtualJoystickInputType();
+					break;
+				case InputTypeEnum.VirtualJoystick2D:
+					_currentInputType = new VirtualJoystickInputType2D();
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();

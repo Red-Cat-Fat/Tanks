@@ -23,7 +23,7 @@ namespace Game.Controllers.Units.MoveControllers
 			return transform.position + CulculateTarget();
 		}
 
-		public Quaternion GetNextRotationQuaternion()
+		public Quaternion GetNextRotationQuaternion(Vector3 axis)
 		{
 			return transform.rotation;
 		}

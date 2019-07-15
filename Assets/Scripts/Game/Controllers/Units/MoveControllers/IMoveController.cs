@@ -8,6 +8,6 @@ namespace Game.Controllers.Units.MoveControllers
 	{
 		Vector3 CulculateTarget();
 		Vector3 GetNextPosirionVector3();
-		Quaternion GetNextRotationQuaternion();
+		Quaternion GetNextRotationQuaternion(Vector3 axis);
 	}
 }

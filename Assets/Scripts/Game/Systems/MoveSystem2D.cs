@@ -7,12 +7,12 @@ namespace Game.Systems
 {
 	public class MoveSystem2D : MoveSystem
 	{
-		private IMoveController2D _unitsMoveController;
+		private IMoveController _unitsMoveController;
 		private Rigidbody2D _unitsRigidbody2D;
 
 		private void Start()
 		{
-			_unitsMoveController = GetComponent<IMoveController2D>();
+			_unitsMoveController = GetComponent<IMoveController>();
 			if (_unitsMoveController == null)
 			{
 				Debug.LogError("UnitController on " + gameObject.name + " is null");
@@ -28,8 +28,8 @@ namespace Game.Systems
 		private void FixedUpdate()
 		{
 			_unitsMoveController.CulculateTarget();
-			var position = _unitsMoveController.GetNextPosirionVector2();
-			var rotation = _unitsMoveController.GetNextRotationFloat();
+			var position = _unitsMoveController.GetNextPosirionVector3();
+			var rotation = _unitsMoveController.GetNextRotationQuaternion(Vector3.forward);
 
 			Move(position);
 			Rotate(rotation);
@@ -40,9 +40,9 @@ namespace Game.Systems
 			_unitsRigidbody2D?.MovePosition(newPositionVector3);
 		}
 
-		private void Rotate(float rotationQuaternion)
+		private void Rotate(Quaternion rotationQuaternion)
 		{
-			_unitsRigidbody2D.rotation = rotationQuaternion;
+			transform.rotation = rotationQuaternion;
 		}
 	}
 }
