@@ -7,7 +7,7 @@ namespace Game.Controllers.Units.MoveControllers
 	public interface IMoveController
 	{
 		Vector3 CulculateTarget();
-		Vector3 GetNextPosirionVector3();
-		Quaternion GetNextRotationQuaternion(Vector3 axis);
+		Vector3 GetNextPosirionVector3(Vector3 forwardVector3);
+		Quaternion GetNextRotationQuaternion(Vector3 axisVector3);
 	}
 }

@@ -28,7 +28,7 @@ namespace Game.Systems
 		private void FixedUpdate()
 		{
 			_unitsMoveController.CulculateTarget();
-			var position = _unitsMoveController.GetNextPosirionVector3();
+			var position = _unitsMoveController.GetNextPosirionVector3(transform.right);
 			var rotation = _unitsMoveController.GetNextRotationQuaternion(Vector3.forward);
 
 			Move(position);

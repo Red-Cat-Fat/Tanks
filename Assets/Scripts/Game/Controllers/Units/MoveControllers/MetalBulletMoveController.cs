@@ -18,12 +18,12 @@ namespace Game.Controllers.Units.MoveControllers
 			return transform.forward * Time.fixedDeltaTime * _moveData.GetSpeedMove();
 		}
 
-		public Vector3 GetNextPosirionVector3()
+		public Vector3 GetNextPosirionVector3(Vector3 forwardVector3)
 		{
 			return transform.position + CulculateTarget();
 		}
 
-		public Quaternion GetNextRotationQuaternion(Vector3 axis)
+		public Quaternion GetNextRotationQuaternion(Vector3 axisVector3)
 		{
 			return transform.rotation;
 		}
