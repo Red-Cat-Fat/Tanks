@@ -25,7 +25,7 @@ namespace Game.Controllers.GameControllers
 			_enemys.Add(enemy);
 		}
 
-		private GameObject GetMinDistanceEnemy(Vector3 position)
+		public GameObject GetMinDistanceEnemy(Vector3 position)
 		{
 			GameObject returnValue = null;
 			var minDistance = float.MaxValue;

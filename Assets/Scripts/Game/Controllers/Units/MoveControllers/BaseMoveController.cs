@@ -25,16 +25,16 @@ namespace Game.Controllers.Units.MoveControllers
 			return transform.position;
 		}
 
-		public Vector3 GetNextPosirionVector3(Vector3 forvardVector3)
+		public virtual Vector3 GetNextPosirionVector3(Vector3 forwardVector3)
 		{
 			var directionVector3 = CulculateTarget() - transform.position;
 			if (directionVector3 == Vector3.zero) return transform.position;
 
-			var directionForwardBack = Vector3.Dot(forvardVector3, directionVector3) 
+			var directionForwardBack = Vector3.Dot(forwardVector3, directionVector3) 
 			                           <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			var procent = Time.fixedDeltaTime / 1 * directionForwardBack;
 			var speed = UnitMoveData.GetSpeedMove();
-			var newPositionVector3 = transform.position + (forvardVector3 * speed * procent);
+			var newPositionVector3 = transform.position + (forwardVector3 * speed * procent);
 			return newPositionVector3;
 		}
 
