@@ -7,8 +7,18 @@ namespace Game.Controllers.GameControllers
 {
 	public class GameManager : SingletonBehaviour<GameManager>
 	{
-		public GameObject PlayerGameObject;
-		private List<GameObject> _enemys;
+		private GameObject _playerGameObject;
+		private List<GameObject> _enemys = new List<GameObject>();
+
+		public void SetPlayer(GameObject player)
+		{
+			_playerGameObject = player;
+		}
+
+		public GameObject GetPlayerGameObject()
+		{
+			return _playerGameObject;
+		}
 
 		public void AddEnemy(GameObject enemy)
 		{

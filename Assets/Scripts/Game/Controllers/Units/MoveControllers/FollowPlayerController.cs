@@ -8,16 +8,10 @@ namespace Game.Controllers.Units.MoveControllers
 {
 	public class FollowPlayerController : BaseMoveController
 	{
-		private GameObject _player;
-		protected override void Start()
-		{
-			base.Start();
-			_player = GameManager.Instance.PlayerGameObject;
-			Log.CheckForNull(_player, gameObject, typeof(GameObject));
-		}
 		public override Vector3 CulculateTarget()
 		{
-			return _player.transform.position;
+			var player = GameManager.Instance.GetPlayerGameObject();
+			return player.transform.position;
 		}
 	}
 }
