@@ -10,9 +10,9 @@ namespace Game.Controllers.Units.MoveControllers
 		[SerializeField]private GameObject _pivot;
 		public override Vector3 CulculateTarget()
 		{
-			var player = GameManager.Instance.GetMinDistanceEnemy(transform.position);
-			Debug.DrawLine(player.transform.position, _pivot.transform.position);
-			return player.transform.position;
+			var target = GameManager.Instance.GetMinDistanceEnemy(transform.position);
+			Debug.DrawLine(target.transform.position, _pivot.transform.position);
+			return target.transform.position;
 		}
 
 		public override Vector3 GetNextPosirionVector3(Vector3 forwardVector3)

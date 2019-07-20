@@ -14,6 +14,7 @@ namespace Game.Data.Units
 
 	public class MoveData : MonoBehaviour
 	{
+		[SerializeField] private bool _isTeleported = false;
 		[SerializeField] private float _speedMove = 3f;
 		[SerializeField] private float _speedRotation = 3f;
 		[SerializeField] private VectorDirectionType _vectorForwardDirectionType = VectorDirectionType.Forward;

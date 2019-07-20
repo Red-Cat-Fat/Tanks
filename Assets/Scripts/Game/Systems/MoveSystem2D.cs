@@ -21,6 +21,8 @@ namespace Game.Systems
 		
 		protected override void Move(Vector3 newPositionVector3)
 		{
+			if(gameObject.name == "SpriteTurretPivot")
+			Debug.Log(newPositionVector3);
 			_unitsRigidbody2D?.MovePosition(newPositionVector3);
 		}
 	}
