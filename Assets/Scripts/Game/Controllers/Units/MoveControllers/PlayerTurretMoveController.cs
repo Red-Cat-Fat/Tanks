@@ -10,7 +10,10 @@ namespace Game.Controllers.Units.MoveControllers
 		public override Vector3 CulculateTarget()
 		{
 			var target = GameManager.Instance.GetMinDistanceEnemy(transform.position);
-			return target.transform.position;
+			var direction = target != null
+				? target.transform.position
+				: UnitMoveData.GetForwardDirectionVector3(transform) + transform.position;
+			return direction;
 		}
 	}
 }
