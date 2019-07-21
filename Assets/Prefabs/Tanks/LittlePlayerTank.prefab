@@ -91,8 +91,11 @@ GameObject:
   - component: {fileID: 3140576817479531049}
   - component: {fileID: 9093792477641834066}
   - component: {fileID: 8760388201854494556}
+  - component: {fileID: 292930762176197711}
+  - component: {fileID: 6910981985091427384}
+  - component: {fileID: 2032892834639086106}
   m_Layer: 0
-  m_Name: TankPlayerLT
+  m_Name: LittlePlayerTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadTime: 1
-  _bullet: {fileID: 4270892100491097652, guid: f9da06127a471e1479beca37ed60beaf, type: 3}
+  _bullet: {fileID: 5480838232089764135, guid: f9da06127a471e1479beca37ed60beaf, type: 3}
   _gunPoint: {fileID: 6452716929468932258}
 --- !u!114 &9093792477641834066
 MonoBehaviour:
@@ -277,6 +280,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47f80e252ad422942b83c860a382029c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &292930762176197711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5751694930478239253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ea9070ff796e94c8fee01ecfcbc2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoint: 100
+  _destroyedGameObject: {fileID: 0}
+--- !u!114 &6910981985091427384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5751694930478239253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14340eac0b019a04987a3649b21add50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2032892834639086106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5751694930478239253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf408c99493ed1c4e912049b1b9b1ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6452716929468932258
