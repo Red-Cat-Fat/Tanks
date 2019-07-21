@@ -37,13 +37,17 @@ namespace Game.Systems
 		{
 			UnitsMoveController.CulculateTarget();
 
-			var forwardVector3 = UnitsMoveData.GetForwardDirectionVector3(transform);
-			var position = UnitsMoveController.GetNextPosirionVector3(forwardVector3);
+			if (!UnitsMoveData.GetIsOnlyRotete())
+			{
+				var forwardVector3 = UnitsMoveData.GetForwardDirectionVector3(transform);
+				var position = UnitsMoveController.GetNextPosirionVector3(forwardVector3);
+				
+				Move(position);
+			}
 
 			var normalDirectionVector3 = UnitsMoveData.GetNormalDirectionVector3();
 			var rotation = UnitsMoveController.GetNextRotationQuaternion(normalDirectionVector3);
 
-			Move(position);
 			Rotate(rotation);
 		}
 

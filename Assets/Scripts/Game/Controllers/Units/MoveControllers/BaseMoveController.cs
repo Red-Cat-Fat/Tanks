@@ -24,31 +24,26 @@ namespace Game.Controllers.Units.MoveControllers
 		{
 			return transform.position;
 		}
-
+		
 		public virtual Vector3 GetNextPosirionVector3(Vector3 forwardVector3)
 		{
 			var directionVector3 = CulculateTarget() - transform.position;
 			if (directionVector3 == Vector3.zero) return transform.position;
 
-			var directionForwardBack = Vector3.Dot(forwardVector3, directionVector3) 
-			                           <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
-			var procent = Time.fixedDeltaTime / 1 * directionForwardBack;
+			var procent = Time.fixedDeltaTime / 1;
 			var speed = UnitMoveData.GetSpeedMove();
 			var newPositionVector3 = transform.position + (forwardVector3 * speed * procent);
 			return newPositionVector3;
 		}
 
-		public Quaternion GetNextRotationQuaternion(Vector3 axisVector3)
+		public virtual Quaternion GetNextRotationQuaternion(Vector3 axisVector3)
 		{
 			var directionVector3 = CulculateTarget() - transform.position;
 			if (directionVector3 == Vector3.zero) return transform.rotation;
-
-			var direction = Vector3.Dot(UnitMoveData.GetForwardDirectionVector3(transform), directionVector3)
-			                <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			
 			var rotationAngle = Mathf.Atan2(directionVector3.y, directionVector3.x);
 			rotationAngle = rotationAngle * Mathf.Rad2Deg;
-			var rotation = Quaternion.AngleAxis(rotationAngle + (direction == -1? 180 : 0), axisVector3);
+			var rotation = Quaternion.AngleAxis(rotationAngle, axisVector3);
 
 			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.fixedDeltaTime * UnitMoveData.GetSpeedRotation());
 			return teleportToRotation;
