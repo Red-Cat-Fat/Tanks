@@ -15,6 +15,11 @@ namespace Game.Renderer.Camera
 			return _anchorPoint;
 		}
 
+		public void SetAnchorPoint(GameObject anchorPoint)
+		{
+			_anchorPoint = anchorPoint;
+		}
+
 		public GameObject GetFollowObject()
 		{
 			return _isRotate ? _followObject : null;

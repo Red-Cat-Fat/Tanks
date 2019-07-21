@@ -11,7 +11,7 @@ namespace Game.Systems
 	{
 		private TeamData _teamData;
 		private ITeamController _teamController;
-		private void Start()
+		private void Awake()
 		{
 			_teamData = GetComponent<TeamData>();
 			_teamController = GetComponent<ITeamController>();
