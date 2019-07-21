@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Editor.LogSystem;
+﻿using Editor.LogSystem;
 using Game.Controllers.Units.MoveControllers;
 using Game.Data.Units;
 using UnityEngine;
@@ -10,7 +8,7 @@ namespace Game.Systems
 	public class MoveSystem : MonoBehaviour
 	{
 		protected IMoveController UnitsMoveController;
-		private Rigidbody _unitsRigidbody;
+		private Rigidbody2D _unitsRigidbody2D;
 		protected MoveData UnitsMoveData;
 
 		protected void InitialBaseMoveSystemField()
@@ -24,8 +22,9 @@ namespace Game.Systems
 		private void Start()
 		{
 			InitialBaseMoveSystemField();
-			_unitsRigidbody = GetComponent<Rigidbody>();
-			Log.CheckForNull(_unitsRigidbody, gameObject, typeof(Rigidbody));
+
+			_unitsRigidbody2D = GetComponent<Rigidbody2D>();
+			Log.CheckForNull(_unitsRigidbody2D, gameObject, typeof(Rigidbody2D));
 		}
 
 		private void FixedUpdate()
@@ -41,7 +40,7 @@ namespace Game.Systems
 			{
 				var forwardVector3 = UnitsMoveData.GetForwardDirectionVector3(transform);
 				var position = UnitsMoveController.GetNextPosirionVector3(forwardVector3);
-				
+
 				Move(position);
 			}
 
@@ -53,7 +52,7 @@ namespace Game.Systems
 
 		protected virtual void Move(Vector3 newPositionVector3)
 		{
-			_unitsRigidbody?.MovePosition(newPositionVector3);
+			_unitsRigidbody2D?.MovePosition(newPositionVector3);
 		}
 
 		protected virtual void Rotate(Quaternion rotationQuaternion)
@@ -62,3 +61,4 @@ namespace Game.Systems
 		}
 	}
 }
+
