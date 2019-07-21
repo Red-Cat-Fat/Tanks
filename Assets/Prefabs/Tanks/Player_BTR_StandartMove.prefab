@@ -77,7 +77,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1813248892925041584
 Transform:
   m_ObjectHideFlags: 0
@@ -224,8 +224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ba389cbd73c5144a07a45b92db9c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isOnlyRotate: 0
   _speedMove: 30
   _speedRotation: 1
+  _vectorForwardDirectionType: 0
+  _vectorNormalDirectionType: 2
 --- !u!114 &1813248892203978080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TankSpriteLT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909712850194300412, guid: 4cd5afb18edb2b44d92ac65ad08052bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2946242069133296794, guid: 4cd5afb18edb2b44d92ac65ad08052bc,
         type: 3}
