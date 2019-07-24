@@ -18,7 +18,14 @@ namespace Game.Controllers.Units.HealthControllers
 
 		public void AddDeadEvent(ref Action actionEvent)
 		{
-			actionEvent += () => { Instantiate(_healthData.GetDestroyedGameObject(), transform.position, transform.rotation); };
+			actionEvent += () =>
+			{
+				var destroyedGameObject = _healthData.GetDestroyedGameObject();
+				if (destroyedGameObject != null)
+				{
+					Instantiate(destroyedGameObject, transform.position, transform.rotation);
+				}
+			};
 		}
 
 		public bool IsDead()
