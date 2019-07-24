@@ -17,18 +17,32 @@ namespace Game.Controllers.Units.DamageControllers
 			_damageData = GetComponent<DamageData>();
 			Log.CheckForNull(_damageData, gameObject, typeof(DamageData));
 		}
-		
+
 		private void OnCollisionEnter(Collision collision)
 		{
 			var targetGameObject = collision.gameObject;
-			if (targetGameObject == null) { return; }
+			if (targetGameObject != null)
+			{
+				OnCollisionOnGameObject(targetGameObject);
+			}
+		}
 
+		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			var targetGameObject = collision.gameObject;
+			if (targetGameObject != null)
+			{
+				OnCollisionOnGameObject(targetGameObject);
+			}
+		}
+
+		private void OnCollisionOnGameObject(GameObject targetGameObject)
+		{
 			var healthSystem = targetGameObject.GetComponent<HealthSystem>();
-			if(healthSystem == null)
+			if (healthSystem == null)
 			{
 				Destroy(gameObject);
 			}
-
 			SetDamage(targetGameObject);
 		}
 
