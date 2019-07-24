@@ -9,7 +9,7 @@ namespace Game.Systems
 	public class HealthSystem : MonoBehaviour
 	{
 		private IHealthController _currentHealthController;
-		private Action DeadEvent;
+		private Action _deadEvent;
 		private void Start()
 		{
 			_currentHealthController = GetComponent<IHealthController>();
@@ -19,8 +19,8 @@ namespace Game.Systems
 			}
 			else
 			{
-				DeadEvent += OnDead;
-				_currentHealthController.AddDeadEvent(ref DeadEvent);
+				_deadEvent += OnDead;
+				_currentHealthController.AddDeadEvent(ref _deadEvent);
 			}
 		}
 
@@ -29,13 +29,18 @@ namespace Game.Systems
 			_currentHealthController.SetDamage(inputDamage);
 			if (_currentHealthController.IsDead())
 			{
-				DeadEvent?.Invoke();
+				_deadEvent?.Invoke();
 			}
 		}
 
 		private void OnDead()
 		{
 			Destroy(gameObject);
+		}
+
+		public void AddDeadEvent(Action newDeadEvent)
+		{
+			_deadEvent += newDeadEvent;
 		}
 	}
 }

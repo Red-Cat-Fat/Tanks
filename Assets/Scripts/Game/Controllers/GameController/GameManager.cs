@@ -25,6 +25,11 @@ namespace Game.Controllers.GameControllers
 			_enemys.Add(enemy);
 		}
 
+		public void DestroyEnemy(GameObject enemy)
+		{
+			_enemys.Remove(enemy);
+		}
+
 		public GameObject GetMinDistanceEnemy(Vector3 position)
 		{
 			GameObject returnValue = null;
