@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using Editor.LogSystem;
+using Editor.Utility.Logger;
+using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Renderer.Camera
 {
@@ -12,7 +13,7 @@ namespace Game.Renderer.Camera
 		private void Start()
 		{
 			_followCameraData = GetComponent<FollowCameraData>();
-			Log.CheckForNull(_followCameraData, gameObject, typeof(FollowCameraData));
+			Logger.CheckForNull(_followCameraData, gameObject, typeof(FollowCameraData));
 		}
 
 		private void FixedUpdate()

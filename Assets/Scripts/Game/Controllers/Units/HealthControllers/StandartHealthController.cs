@@ -1,10 +1,11 @@
-﻿using Editor.LogSystem;
+﻿using Editor.Utility.Logger;
 using Game.Data.Units;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Controllers.GameControllers;
 using UnityEngine;
+using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Controllers.Units.HealthControllers
 {
@@ -14,7 +15,7 @@ namespace Game.Controllers.Units.HealthControllers
 		private void Start()
 		{
 			_healthData = GetComponent<HealthData>();
-			Log.CheckForNull(_healthData, gameObject, typeof(HealthData));
+			Logger.CheckForNull(_healthData, gameObject, typeof(HealthData));
 		}
 
 		public void AddDeadEvent(ref Action actionEvent)

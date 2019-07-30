@@ -1,9 +1,10 @@
-﻿using Editor.LogSystem;
+﻿using Editor.Utility.Logger;
 using Game.Controllers.TanksInput;
 using Game.Data.Units;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Controllers.Units.GunControllers
 {
@@ -14,7 +15,7 @@ namespace Game.Controllers.Units.GunControllers
 		private void Start()
 		{
 			GunData = GetComponent<GunData>();
-			Log.CheckForNull(GunData, gameObject, typeof(GunData));
+			Logger.CheckForNull(GunData, gameObject, typeof(GunData));
 		}
 
 		private void Update()

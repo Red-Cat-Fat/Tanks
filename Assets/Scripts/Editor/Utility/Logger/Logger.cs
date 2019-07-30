@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Editor.LogSystem
+namespace Editor.Utility.Logger
 {
-	public class Log : MonoBehaviour
+	public class Logger : MonoBehaviour
 	{
 		public static void CheckForNull(object checkObject, GameObject parrent, Type type)
 		{

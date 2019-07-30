@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Editor.LogSystem;
+using Editor.Utility.Logger;
 using Game.Data.Units;
 using Game.Systems;
 using UnityEngine;
+using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Controllers.Units.DamageControllers
 {
@@ -15,7 +16,7 @@ namespace Game.Controllers.Units.DamageControllers
 		private void Start()
 		{
 			_damageData = GetComponent<DamageData>();
-			Log.CheckForNull(_damageData, gameObject, typeof(DamageData));
+			Logger.CheckForNull(_damageData, gameObject, typeof(DamageData));
 		}
 
 		private void OnCollisionEnter(Collision collision)

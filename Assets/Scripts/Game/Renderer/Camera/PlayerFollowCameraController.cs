@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Editor.LogSystem;
+using Editor.Utility.Logger;
 using Game.Controllers.GameControllers;
 using Game.Renderer.Camera.CameraTags;
 using UnityEngine;
+using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Renderer.Camera
 {
@@ -16,14 +17,18 @@ namespace Game.Renderer.Camera
 			{
 				Debug.Log("Error");
 			}
-			var followPoints = player.GetComponentsInChildren<ICameraTag>();
-			foreach (var point in followPoints)
+
+			if (player != null)
 			{
-				if (point is PlayerCameraTag)
+				var followPoints = player.GetComponentsInChildren<ICameraTag>();
+				foreach (var point in followPoints)
 				{
-					var followCameraData = GetComponent<FollowCameraData>();
-					Log.CheckForNull(followCameraData, gameObject, typeof(FollowCameraData));
-					followCameraData.SetAnchorPoint(point.GetPoint());
+					if (point is PlayerCameraTag)
+					{
+						var followCameraData = GetComponent<FollowCameraData>();
+						Logger.CheckForNull(followCameraData, gameObject, typeof(FollowCameraData));
+						followCameraData.SetAnchorPoint(point.GetPoint());
+					}
 				}
 			}
 		}
