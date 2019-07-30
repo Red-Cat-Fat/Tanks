@@ -36,7 +36,7 @@ namespace Game.Systems
 		{
 			UnitsMoveController.CulculateTarget();
 
-			if (!UnitsMoveData.GetIsOnlyRotete())
+			if (UnitsMoveData.GetIsCanMove())
 			{
 				var forwardVector3 = UnitsMoveData.GetForwardDirectionVector3(transform);
 				var position = UnitsMoveController.GetNextPosirionVector3(forwardVector3);
@@ -44,10 +44,13 @@ namespace Game.Systems
 				Move(position);
 			}
 
-			var normalDirectionVector3 = UnitsMoveData.GetNormalDirectionVector3();
-			var rotation = UnitsMoveController.GetNextRotationQuaternion(normalDirectionVector3);
+			if (UnitsMoveData.GetIsCanRotate())
+			{
+				var normalDirectionVector3 = UnitsMoveData.GetNormalDirectionVector3();
+				var rotation = UnitsMoveController.GetNextRotationQuaternion(normalDirectionVector3);
 
-			Rotate(rotation);
+				Rotate(rotation);
+			}
 		}
 
 		protected virtual void Move(Vector3 newPositionVector3)
