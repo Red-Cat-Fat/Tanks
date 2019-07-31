@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Editor.Utility.Logger;
 using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Renderer.Camera

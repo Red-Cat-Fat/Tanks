@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Editor.Utility.Logger;
 using Game.Data.Units;
 using Game.Systems;
 using UnityEngine;

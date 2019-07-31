@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Editor.Utility.Logger;
-using Game.Controllers.GameControllers;
+﻿using Game.Controllers.GameControllers;
 using Game.Renderer.Camera.CameraTags;
 using UnityEngine;
 using Logger = Editor.Utility.Logger.Logger;

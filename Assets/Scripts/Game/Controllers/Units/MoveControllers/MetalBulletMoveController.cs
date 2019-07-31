@@ -1,5 +1,4 @@
-﻿using Editor.Utility.Logger;
-using Game.Data.Units;
+﻿using Game.Data.Units;
 using UnityEngine;
 using Logger = Editor.Utility.Logger.Logger;
 

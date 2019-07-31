@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Editor.Utility.Logger.TimeLogSystem
 {
@@ -10,17 +7,7 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		private DateTime _startTime;
 		private DateTime _endTime;
 		private bool _inProgress = false;
-
-		public DeltaTime()
-		{
-		}
-
-		private DeltaTime(DateTime startTime, DateTime endTime)
-		{
-			_startTime = startTime;
-			_endTime = endTime;
-		}
-
+		
 		public bool InProgress()
 		{
 			return _inProgress;
@@ -44,11 +31,6 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		public TimeSpan GetWorkTime()
 		{
 			return _endTime.Subtract(_startTime);
-		}
-
-		public TimeSpan GetWorkTime(DateTime currentTime)
-		{
-			return currentTime.Subtract(_startTime);
 		}
 
 		public DateTime GetStartTime()

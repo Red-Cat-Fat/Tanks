@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Game.Controllers.TanksInput;
-using Game.Settings;
+﻿using Game.Settings;
 using UnityEngine;
 
 namespace Game.Controllers.TanksInput

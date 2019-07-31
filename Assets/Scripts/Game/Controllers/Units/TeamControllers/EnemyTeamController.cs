@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Game.Controllers.GameControllers;
+﻿using Game.Controllers.GameControllers;
 using Game.Systems;
 using UnityEngine;
 

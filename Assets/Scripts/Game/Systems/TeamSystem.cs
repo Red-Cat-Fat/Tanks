@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Editor.Utility.Logger;
-using Game.Controllers.Units.TeamControllers;
+﻿using Game.Controllers.Units.TeamControllers;
 using Game.Data.Units;
 using UnityEngine;
 using Logger = Editor.Utility.Logger.Logger;

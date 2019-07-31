@@ -1,9 +1,5 @@
-﻿using Editor.Utility.Logger;
-using Game.Data.Units;
+﻿using Game.Data.Units;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Game.Controllers.GameControllers;
 using UnityEngine;
 using Logger = Editor.Utility.Logger.Logger;
 

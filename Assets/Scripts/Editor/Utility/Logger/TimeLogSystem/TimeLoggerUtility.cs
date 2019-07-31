@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Editor.Utility.Logger.TimeLogSystem;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace Editor.Utility.Logger.TimeLogSystem
 {

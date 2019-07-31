@@ -1,8 +1,4 @@
-﻿using Editor.Utility.Logger;
-using Game.Controllers.TanksInput;
-using Game.Data.Units;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Game.Data.Units;
 using UnityEngine;
 using Logger = Editor.Utility.Logger.Logger;
 

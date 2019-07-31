@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Game.Controllers.Units.GunControllers;
+﻿using Game.Controllers.Units.GunControllers;
 using UnityEngine;
 
 namespace Game.Systems
