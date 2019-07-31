@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Editor.Utility.Logger.TimeLogSystem
 {
@@ -7,55 +8,65 @@ namespace Editor.Utility.Logger.TimeLogSystem
 	{
 		private string _name;
 		private DeltaTime _currentDeltaTime;
-		private List<DeltaTime> _taskTimes = new List<DeltaTime>();
+		private List<DeltaTime> _taskDeltaTimes = new List<DeltaTime>();
 		private bool _isFinal = false;
 
-		public override string ToString()
+		public string GetName()
 		{
-			return _name + " (" + GetStartTaskTime() + " - " + GetEndTaskTime() + ") " +
-			       (IsInProgress()
-				       ? ""
-				       : (_isFinal ? "\nFinal, total work: " : "\nPause, total work: ") +
-				         + GetWorkFromTask()
-				    );
+			return _name;
+		}
+
+		public bool IsInProgress()
+		{
+			return _currentDeltaTime != null;
 		}
 
 		public bool IsFinal()
 		{
-			return _isFinal;
+			return _isFinal && !IsInProgress();
 		}
 
-		private DateTime GetEndTaskTime()
-		{
-			return !_isFinal
-				? DateTime.Now
-				: _taskTimes[_taskTimes.Count-1].GetEndTime();
-		}
-
-		private DateTime GetStartTaskTime()
-		{
-			return _taskTimes.Count == 0 
-				? _currentDeltaTime.GetStartTime() 
-				: _taskTimes[0].GetStartTime();
-		}
-
-		private List<DeltaTime> GetTaskTimes()
-		{
-			return _taskTimes;
-		}
-
-		public Task(string name)
+		public Task(string name)//TODO: set notNull name
 		{
 			_name = name;
 		}
 
-		private Task(Task clone)
+		public GUIStyle GetGuiLabelStyle()//TODO: Separate to new class-factory
 		{
-			_name = clone.GetName();
-			_taskTimes = clone.GetTaskTimes();
-			_isFinal = true;
+			GUIStyle style = new GUIStyle
+			{
+				richText = true,
+				fontStyle = IsInProgress()
+					? FontStyle.Bold
+					: FontStyle.Normal
+			};
+			return style;
 		}
 
+		public string GetGuiLabelString()
+		{
+			var color = IsFinal()
+				? "green"
+				: IsInProgress()
+					? "yellow"
+					: "black";
+			return $"<color={color}>{ToString()}</color>";
+		}
+		
+		private DateTime GetEndTaskTime()
+		{
+			return !IsFinal()
+				? DateTime.Now
+				: _taskDeltaTimes[_taskDeltaTimes.Count-1].GetEndTime();
+		}
+
+		private DateTime GetStartTaskTime()
+		{
+			return _taskDeltaTimes.Count == 0 
+				? _currentDeltaTime.GetStartTime() 
+				: _taskDeltaTimes[0].GetStartTime();
+		}
+		
 		public void Start()
 		{
 			if (_currentDeltaTime == null)
@@ -64,12 +75,6 @@ namespace Editor.Utility.Logger.TimeLogSystem
 				_currentDeltaTime.Start();
 				_isFinal = false;
 			}
-		}
-
-		public void Stop()
-		{
-			Pasuse();
-			_isFinal = true;
 		}
 
 		public void Pasuse()
@@ -82,15 +87,21 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			}
 		}
 
+		public void Finish()
+		{
+			Pasuse();
+			_isFinal = true;
+		}
+
 		private void AddTime(DeltaTime deltaTime)
 		{
-			_taskTimes.Add(deltaTime);
+			_taskDeltaTimes.Add(deltaTime);
 		}
 
 		public TimeSpan GetWorkFromTask()
 		{
 			TimeSpan time = new TimeSpan(0);
-			foreach (var deltaTime in _taskTimes)
+			foreach (var deltaTime in _taskDeltaTimes)
 			{
 				time += deltaTime.GetWorkTime();
 			}
@@ -98,15 +109,14 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			return time;
 		}
 
-		public string GetName()
+		public override string ToString()//TODO: Create regions
 		{
-			return _name;
-		}
-
-		public bool IsInProgress()
-		{
-			return _currentDeltaTime != null
-			       && _currentDeltaTime.InProgress();
+			return GetName() + "\n(" + GetStartTaskTime() + " - " + GetEndTaskTime() + ") " +
+			       (IsInProgress()
+				       ? ""
+				       : (IsFinal() ? "\nFinal, total work: " : "\nPause, total work: ") +
+				         +GetWorkFromTask()
+			       );
 		}
 	}
 }

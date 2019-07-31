@@ -11,34 +11,37 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			return _tasks;
 		}
 
-		public void TryStartNewTask(string taskName)
+		public bool TryAddNewTask(string taskName)
 		{
 			foreach (var task in _tasks)
 			{
 				if (task.GetName() == taskName)
 				{
-					return;
+					return false;
 				}
 			}
 			var currentTask = new Task(taskName);
 			currentTask.Start();
 			_tasks.Add(currentTask);
+			return true;
 		}
 
-
-		public void TryStartTask(Task task)
+		public bool TryStartTask(Task task)
 		{
 			task?.Start();
+			return task != null;
 		}
 
-		public void TryPausedTask(Task task)
+		public bool TryPausedTask(Task task)
 		{
 			task?.Pasuse();
+			return task != null;
 		}
 
-		public void TryStopedTask(Task task)
+		public bool TryFinishTask(Task task)
 		{
-			task?.Stop();
+			task?.Finish();
+			return task != null;
 		}
 	}
 }
