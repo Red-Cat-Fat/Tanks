@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Editor.Utility.Logger.TimeLogSystem
 {
-	public class DeltaTime : ICloneable
+	public class DeltaTime
 	{
 		private DateTime _startTime;
 		private DateTime _endTime;
@@ -59,11 +59,6 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		public DateTime GetEndTime()
 		{
 			return _endTime;
-		}
-
-		public object Clone()
-		{
-			return new DeltaTime(_startTime, _endTime);
 		}
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Editor.Utility.Logger.TimeLogSystem
 {
-	public class Task : ICloneable
+	public class Task
 	{
 		private string _name;
 		private DeltaTime _currentDeltaTime;
@@ -18,13 +18,18 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			       (IsInProgress()
 				       ? ""
 				       : (_isFinal ? "\nFinal, total work: " : "\nPause, total work: ") +
-				         +GetWorkFromTask()
+				         + GetWorkFromTask()
 				    );
+		}
+
+		public bool IsFinal()
+		{
+			return _isFinal;
 		}
 
 		private DateTime GetEndTaskTime()
 		{
-			return _taskTimes.Count == 0 
+			return !_isFinal
 				? DateTime.Now
 				: _taskTimes[_taskTimes.Count-1].GetEndTime();
 		}
@@ -59,10 +64,17 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			{
 				_currentDeltaTime = new DeltaTime();
 				_currentDeltaTime.Start();
+				_isFinal = false;
 			}
 		}
 
 		public void Stop()
+		{
+			Pasuse();
+			_isFinal = true;
+		}
+
+		public void Pasuse()
 		{
 			if (_currentDeltaTime != null)
 			{
@@ -97,11 +109,6 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		{
 			return _currentDeltaTime != null
 			       && _currentDeltaTime.InProgress();
-		}
-
-		public object Clone()
-		{
-			return new Task(this);
 		}
 	}
 }

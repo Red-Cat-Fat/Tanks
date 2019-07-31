@@ -8,13 +8,7 @@ namespace Editor.Utility.Logger.TimeLogSystem
 	public class TimeLoggerUtility
 	{
 		private List<Task> _tasks = new List<Task>();
-		private static Task _currentTask;
-
-		public Task GetCurrentTask()
-		{
-			return _currentTask;
-		}
-
+		
 		public List<Task> GetTasksList()
 		{
 			return _tasks;
@@ -22,34 +16,32 @@ namespace Editor.Utility.Logger.TimeLogSystem
 
 		public void TryStartNewTask(string taskName)
 		{
-			if (_currentTask != null)
+			foreach (var task in _tasks)
 			{
-				if (_currentTask.GetName() == taskName
-				    && !_currentTask.IsInProgress())
+				if (task.GetName() == taskName)
 				{
-					_currentTask.Start();
+					return;
 				}
 			}
-			else
-			{
-				_currentTask = new Task(taskName);
-				_currentTask.Start();
-			}
+			var currentTask = new Task(taskName);
+			currentTask.Start();
+			_tasks.Add(currentTask);
 		}
 
-		public void TryPausedTask()
+
+		public void TryStartTask(Task task)
 		{
-			_currentTask.Stop();
+			task?.Start();
 		}
 
-		public void TryStopedTask()
+		public void TryPausedTask(Task task)
 		{
-			if (_currentTask != null)
-			{
-				_currentTask.Stop();
-				_tasks.Add((Task) _currentTask.Clone());
-				_currentTask = null;
-			}
+			task?.Pasuse();
+		}
+
+		public void TryStopedTask(Task task)
+		{
+			task?.Stop();
 		}
 	}
 }
