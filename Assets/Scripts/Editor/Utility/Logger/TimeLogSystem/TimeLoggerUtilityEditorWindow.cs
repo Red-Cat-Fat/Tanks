@@ -13,17 +13,15 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			GetWindow<TimeLoggerUtilityEditorWindow>();
 		}
 
-		private List<Task> _tasks = new List<Task>();
-		private static Task _currentTask;
+		private TimeLoggerUtility _timeLoggerUtility = new TimeLoggerUtility();
 		private static string _currentTextInFiledTask = "";
-
 		private void OnGUI()
 		{
 			var now = DateTime.Now;
 			GUILayout.Label($"Current time: {now}");
-
-			GUILayout.Label(_currentTask != null
-				? $"Current task: {_currentTask.GetName()}"
+			var currentTask = _timeLoggerUtility.GetCurrentTask();
+			GUILayout.Label(currentTask != null
+				? $"Current task: {currentTask.GetName()}"
 				: "Current task: null");
 
 			GUILayout.BeginHorizontal();
@@ -32,54 +30,26 @@ namespace Editor.Utility.Logger.TimeLogSystem
 
 			if (GUILayout.Button("Start", GUILayout.Width(50)))
 			{
-				TryStartNewTask();
+				_timeLoggerUtility.TryStartNewTask(_currentTextInFiledTask);
 			}
 
 			if (GUILayout.Button("Pause", GUILayout.Width(50)))
 			{
-				TryPausedTask();
+				_timeLoggerUtility.TryPausedTask();
 			}
 
 			if (GUILayout.Button("Stop", GUILayout.Width(50)))
 			{
-				TryStopedTask();
+				_timeLoggerUtility.TryStopedTask();
 			}
 
 			GUILayout.EndHorizontal();
 
-			foreach (var task in _tasks)
+			foreach (var task in _timeLoggerUtility.GetTasksList())
 			{
 				GUILayout.Label(task.GetName() + ": " + task.GetWorkFromTask());
 			}
 		}
 
-		private void TryStartNewTask()
-		{
-			if (_currentTask != null)
-			{
-				if (_currentTask.GetName() == _currentTextInFiledTask
-				    && !_currentTask.IsInProgress())
-				{
-					_currentTask.Start();
-				}
-			}
-			else
-			{
-				_currentTask = new Task(_currentTextInFiledTask);
-				_currentTask.Start();
-			}
-		}
-
-		private void TryPausedTask()
-		{
-			_currentTask.Pause();
-		}
-
-		private void TryStopedTask()
-		{
-			_currentTask.Stop();
-			_tasks.Add((Task) _currentTask.Clone());
-			_currentTask = null;
-		}
 	}
 }
