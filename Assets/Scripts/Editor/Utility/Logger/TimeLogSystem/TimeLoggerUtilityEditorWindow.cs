@@ -21,7 +21,7 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			GUILayout.Label($"Current time: {now}");
 			var currentTask = _timeLoggerUtility.GetCurrentTask();
 			GUILayout.Label(currentTask != null
-				? $"Current task: {currentTask.GetName()}"
+				? $"Current task: { currentTask }"
 				: "Current task: null");
 
 			GUILayout.BeginHorizontal();

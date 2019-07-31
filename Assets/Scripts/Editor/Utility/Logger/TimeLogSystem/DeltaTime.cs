@@ -29,17 +29,31 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		public void Start()
 		{
 			_startTime = DateTime.Now;
+			_inProgress = true;
 		}
 
 		public void Stop()
 		{
-			_endTime = DateTime.Now;
-			_inProgress = false;
+			if (_inProgress)
+			{
+				_endTime = DateTime.Now;
+				_inProgress = false;
+			}
 		}
 
 		public TimeSpan GetWorkTime()
 		{
 			return _endTime.Subtract(_startTime);
+		}
+
+		public TimeSpan GetWorkTime(DateTime currentTime)
+		{
+			return currentTime.Subtract(_startTime);
+		}
+
+		public DateTime GetStartTime()
+		{
+			return _startTime;
 		}
 
 		public object Clone()

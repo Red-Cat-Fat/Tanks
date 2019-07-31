@@ -11,6 +11,33 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		private DeltaTime _currentDeltaTime;
 		private List<DeltaTime> _taskTimes = new List<DeltaTime>();
 
+		public override string ToString()
+		{
+			var returnValue = _name + " (" + GetStartTaskTime() + ") ";
+			if (!IsInProgress())
+			{
+				returnValue += " - Pause";
+			}
+			else
+			{
+				returnValue += " - " + _currentDeltaTime.GetWorkTime(DateTime.Now);
+			}
+
+			return returnValue;
+		}
+
+		private DateTime GetStartTaskTime()
+		{
+			if (_taskTimes.Count == 0)
+			{
+				return _currentDeltaTime.GetStartTime();
+			}
+			else
+			{
+				return _taskTimes[0].GetStartTime();
+			}
+		}
+
 		private List<DeltaTime> GetTaskTimes()
 		{
 			return _taskTimes;
@@ -18,7 +45,6 @@ namespace Editor.Utility.Logger.TimeLogSystem
 
 		public Task(string name)
 		{
-			_currentDeltaTime = new DeltaTime();
 			_name = name;
 		}
 
@@ -30,19 +56,21 @@ namespace Editor.Utility.Logger.TimeLogSystem
 
 		public void Start()
 		{
-			_currentDeltaTime.Start();
+			if (_currentDeltaTime == null)
+			{
+				_currentDeltaTime = new DeltaTime();
+				_currentDeltaTime.Start();
+			}
 		}
 
 		public void Stop()
 		{
-			_currentDeltaTime.Stop();
-			AddTime(_currentDeltaTime);
-			_currentDeltaTime = null;
-		}
-
-		public void Pause()
-		{
-			_currentDeltaTime.Stop();
+			if (_currentDeltaTime != null)
+			{
+				_currentDeltaTime.Stop();
+				AddTime(_currentDeltaTime);
+				_currentDeltaTime = null;
+			}
 		}
 
 		private void AddTime(DeltaTime deltaTime)

@@ -39,7 +39,7 @@ namespace Editor.Utility.Logger.TimeLogSystem
 
 		public void TryPausedTask()
 		{
-			_currentTask.Pause();
+			_currentTask.Stop();
 		}
 
 		public void TryStopedTask()
