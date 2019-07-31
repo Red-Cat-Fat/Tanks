@@ -58,14 +58,12 @@ namespace Game.Controllers.Units.MoveControllers
 		{
 			switch (CurrentTypePlayerController)
 			{
-				case TypePlayerController.FirstPerson:
-					return directionMoveVector;
 				case TypePlayerController.ThridPerson:
 					var resultVector = UnitMoveData.GetForwardDirectionVector3(transform) * directionMoveVector.z
 					                   + transform.right * directionMoveVector.x;
 					return resultVector;
+				case TypePlayerController.FirstPerson:
 				case TypePlayerController.TopDown:
-					return directionMoveVector;
 				default:
 					return directionMoveVector;
 			}
