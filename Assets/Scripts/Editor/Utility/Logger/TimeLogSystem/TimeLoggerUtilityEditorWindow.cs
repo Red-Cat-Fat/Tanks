@@ -28,14 +28,19 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			var newTask = GUILayout.TextArea(_currentTextInFiledTask);
 			_currentTextInFiledTask = newTask;
 
-			if (GUILayout.Button("Start", GUILayout.Width(50)))
+			if (currentTask == null || !currentTask.IsInProgress())
 			{
-				_timeLoggerUtility.TryStartNewTask(_currentTextInFiledTask);
+				if (GUILayout.Button("Start", GUILayout.Width(50)))
+				{
+					_timeLoggerUtility.TryStartNewTask(_currentTextInFiledTask);
+				}
 			}
-
-			if (GUILayout.Button("Pause", GUILayout.Width(50)))
+			else
 			{
-				_timeLoggerUtility.TryPausedTask();
+				if (GUILayout.Button("Pause", GUILayout.Width(50)))
+				{
+					_timeLoggerUtility.TryPausedTask();
+				}
 			}
 
 			if (GUILayout.Button("Stop", GUILayout.Width(50)))
