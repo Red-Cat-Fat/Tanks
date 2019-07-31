@@ -44,9 +44,12 @@ namespace Editor.Utility.Logger.TimeLogSystem
 
 		public void TryStopedTask()
 		{
-			_currentTask.Stop();
-			_tasks.Add((Task)_currentTask.Clone());
-			_currentTask = null;
+			if (_currentTask != null)
+			{
+				_currentTask.Stop();
+				_tasks.Add((Task) _currentTask.Clone());
+				_currentTask = null;
+			}
 		}
 	}
 }

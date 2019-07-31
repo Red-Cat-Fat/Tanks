@@ -33,7 +33,7 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		{
 			foreach (var task in _timeLoggerUtility.GetTasksList())
 			{
-				GUILayout.Label(task.GetName() + ": " + task.GetWorkFromTask());
+				GUILayout.Label(task.ToString());
 			}
 		}
 

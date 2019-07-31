@@ -10,32 +10,30 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		private string _name;
 		private DeltaTime _currentDeltaTime;
 		private List<DeltaTime> _taskTimes = new List<DeltaTime>();
+		private bool _isFinal = false;
 
 		public override string ToString()
 		{
-			var returnValue = _name + " (" + GetStartTaskTime() + ") ";
-			if (!IsInProgress())
-			{
-				returnValue += " - Pause";
-			}
-			else
-			{
-				returnValue += " - " + _currentDeltaTime.GetWorkTime(DateTime.Now);
-			}
+			return _name + " (" + GetStartTaskTime() + " - " + GetEndTaskTime() + ") " +
+			       (IsInProgress()
+				       ? ""
+				       : (_isFinal ? "\nFinal, total work: " : "\nPause, total work: ") +
+				         +GetWorkFromTask()
+				    );
+		}
 
-			return returnValue;
+		private DateTime GetEndTaskTime()
+		{
+			return _taskTimes.Count == 0 
+				? DateTime.Now
+				: _taskTimes[_taskTimes.Count-1].GetEndTime();
 		}
 
 		private DateTime GetStartTaskTime()
 		{
-			if (_taskTimes.Count == 0)
-			{
-				return _currentDeltaTime.GetStartTime();
-			}
-			else
-			{
-				return _taskTimes[0].GetStartTime();
-			}
+			return _taskTimes.Count == 0 
+				? _currentDeltaTime.GetStartTime() 
+				: _taskTimes[0].GetStartTime();
 		}
 
 		private List<DeltaTime> GetTaskTimes()
@@ -52,6 +50,7 @@ namespace Editor.Utility.Logger.TimeLogSystem
 		{
 			_name = clone.GetName();
 			_taskTimes = clone.GetTaskTimes();
+			_isFinal = true;
 		}
 
 		public void Start()

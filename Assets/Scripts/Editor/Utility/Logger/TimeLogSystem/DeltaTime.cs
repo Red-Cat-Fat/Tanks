@@ -56,6 +56,11 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			return _startTime;
 		}
 
+		public DateTime GetEndTime()
+		{
+			return _endTime;
+		}
+
 		public object Clone()
 		{
 			return new DeltaTime(_startTime, _endTime);
