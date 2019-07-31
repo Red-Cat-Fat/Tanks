@@ -15,18 +15,40 @@ namespace Editor.Utility.Logger.TimeLogSystem
 
 		private TimeLoggerUtility _timeLoggerUtility = new TimeLoggerUtility();
 		private static string _currentTextInFiledTask = "";
+
 		private void OnGUI()
 		{
-			var now = DateTime.Now;
-			GUILayout.Label($"Current time: {now}");
-			var currentTask = _timeLoggerUtility.GetCurrentTask();
-			GUILayout.Label(currentTask != null
-				? $"Current task: { currentTask }"
-				: "Current task: null");
+			DrawTime();
+			DrawTaskList();
+			DrawEditorLine();
+		}
 
+		private void DrawTime()
+		{
+			var now = DateTime.Now;
+			GUILayout.Label($"Time: {now}");
+		}
+
+		private void DrawTaskList()
+		{
+			foreach (var task in _timeLoggerUtility.GetTasksList())
+			{
+				GUILayout.Label(task.GetName() + ": " + task.GetWorkFromTask());
+			}
+		}
+
+		private void DrawEditorLine()
+		{
+			var currentTask = _timeLoggerUtility.GetCurrentTask();
 			GUILayout.BeginHorizontal();
-			var newTask = GUILayout.TextArea(_currentTextInFiledTask);
-			_currentTextInFiledTask = newTask;
+			if (currentTask == null)
+			{
+				_currentTextInFiledTask = GUILayout.TextArea(_currentTextInFiledTask);
+			}
+			else
+			{
+				GUILayout.Label($"Current task: {currentTask}");
+			}
 
 			if (currentTask == null || !currentTask.IsInProgress())
 			{
@@ -49,11 +71,6 @@ namespace Editor.Utility.Logger.TimeLogSystem
 			}
 
 			GUILayout.EndHorizontal();
-
-			foreach (var task in _timeLoggerUtility.GetTasksList())
-			{
-				GUILayout.Label(task.GetName() + ": " + task.GetWorkFromTask());
-			}
 		}
 
 	}
