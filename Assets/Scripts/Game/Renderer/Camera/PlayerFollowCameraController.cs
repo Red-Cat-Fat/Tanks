@@ -1,7 +1,7 @@
-﻿using Game.Controllers.GameControllers;
+﻿using Editor.Utility.LogSystem;
+using Game.Controllers.GameControllers;
 using Game.Renderer.Camera.CameraTags;
 using UnityEngine;
-using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Renderer.Camera
 {
@@ -23,7 +23,7 @@ namespace Game.Renderer.Camera
 					if (point is PlayerCameraTag)
 					{
 						var followCameraData = GetComponent<FollowCameraData>();
-						Logger.CheckForNull(followCameraData, gameObject, typeof(FollowCameraData));
+						Log.CheckForNull(followCameraData, gameObject, typeof(FollowCameraData));
 						followCameraData.SetAnchorPoint(point.GetPoint());
 					}
 				}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Editor.Utility.Logger.TimeLogSystem
+namespace Editor.Utility.LogSystem.TimeLogSystem
 {
 	public class Task
 	{

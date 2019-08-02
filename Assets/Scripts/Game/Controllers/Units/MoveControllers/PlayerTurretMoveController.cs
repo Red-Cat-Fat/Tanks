@@ -1,7 +1,6 @@
 ﻿using Game.Controllers.GameControllers;
 using Game.Utillity.DigitalSignalPeocessing.Filters;
 using UnityEngine;
-using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Controllers.Units.MoveControllers
 {
@@ -27,7 +26,7 @@ namespace Game.Controllers.Units.MoveControllers
 
 			_boolRotateMovingAvargeWindow.AddValue(canRotate);
 			UnitMoveData.SetIsCanRotate(_boolRotateMovingAvargeWindow.GetValue());
-			//Logger.SendMessageToConsole(this, canRotate.ToString() + ' ' +_countThueChecker);
+			//Log.SendMessageToConsole(this, canRotate.ToString() + ' ' +_countThueChecker);
 			_lastPositionVector3 = transform.position;
 		}
 

@@ -1,6 +1,6 @@
-﻿using Game.Data.Units;
+﻿using Editor.Utility.LogSystem;
+using Game.Data.Units;
 using UnityEngine;
-using Logger = Editor.Utility.Logger.Logger;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -14,7 +14,7 @@ namespace Game.Controllers.Units.MoveControllers
 		protected virtual void Start()
 		{
 			UnitMoveData = GetComponent<MoveData>();
-			Logger.CheckForNull(UnitMoveData, gameObject, typeof(MoveData));
+			Log.CheckForNull(UnitMoveData, gameObject, typeof(MoveData));
 		}
 
 		public virtual Vector3 CulculateTarget()

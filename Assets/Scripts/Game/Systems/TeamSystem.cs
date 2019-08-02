@@ -1,7 +1,7 @@
-﻿using Game.Controllers.Units.TeamControllers;
+﻿using Editor.Utility.LogSystem;
+using Game.Controllers.Units.TeamControllers;
 using Game.Data.Units;
 using UnityEngine;
-using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Systems
 {
@@ -14,8 +14,8 @@ namespace Game.Systems
 			_teamData = GetComponent<TeamData>();
 			_teamController = GetComponent<ITeamController>();
 
-			Logger.CheckForNull(_teamData, gameObject, typeof(TeamData));
-			Logger.CheckForNull(_teamController, gameObject, typeof(ITeamController));
+			Log.CheckForNull(_teamData, gameObject, typeof(TeamData));
+			Log.CheckForNull(_teamController, gameObject, typeof(ITeamController));
 
 			_teamController.InitialAction();
 		}

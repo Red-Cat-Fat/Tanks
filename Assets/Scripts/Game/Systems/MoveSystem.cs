@@ -1,7 +1,7 @@
-﻿using Game.Controllers.Units.MoveControllers;
+﻿using Editor.Utility.LogSystem;
+using Game.Controllers.Units.MoveControllers;
 using Game.Data.Units;
 using UnityEngine;
-using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Systems
 {
@@ -15,8 +15,8 @@ namespace Game.Systems
 		{
 			UnitsMoveController = GetComponent<IMoveController>();
 			UnitsMoveData = GetComponent<MoveData>();
-			Logger.CheckForNull(UnitsMoveController, gameObject, typeof(IMoveController));
-			Logger.CheckForNull(UnitsMoveData, gameObject, typeof(MoveData));
+			Log.CheckForNull(UnitsMoveController, gameObject, typeof(IMoveController));
+			Log.CheckForNull(UnitsMoveData, gameObject, typeof(MoveData));
 		}
 
 		private void Start()
@@ -24,7 +24,7 @@ namespace Game.Systems
 			InitialBaseMoveSystemField();
 
 			_unitsRigidbody2D = GetComponent<Rigidbody2D>();
-			Logger.CheckForNull(_unitsRigidbody2D, gameObject, typeof(Rigidbody2D));
+			Log.CheckForNull(_unitsRigidbody2D, gameObject, typeof(Rigidbody2D));
 		}
 
 		private void FixedUpdate()

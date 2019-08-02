@@ -1,6 +1,6 @@
-﻿using Game.Data.Units;
+﻿using Editor.Utility.LogSystem;
+using Game.Data.Units;
 using UnityEngine;
-using Logger = Editor.Utility.Logger.Logger;
 
 namespace Game.Controllers.Units.MoveControllers
 {
@@ -10,7 +10,7 @@ namespace Game.Controllers.Units.MoveControllers
 		private void Start()
 		{
 			_moveData = GetComponent<MoveData>();
-			Logger.CheckForNull(_moveData, gameObject, typeof(MoveData));
+			Log.CheckForNull(_moveData, gameObject, typeof(MoveData));
 		}
 
 		public Vector3 CulculateTarget()

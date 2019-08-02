@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Editor.Utility.Logger.TimeLogSystem
+namespace Editor.Utility.LogSystem.TimeLogSystem
 {
 	public class TimeLoggerUtility
 	{

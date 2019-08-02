@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.Utility.Logger.TimeLogSystem
+namespace Editor.Utility.LogSystem.TimeLogSystem
 {
 	public class TimeLoggerUtilityEditorWindow : EditorWindow
 	{

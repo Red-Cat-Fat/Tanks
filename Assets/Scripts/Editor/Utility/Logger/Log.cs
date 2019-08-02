@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Editor.Utility.Logger
+namespace Editor.Utility.LogSystem
 {
-	public class Logger : MonoBehaviour
+	public class Log : MonoBehaviour
 	{
 		public static void CheckForNull(object checkObject, GameObject parrent, Type type)
 		{

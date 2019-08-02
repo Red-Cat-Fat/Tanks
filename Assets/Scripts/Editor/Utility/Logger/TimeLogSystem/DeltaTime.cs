@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Editor.Utility.Logger.TimeLogSystem
+namespace Editor.Utility.LogSystem.TimeLogSystem
 {
 	public class DeltaTime
 	{
