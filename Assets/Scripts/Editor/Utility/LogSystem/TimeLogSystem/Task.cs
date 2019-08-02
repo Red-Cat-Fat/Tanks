@@ -44,7 +44,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			GUIStyle style = new GUIStyle
 			{
 				richText = true,
-				fontStyle = IsInProgress()
+				fontStyle = !IsFinal()
 					? FontStyle.Bold
 					: FontStyle.Normal
 			};
@@ -56,8 +56,8 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			var color = IsFinal()
 				? "green"
 				: IsInProgress()
-					? "yellow"
-					: "black";
+					? "black"
+					: "yellow";
 			return $"<color={color}>{ToString()}</color>";
 		}
 		
