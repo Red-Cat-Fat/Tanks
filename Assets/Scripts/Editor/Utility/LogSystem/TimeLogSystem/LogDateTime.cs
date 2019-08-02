@@ -110,6 +110,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 		[field: SerializeField]
 		public int Month { get; set; } = 0;
 		
+		#region Overrides
 		public static LogDateTime operator +(LogDateTime logDate1, LogDateTime logDate2)
 		{
 			return new LogDateTime
@@ -146,14 +147,19 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 
 		public override string ToString()
 		{
-			return Hour.ToString() + ':' + Minute;
+			var h = Hour < 10 ? "0" + Hour : Hour.ToString();
+			var m = Minute < 10 ? "0" + Minute : Minute.ToString();
+			var s = Second < 10 ? "0" + Second : Second.ToString();
+			return $"{h}:{m}:{s}";
 		}
 
 		public string ToString(bool isFull)
-		{
-			return Day.ToString() + '.' + Month + '.' + Year + ' ' + ToString(true) + ':' + Second;
+		{ 
+			var dd = Day < 10 ? "0" + Day : Day.ToString();
+			var mm = Month < 10 ? "0" + Month : Month.ToString();
+			return $"{dd}.{mm}.{Year} {ToString()}";
 		}
-
+		
 		public static implicit operator LogDateTime(DateTime dateTime)
 		{
 			return new LogDateTime
@@ -171,5 +177,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 		{
 			return new DateTime(logDateTime.Year, logDateTime.Month, logDateTime.Day, logDateTime.Hour, logDateTime.Minute, logDateTime.Second);
 		}
+
+		#endregion
 	}
 }

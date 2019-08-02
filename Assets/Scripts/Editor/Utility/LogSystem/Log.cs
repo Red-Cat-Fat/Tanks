@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Editor.Utility.LogSystem
 {
 	public class Log : MonoBehaviour
 	{
+		[Conditional("DEBUG")]
 		public static void CheckForNull(object checkObject, GameObject parrent, Type type)
 		{
 			if (checkObject == null)

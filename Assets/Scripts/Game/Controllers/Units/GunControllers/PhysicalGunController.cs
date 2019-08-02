@@ -1,17 +1,19 @@
 ﻿using Editor.Utility.LogSystem;
 using Game.Data.Units;
+using Game.Systems;
 using UnityEngine;
 
 namespace Game.Controllers.Units.GunControllers
 {
+	[RequireComponent(typeof(GunData))]
 	public abstract class PhysicalGunController : MonoBehaviour, IGunController
 	{
+		[SerializeField, HideInInspector]
 		protected GunData GunData;
 
-		private void Start()
+		private void OnValidate()
 		{
 			GunData = GetComponent<GunData>();
-			Log.CheckForNull(GunData, gameObject, typeof(GunData));
 		}
 
 		private void Update()
