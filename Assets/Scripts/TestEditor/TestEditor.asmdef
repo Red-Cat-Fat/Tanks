@@ -1,6 +1,8 @@
 {
-    "name": "Editor",
-    "references": [],
+    "name": "TestEditor",
+    "references": [
+        "Editor"
+    ],
     "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
