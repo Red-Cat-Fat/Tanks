@@ -49,7 +49,12 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 		private void DrawTaskButons(Task task)
 		{
 			GUILayout.BeginVertical();
-			string buttonName = "";
+			var buttonName = "Delete";
+			if (GUILayout.Button(buttonName, GUILayout.Width(ButtonSize)))
+			{
+				_timeLoggerUtility.TryRemoveTask(task);
+			}
+
 			if (task != null && task.IsInProgress())
 			{
 				buttonName = "Pause";
@@ -80,8 +85,11 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 		{
 			_scrollPos =
 				EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Width(LengthTaskName * LengthStringSymbol + FreeSpace + ButtonSize*2));
-			foreach (var task in _timeLoggerUtility.GetTasksList())
+			var list = _timeLoggerUtility.GetTasksList();
+
+			for (var i = 0; i < list.Count; i++)
 			{
+				var task = list[i];
 				DrawLine();
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(FreeSpace);
@@ -89,6 +97,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 				DrawTaskButons(task);
 				GUILayout.EndHorizontal();
 			}
+
 			EditorGUILayout.EndScrollView();
 		}
 

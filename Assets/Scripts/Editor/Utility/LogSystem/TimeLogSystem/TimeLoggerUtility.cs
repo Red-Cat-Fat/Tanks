@@ -28,6 +28,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			var currentTask = new Task(taskName);
 			currentTask.Start();
 			_tasks.Add(currentTask);
+			SaveInFile();
 			return true;
 		}
 
@@ -52,12 +53,24 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			return task != null;
 		}
 
+		public bool TryRemoveTask(Task task)
+		{
+			if (!_tasks.Contains(task))
+			{
+				return false;
+			}
+			_tasks.Remove(task);
+			SaveInFile();
+			return true;
+		}
+
 		public void SaveInFile()
 		{
 			var path = Path.Combine(Application.persistentDataPath, "TimeLoggerUtility.json");
 			File.WriteAllText(path, JsonUtility.ToJson(this));
 		}
-		
+
+
 		public static TimeLoggerUtility LoadFile()
 		{
 			var path = Path.Combine(Application.persistentDataPath, "TimeLoggerUtility.json");
