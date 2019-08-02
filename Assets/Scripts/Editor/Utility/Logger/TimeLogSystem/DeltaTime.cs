@@ -1,26 +1,37 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Editor.Utility.LogSystem.TimeLogSystem
 {
+	[Serializable]
 	public class DeltaTime
 	{
-		private DateTime _startTime;
-		private DateTime _endTime;
+		[SerializeField]
+		public LogDateTime StartTime;
+		[SerializeField]
+		public LogDateTime EndTime;
+
+		[SerializeField]
 		private bool _inProgress = false;
 
-		public DateTime GetStartTime()
+		public bool IsInProgress()
 		{
-			return _startTime;
+			return _inProgress;
 		}
 
-		public DateTime GetEndTime()
+		public LogDateTime GetStartTime()
 		{
-			return _endTime;
+			return StartTime;
+		}
+
+		public LogDateTime GetEndTime()
+		{
+			return EndTime;
 		}
 
 		public void Start()
 		{
-			_startTime = DateTime.Now;
+			StartTime = DateTime.Now;
 			_inProgress = true;
 		}
 
@@ -28,14 +39,14 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 		{
 			if (_inProgress)
 			{
-				_endTime = DateTime.Now;
+				EndTime = DateTime.Now;
 				_inProgress = false;
 			}
 		}
 
-		public TimeSpan GetWorkTime()
+		public LogDateTime GetWorkTime()
 		{
-			return _endTime.Subtract(_startTime);
+			return GetEndTime() - GetStartTime();
 		}
 
 	}

@@ -4,11 +4,19 @@ using UnityEngine;
 
 namespace Editor.Utility.LogSystem.TimeLogSystem
 {
+	[Serializable]
 	public class Task
 	{
+		[SerializeField]
 		private string _name;
+
+		[SerializeField]
 		private DeltaTime _currentDeltaTime;
+
+		[SerializeField]
 		private List<DeltaTime> _taskDeltaTimes = new List<DeltaTime>();
+
+		[SerializeField]
 		private bool _isFinal = false;
 
 		public string GetName()
@@ -18,7 +26,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 
 		public bool IsInProgress()
 		{
-			return _currentDeltaTime != null;
+			return _currentDeltaTime != null && _currentDeltaTime.IsInProgress();
 		}
 
 		public bool IsFinal()
@@ -53,14 +61,14 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			return $"<color={color}>{ToString()}</color>";
 		}
 		
-		private DateTime GetEndTaskTime()
+		private LogDateTime GetEndTaskTime()
 		{
 			return !IsFinal()
 				? DateTime.Now
 				: _taskDeltaTimes[_taskDeltaTimes.Count-1].GetEndTime();
 		}
 
-		private DateTime GetStartTaskTime()
+		private LogDateTime GetStartTaskTime()
 		{
 			return _taskDeltaTimes.Count == 0 
 				? _currentDeltaTime.GetStartTime() 
@@ -69,7 +77,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 		
 		public void Start()
 		{
-			if (_currentDeltaTime == null)
+			if (!IsInProgress())
 			{
 				_currentDeltaTime = new DeltaTime();
 				_currentDeltaTime.Start();
@@ -89,8 +97,11 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 
 		public void Finish()
 		{
-			Pasuse();
-			_isFinal = true;
+			if (!_isFinal)
+			{
+				Pasuse();
+				_isFinal = true;
+			}
 		}
 
 		private void AddTime(DeltaTime deltaTime)
@@ -98,9 +109,9 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			_taskDeltaTimes.Add(deltaTime);
 		}
 
-		public TimeSpan GetWorkFromTask()
+		public LogDateTime GetWorkFromTask()
 		{
-			TimeSpan time = new TimeSpan(0);
+			LogDateTime time = new LogDateTime();
 			foreach (var deltaTime in _taskDeltaTimes)
 			{
 				time += deltaTime.GetWorkTime();
@@ -115,8 +126,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			       (IsInProgress()
 				       ? ""
 				       : (IsFinal() ? "\nFinal, total work: " : "\nPause, total work: ") +
-				         +GetWorkFromTask()
-			       );
+				         GetWorkFromTask());
 		}
 	}
 }

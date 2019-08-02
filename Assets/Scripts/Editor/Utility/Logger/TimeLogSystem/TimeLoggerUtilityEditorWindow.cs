@@ -12,11 +12,17 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			GetWindow<TimeLoggerUtilityEditorWindow>();
 		}
 
-		private TimeLoggerUtility _timeLoggerUtility = new TimeLoggerUtility();
+		private TimeLoggerUtility _timeLoggerUtility;
 		private static string _currentTextInFiledTask = "";
 
 		private void OnGUI()
 		{
+			if (_timeLoggerUtility == null)
+			{
+				var jsonLogs = TimeLoggerUtility.LoadFile();
+				_timeLoggerUtility = jsonLogs ?? new TimeLoggerUtility();
+			}
+
 			DrawTime();
 			DrawTaskList();
 			DrawNewTaskField();
@@ -24,7 +30,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 
 		private void DrawTime()
 		{
-			var now = DateTime.Now;
+			LogDateTime now = DateTime.Now;
 			GUILayout.Label($"Time: {now}");
 		}
 
@@ -37,7 +43,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 
 		private void DrawTaskButons(Task task)
 		{
-			if (task.IsInProgress())
+			if (task != null && task.IsInProgress())
 			{
 				if (GUILayout.Button("Pause", GUILayout.Width(50)))
 				{
