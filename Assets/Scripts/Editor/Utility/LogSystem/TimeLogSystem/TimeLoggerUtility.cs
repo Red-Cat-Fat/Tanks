@@ -26,7 +26,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 				}
 			}
 			var currentTask = new Task(taskName);
-			currentTask.Start();
+			currentTask.Pasuse();
 			_tasks.Add(currentTask);
 			SaveInFile();
 			return true;
