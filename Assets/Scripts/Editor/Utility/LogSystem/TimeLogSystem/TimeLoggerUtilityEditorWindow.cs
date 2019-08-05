@@ -16,8 +16,8 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 		private static string _currentTextInFiledTask = "";
 		private const int LengthTaskName = 50;
 		private const float LengthStringSymbol = 7f;
-		private const int FreeSpace = 15;
 		private const int ButtonSize = 60;
+		private Vector2 _scrollPos;
 
 		private void OnGUI()
 		{
@@ -37,20 +37,26 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			LogDateTime now = DateTime.Now;
 			GUILayout.Label($"Time: {now}");
 		}
-
-
+		
 		private void DrawTaskByCurrentStyle(Task task)
 		{
+			GUIStyle styleTaskBorder = EditorStyles.helpBox;
+			styleTaskBorder.alignment = TextAnchor.LowerLeft;
+
+			GUILayout.BeginVertical(styleTaskBorder);
 			var str = task.GetGuiLabelString();
 			var style = task.GetGuiLabelStyle();
-			GUILayout.Label(str, style, GUILayout.Width(LengthStringSymbol*LengthTaskName + FreeSpace));
+			GUILayout.Label(str, style, GUILayout.MinWidth(LengthStringSymbol*LengthTaskName));
+			GUILayout.EndVertical();
 		}
 
 		private void DrawTaskButons(Task task)
 		{
-			GUILayout.BeginVertical();
+			GUIStyle styleTaskBorder = EditorStyles.helpBox;
+			styleTaskBorder.alignment = TextAnchor.LowerRight;
+			GUILayout.BeginVertical(GUILayout.MaxWidth(ButtonSize));
 			var buttonName = "Delete";
-			if (GUILayout.Button(buttonName, GUILayout.Width(ButtonSize)))
+			if (GUILayout.Button(buttonName, GUILayout.MinWidth(ButtonSize)))
 			{
 				_timeLoggerUtility.TryRemoveTask(task);
 			}
@@ -58,7 +64,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			if (task != null && task.IsInProgress())
 			{
 				buttonName = "Pause";
-				if (GUILayout.Button(buttonName, GUILayout.Width(ButtonSize)))
+				if (GUILayout.Button(buttonName, GUILayout.MinWidth(ButtonSize)))
 				{
 					_timeLoggerUtility.TryPausedTask(task);
 				}
@@ -66,51 +72,38 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			else
 			{
 				buttonName = "Start";
-				if (GUILayout.Button(buttonName, GUILayout.Width(ButtonSize)))
+				if (GUILayout.Button(buttonName, GUILayout.MinWidth(ButtonSize)))
 				{
 					_timeLoggerUtility.TryStartTask(task);
 				}
 			}
 
 			buttonName = "Final";
-			if (GUILayout.Button(buttonName, GUILayout.Width(ButtonSize)))
+			if (GUILayout.Button(buttonName, GUILayout.MinWidth(ButtonSize)))
 			{
 				_timeLoggerUtility.TryFinishTask(task);
 			}
 			GUILayout.EndVertical();
 		}
 
-		private Vector2 _scrollPos;
 		private void DrawTaskList()
 		{
+			GUILayout.BeginVertical(EditorStyles.helpBox);
 			_scrollPos =
-				EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Width(LengthTaskName * LengthStringSymbol + FreeSpace + ButtonSize*2));
+				EditorGUILayout.BeginScrollView(_scrollPos);
 			var list = _timeLoggerUtility.GetTasksList();
 
 			for (var i = 0; i < list.Count; i++)
 			{
 				var task = list[i];
-				DrawLine();
-				GUILayout.BeginHorizontal();
-				GUILayout.Space(FreeSpace);
+				GUILayout.BeginHorizontal(EditorStyles.helpBox);
 				DrawTaskByCurrentStyle(task);
 				DrawTaskButons(task);
 				GUILayout.EndHorizontal();
 			}
+			GUILayout.EndVertical();
 
 			EditorGUILayout.EndScrollView();
-		}
-
-		private void DrawLine()
-		{
-			GUILayout.BeginHorizontal();
-			var s = "";
-			for (int i = 0; i < LengthTaskName+3; i++)
-			{
-				s += "_";
-			}
-			GUILayout.Label(s + "\n");
-			GUILayout.EndHorizontal();
 		}
 
 		private void DrawNewTaskField()
@@ -119,16 +112,18 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 
 			_currentTextInFiledTask = CutTaskName(
 				GUILayout.TextArea(_currentTextInFiledTask, 
-				GUILayout.Width(LengthTaskName*LengthStringSymbol)));
-			if (GUILayout.Button("Add", GUILayout.Width(ButtonSize)))
+				GUILayout.MinWidth(LengthTaskName*LengthStringSymbol)));
+
+			GUILayout.BeginVertical(GUILayout.MaxWidth(ButtonSize));
+			if (GUILayout.Button("Add", GUILayout.MinWidth(ButtonSize)))
 			{
 				_timeLoggerUtility.TryAddNewTask(_currentTextInFiledTask);
 			}
+			GUILayout.EndVertical();
 
 			GUILayout.EndHorizontal();
 		}
-
-
+		
 		private string CutTaskName(string currentTextInFiledTask)
 		{
 			return currentTextInFiledTask.Length > LengthTaskName 

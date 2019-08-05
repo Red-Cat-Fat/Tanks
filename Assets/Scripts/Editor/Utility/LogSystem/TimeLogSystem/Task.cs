@@ -57,7 +57,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 				? "green"
 				: IsInProgress()
 					? "black"
-					: "yellow";
+					: "#b07d2b";
 			return $"<color={color}>{ToString()}</color>";
 		}
 		
