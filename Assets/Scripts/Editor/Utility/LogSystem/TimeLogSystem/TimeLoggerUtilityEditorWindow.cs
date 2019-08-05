@@ -35,7 +35,9 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 		private void DrawTime()
 		{
 			LogDateTime now = DateTime.Now;
+			GUILayout.BeginVertical(EditorStyles.helpBox);
 			GUILayout.Label($"Time: {now}");
+			GUILayout.EndVertical();
 		}
 		
 		private void DrawTaskByCurrentStyle(Task task)
