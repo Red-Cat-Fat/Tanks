@@ -32,6 +32,14 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			DrawNewTaskField();
 		}
 
+		private void DrawSortButton()
+		{
+			if (GUILayout.Button("Sort", GUILayout.MinWidth(ButtonSize)))
+			{
+				_timeLoggerUtility.SortingTasks();
+			}
+		}
+
 		private void DrawTime()
 		{
 			LogDateTime now = DateTime.Now;
@@ -106,6 +114,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			GUILayout.EndVertical();
 
 			EditorGUILayout.EndScrollView();
+			DrawSortButton();
 		}
 
 		private void DrawNewTaskField()

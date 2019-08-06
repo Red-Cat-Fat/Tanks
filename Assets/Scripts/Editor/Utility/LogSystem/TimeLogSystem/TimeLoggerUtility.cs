@@ -70,7 +70,63 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 			var path = Path.Combine(Application.persistentDataPath, "TimeLoggerUtility.json");
 			File.WriteAllText(path, JsonUtility.ToJson(this));
 		}
+		
+		public void SortingTasks()
+		{
+			_tasks.Sort(delegate (Task x, Task y)
+			{
+				if (x == null)
+				{
+					if (y == null)
+					{
+						return 0;
+					}
+					return -1;
+				}
+				if (y == null)
+				{
+					return 1;
+				}
 
+				if (x.IsFinal())
+				{
+					if (y.IsFinal())
+					{
+						if (x.IsInProgress())
+						{
+							if (y.IsInProgress())
+							{
+								return 0;
+							}
+							return 1;
+						}
+						if (y.IsInProgress())
+						{
+							return -1;
+						}
+					}
+					return 1;
+				}
+				if (y.IsFinal())
+				{
+					return -1;
+				}
+
+				if (x.IsInProgress())
+				{
+					if (y.IsInProgress())
+					{
+						return 0;
+					}
+					return -1;
+				}
+				if (y.IsInProgress())
+				{
+					return 1;
+				}
+				return 0;
+			});
+		}
 
 		public static TimeLoggerUtility LoadFile()
 		{
