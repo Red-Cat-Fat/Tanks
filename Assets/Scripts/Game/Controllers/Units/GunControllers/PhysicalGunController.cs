@@ -1,6 +1,4 @@
-﻿using Editor.Utility.LogSystem;
-using Game.Data.Units;
-using Game.Systems;
+﻿using Game.Data.Units;
 using UnityEngine;
 
 namespace Game.Controllers.Units.GunControllers
