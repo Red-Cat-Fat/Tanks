@@ -4,15 +4,21 @@ using UnityEngine;
 
 namespace Game.Systems
 {
+	[RequireComponent(typeof(TurretData))]
 	public class TurretSystem : MoveSystem
 	{
 		private ITurretController _turretController;
+		[SerializeField, HideInInspector]
 		private TurretData _unitTurretData;
+
+		protected virtual void OnValidate()
+		{
+			_unitTurretData = GetComponent<TurretData>();
+		}
 
 		private void Awake()
 		{
 			_turretController = GetComponent<ITurretController>();
-			_unitTurretData = GetComponent<TurretData>();
 		}
 		
 		protected override void UpdateTransform()

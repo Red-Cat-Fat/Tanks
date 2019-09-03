@@ -3,16 +3,17 @@ using UnityEngine;
 
 namespace Game.Renderer.Camera
 {
+	[RequireComponent(typeof(FollowCameraData))]
 	public class FollowCameraSystem : MonoBehaviour
 	{
+		[SerializeField, HideInInspector]
 		private FollowCameraData _followCameraData;
 		private Vector3 _lastAnchorPointPositionVector3;
 		private float _moveTime = 0f;
 
-		private void Start()
+		private void OnValidate()
 		{
 			_followCameraData = GetComponent<FollowCameraData>();
-			Log.CheckForNull(_followCameraData, gameObject, typeof(FollowCameraData));
 		}
 
 		private void FixedUpdate()

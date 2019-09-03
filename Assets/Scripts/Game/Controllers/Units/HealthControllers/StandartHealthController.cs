@@ -5,13 +5,14 @@ using UnityEngine;
 
 namespace Game.Controllers.Units.HealthControllers
 {
+	[RequireComponent(typeof(HealthData))]
 	public class StandartHealthController : MonoBehaviour, IHealthController
 	{
-		private HealthData _healthData;
-		private void Start()
+		[SerializeField, HideInInspector] private HealthData _healthData;
+
+		private void OnValidate()
 		{
 			_healthData = GetComponent<HealthData>();
-			Log.CheckForNull(_healthData, gameObject, typeof(HealthData));
 		}
 
 		public void AddDeadEvent(ref Action actionEvent)

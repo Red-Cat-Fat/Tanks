@@ -23,8 +23,7 @@ namespace Game.Renderer.Camera
 					if (point is PlayerCameraTag)
 					{
 						var followCameraData = GetComponent<FollowCameraData>();
-						Log.CheckForNull(followCameraData, gameObject, typeof(FollowCameraData));
-						followCameraData.SetAnchorPoint(point.GetPoint());
+						followCameraData?.SetAnchorPoint(point.GetPoint());
 					}
 				}
 			}

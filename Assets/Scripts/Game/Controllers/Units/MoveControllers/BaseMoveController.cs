@@ -7,14 +7,15 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Game.Controllers.Units.MoveControllers
 {
+	[RequireComponent(typeof(MoveData))]
 	public abstract class BaseMoveController : MonoBehaviour, IMoveController
 	{
+		[SerializeField, HideInInspector]
 		protected MoveData UnitMoveData;
 
-		protected virtual void Start()
+		protected virtual void OnValidate()
 		{
 			UnitMoveData = GetComponent<MoveData>();
-			Log.CheckForNull(UnitMoveData, gameObject, typeof(MoveData));
 		}
 
 		public virtual Vector3 CulculateTarget()

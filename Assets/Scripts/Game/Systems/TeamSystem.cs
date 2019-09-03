@@ -5,18 +5,20 @@ using UnityEngine;
 
 namespace Game.Systems
 {
+	[RequireComponent(typeof(ITeamController), typeof(TeamData))]
 	public class TeamSystem : MonoBehaviour
 	{
-		private TeamData _teamData;
-		private ITeamController _teamController;
-		private void Awake()
+		[SerializeField, HideInInspector] private TeamData _teamData;
+		[SerializeField, HideInInspector] private ITeamController _teamController;
+
+		private void OnValidate()
 		{
 			_teamData = GetComponent<TeamData>();
 			_teamController = GetComponent<ITeamController>();
+		}
 
-			Log.CheckForNull(_teamData, gameObject, typeof(TeamData));
-			Log.CheckForNull(_teamController, gameObject, typeof(ITeamController));
-
+		private void Awake()
+		{
 			_teamController.InitialAction();
 		}
 	}

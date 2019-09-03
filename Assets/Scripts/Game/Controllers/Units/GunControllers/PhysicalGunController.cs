@@ -6,9 +6,9 @@ namespace Game.Controllers.Units.GunControllers
 	[RequireComponent(typeof(GunData))]
 	public abstract class PhysicalGunController : MonoBehaviour, IGunController
 	{
-		[SerializeField, HideInInspector]//TODO: распространить на все контроллеры
+		[SerializeField, HideInInspector]
 		protected GunData GunData;
-
+		//TODO: распространить на все контроллеры
 		protected virtual void OnValidate()
 		{
 			GunData = GetComponent<GunData>();

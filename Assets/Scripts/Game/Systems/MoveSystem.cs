@@ -5,26 +5,24 @@ using UnityEngine;
 
 namespace Game.Systems
 {
+	[RequireComponent(typeof(Rigidbody2D), typeof(MoveData))]
 	public class MoveSystem : MonoBehaviour
 	{
 		protected IMoveController UnitsMoveController;
+		[SerializeField, HideInInspector]
 		private Rigidbody2D _unitsRigidbody2D;
+		[SerializeField, HideInInspector]
 		protected MoveData UnitsMoveData;
-
-		protected void InitialBaseMoveSystemField()
+		
+		private void OnValidate()
 		{
-			UnitsMoveController = GetComponent<IMoveController>();
 			UnitsMoveData = GetComponent<MoveData>();
-			Log.CheckForNull(UnitsMoveController, gameObject, typeof(IMoveController));
-			Log.CheckForNull(UnitsMoveData, gameObject, typeof(MoveData));
+			_unitsRigidbody2D = GetComponent<Rigidbody2D>();
 		}
 
-		private void Start()
+		private void Awake()
 		{
-			InitialBaseMoveSystemField();
-
-			_unitsRigidbody2D = GetComponent<Rigidbody2D>();
-			Log.CheckForNull(_unitsRigidbody2D, gameObject, typeof(Rigidbody2D));
+			UnitsMoveController = GetComponent<IMoveController>();
 		}
 
 		private void FixedUpdate()

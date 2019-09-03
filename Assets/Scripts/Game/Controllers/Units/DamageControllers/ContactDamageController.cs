@@ -6,14 +6,15 @@ using UnityEngine;
 
 namespace Game.Controllers.Units.DamageControllers
 {
+	[RequireComponent(typeof(DamageData))]
 	public class ContactDamageController : MonoBehaviour, IDamageController
 	{
+		[SerializeField, HideInInspector]
 		private DamageData _damageData;
 		private Action<GameObject, float> _setDamageEvent;
-		private void Start()
+		private void OnValidate()
 		{
 			_damageData = GetComponent<DamageData>();
-			Log.CheckForNull(_damageData, gameObject, typeof(DamageData));
 		}
 
 		private void OnCollisionEnter(Collision collision)

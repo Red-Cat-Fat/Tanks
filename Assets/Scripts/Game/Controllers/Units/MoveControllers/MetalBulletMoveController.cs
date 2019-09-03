@@ -1,16 +1,16 @@
-﻿using Editor.Utility.LogSystem;
-using Game.Data.Units;
+﻿using Game.Data.Units;
 using UnityEngine;
 
 namespace Game.Controllers.Units.MoveControllers
 {
+	[RequireComponent(typeof(MoveData))]
 	public class MetalBulletMoveController : MonoBehaviour, IMoveController
 	{
+		[SerializeField, HideInInspector]
 		private MoveData _moveData;
-		private void Start()
+		private void OnValidate()
 		{
 			_moveData = GetComponent<MoveData>();
-			Log.CheckForNull(_moveData, gameObject, typeof(MoveData));
 		}
 
 		public Vector3 CulculateTarget()
