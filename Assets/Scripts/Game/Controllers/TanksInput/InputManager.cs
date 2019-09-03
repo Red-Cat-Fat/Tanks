@@ -31,7 +31,7 @@ namespace Game.Controllers.TanksInput
 					_currentInputType = new VirtualJoystickInputType();
 					break;
 				case InputTypeEnum.VirtualJoystick2D:
-					_currentInputType = new VirtualJoystickInputType2D();
+					_currentInputType = new LerpVirtualJoystickInputType();
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();

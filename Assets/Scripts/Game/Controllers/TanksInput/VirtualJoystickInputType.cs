@@ -50,7 +50,7 @@ namespace Game.Controllers.TanksInput
 			}
 		}
 
-		protected void CheckClicked()
+		protected virtual void CheckClicked()
 		{
 			if (IsTouched)
 			{
