@@ -1,5 +1,4 @@
 ﻿using System;
-using Editor.Utility.LogSystem;
 using Game.Data.Units;
 using Game.Systems;
 using UnityEngine;

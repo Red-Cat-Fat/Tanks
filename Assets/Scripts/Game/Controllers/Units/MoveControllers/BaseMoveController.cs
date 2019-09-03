@@ -1,5 +1,4 @@
-﻿using Editor.Utility.LogSystem;
-using Game.Data.Units;
+﻿using Game.Data.Units;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;

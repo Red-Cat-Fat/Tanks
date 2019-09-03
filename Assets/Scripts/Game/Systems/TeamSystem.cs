@@ -1,5 +1,4 @@
-﻿using Editor.Utility.LogSystem;
-using Game.Controllers.Units.TeamControllers;
+﻿using Game.Controllers.Units.TeamControllers;
 using Game.Data.Units;
 using UnityEngine;
 

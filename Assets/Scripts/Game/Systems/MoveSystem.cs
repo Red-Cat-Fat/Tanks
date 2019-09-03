@@ -1,5 +1,4 @@
-﻿using Editor.Utility.LogSystem;
-using Game.Controllers.Units.MoveControllers;
+﻿using Game.Controllers.Units.MoveControllers;
 using Game.Data.Units;
 using UnityEngine;
 

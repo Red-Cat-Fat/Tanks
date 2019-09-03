@@ -1,5 +1,4 @@
-﻿using Editor.Utility.LogSystem;
-using Game.Controllers.GameControllers;
+﻿using Game.Controllers.GameControllers;
 using Game.Renderer.Camera.CameraTags;
 using UnityEngine;
 
