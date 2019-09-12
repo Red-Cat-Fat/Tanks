@@ -14,6 +14,7 @@ namespace Game.Systems
 		protected virtual void OnValidate()
 		{
 			_unitTurretData = GetComponent<TurretData>();
+			UnitsMoveData = GetComponent<MoveData>();
 		}
 
 		private void Awake()
