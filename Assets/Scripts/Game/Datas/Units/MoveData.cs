@@ -54,10 +54,10 @@ namespace Game.Data.Units
 		public Vector3 GetForwardDirectionVector(Transform transform)
 		{
 			Debug.DrawLine(transform.position, transform.position + transform.up);
-			return transform.right;
+			return transform.up;
 		}
 
-		public Vector3 GetNormalDirectionVector3()
+		public Vector3 GetNormalDirectionVector()
 		{
 			Debug.DrawLine(transform.position, transform.position + transform.forward, Color.red);
 			return -transform.forward;

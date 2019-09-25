@@ -33,7 +33,7 @@ namespace Game.Data.Units
 		{
 			if (_gunPoint == null)
 			{
-				Debug.LogError("_gunPoint on "+gameObject.name + " is null");
+				Debug.LogError("_gunPoint on " + gameObject.name + " is null");
 				return false;
 			}
 			return _cooldownTime < 0;

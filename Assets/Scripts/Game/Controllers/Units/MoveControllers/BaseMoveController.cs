@@ -48,10 +48,10 @@ namespace Game.Controllers.Units.MoveControllers
 		/// <returns>Next rotation quaternion</returns>
 		public virtual Quaternion GetNextRotationQuaternion()
 		{
-			var directionVector3 = CulculateTarget() - transform.position;
-			if (directionVector3 == Vector3.zero) return transform.rotation;
-			var axisVector3 = UnitsMoveData.GetNormalDirectionVector3();
-			var rotationAngle = Mathf.Atan2(directionVector3.y, directionVector3.x);
+			var directionVector = CulculateTarget() - transform.position;
+			if (directionVector == Vector3.zero) return transform.rotation;
+			var axisVector3 = UnitsMoveData.GetNormalDirectionVector();
+			var rotationAngle = Mathf.Atan2(directionVector.x, directionVector.y);
 			rotationAngle = rotationAngle * Mathf.Rad2Deg;
 			var rotation = Quaternion.AngleAxis(rotationAngle, axisVector3);
 

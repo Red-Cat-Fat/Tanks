@@ -26,7 +26,7 @@ namespace Game.Systems
 		{
 			if (_unitTurretData.GetIsCanRotate())
 			{
-				var normalDirectionVector3 = UnitsMoveData.GetNormalDirectionVector3();
+				var normalDirectionVector3 = UnitsMoveData.GetNormalDirectionVector();
 				var rotation = _turretController.GetNextRotationQuaternion(normalDirectionVector3);
 
 				Rotate(rotation);

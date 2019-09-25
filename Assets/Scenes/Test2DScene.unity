@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc42214cb505b247956532bdc348d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitMoveData: {fileID: 1536061459}
+  UnitsMoveData: {fileID: 1536061459}
 --- !u!114 &1536061455 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3140576817479531049, guid: ed12dfa37be365248b776f5ebc949638,
@@ -420,6 +420,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyLTStandart
       objectReference: {fileID: 0}
+    - target: {fileID: 5751694930478239254, guid: ed12dfa37be365248b776f5ebc949638,
+        type: 3}
+      propertyPath: _speedMove
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5751694930478239343, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: _teamType
@@ -505,14 +510,14 @@ PrefabInstance:
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5751694930478239254, guid: ed12dfa37be365248b776f5ebc949638,
-        type: 3}
-      propertyPath: _speedMove
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 5751694929458981603, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: _isCanMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093792477641834066, guid: ed12dfa37be365248b776f5ebc949638,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -535,12 +540,12 @@ PrefabInstance:
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.53
+      value: -6.35
       objectReference: {fileID: 0}
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.76
+      value: 8.05
       objectReference: {fileID: 0}
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
@@ -550,22 +555,22 @@ PrefabInstance:
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.70710707
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710653
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
@@ -585,7 +590,7 @@ PrefabInstance:
     - target: {fileID: 5751694930478239248, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90.00001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5751694930478239249, guid: ed12dfa37be365248b776f5ebc949638,
         type: 3}
@@ -616,6 +621,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _isCanMove
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751694930478239250, guid: ed12dfa37be365248b776f5ebc949638,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093792477641834066, guid: ed12dfa37be365248b776f5ebc949638,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8760388201854494556, guid: ed12dfa37be365248b776f5ebc949638, type: 3}
