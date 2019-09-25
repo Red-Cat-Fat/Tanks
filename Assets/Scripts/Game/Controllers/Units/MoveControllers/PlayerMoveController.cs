@@ -34,8 +34,8 @@ namespace Game.Controllers.Units.MoveControllers
 			var direction = Vector2.Dot(UnitsMoveData.GetForwardDirectionVector(transform), directionVector)
 			                <= Settings.InputSettings.StepInJoystickByBackMoved ? -1 : 1;//нужно для езды задом
 			var axisVector3 = UnitsMoveData.GetNormalDirectionVector();
-			var rotationAngle = Mathf.Atan2(directionVector.x, directionVector.y);
-			rotationAngle = rotationAngle * Mathf.Rad2Deg;
+
+			var rotationAngle = directionVector.GetAngleInGameSystemInDeg();
 			var rotation = Quaternion.AngleAxis(rotationAngle + (direction == -1 ? 180 : 0), axisVector3);
 
 			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.fixedDeltaTime * UnitsMoveData.GetSpeedRotation());

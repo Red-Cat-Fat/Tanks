@@ -38,8 +38,7 @@ namespace Game.Controllers.Units.TurretController
 			}
 
 			var directionVector = CulculateTarget() - transform.position;
-			var rotationAngle = Mathf.Atan2(directionVector.x, directionVector.y);
-			rotationAngle = rotationAngle * Mathf.Rad2Deg;
+			var rotationAngle = directionVector.GetAngleInGameSystemInDeg();
 			var rotation = Quaternion.AngleAxis(rotationAngle, axisVector3);
 
 			var teleportToRotation = Quaternion.Slerp(_unitTurretData.GetRotationTurret(), rotation,

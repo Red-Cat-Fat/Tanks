@@ -51,16 +51,14 @@ namespace Game.Data.Units
 			return _speedRotation;
 		}
 
-		public Vector3 GetForwardDirectionVector(Transform transform)
+		public Vector3 GetForwardDirectionVector(Transform inputTransform)
 		{
-			Debug.DrawLine(transform.position, transform.position + transform.up);
-			return transform.up;
+			return inputTransform.up;
 		}
 
 		public Vector3 GetNormalDirectionVector()
 		{
-			Debug.DrawLine(transform.position, transform.position + transform.forward, Color.red);
-			return -transform.forward;
+			return Vector3.back;
 		}
 
 		public bool GetIsCanMove()

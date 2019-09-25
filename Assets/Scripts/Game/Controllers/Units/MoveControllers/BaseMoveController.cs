@@ -51,8 +51,7 @@ namespace Game.Controllers.Units.MoveControllers
 			var directionVector = CulculateTarget() - transform.position;
 			if (directionVector == Vector3.zero) return transform.rotation;
 			var axisVector3 = UnitsMoveData.GetNormalDirectionVector();
-			var rotationAngle = Mathf.Atan2(directionVector.x, directionVector.y);
-			rotationAngle = rotationAngle * Mathf.Rad2Deg;
+			var rotationAngle = directionVector.GetAngleInGameSystemInDeg();
 			var rotation = Quaternion.AngleAxis(rotationAngle, axisVector3);
 
 			var teleportToRotation = Quaternion.Slerp(transform.rotation, rotation, Time.fixedDeltaTime * UnitsMoveData.GetSpeedRotation());
