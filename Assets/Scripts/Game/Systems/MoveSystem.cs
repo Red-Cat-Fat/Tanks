@@ -35,16 +35,14 @@ namespace Game.Systems
 
 			if (UnitsMoveData.GetIsCanMove())
 			{
-				var forwardVector3 = UnitsMoveData.GetForwardDirectionVector3(transform);
-				var position = UnitsMoveController.GetNextPosirionVector3(forwardVector3);
+				var position = UnitsMoveController.GetNextPosirionVector3();
 
 				Move(position);
 			}
 
 			if (UnitsMoveData.GetIsCanRotate())
 			{
-				var normalDirectionVector3 = UnitsMoveData.GetNormalDirectionVector3();
-				var rotation = UnitsMoveController.GetNextRotationQuaternion(normalDirectionVector3);
+				var rotation = UnitsMoveController.GetNextRotationQuaternion();
 
 				Rotate(rotation);
 			}

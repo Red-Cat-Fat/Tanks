@@ -8,7 +8,7 @@ namespace Game.Controllers.TanksInput
 		{
 			if (Input.GetMouseButton(0))
 			{
-				CalculateInput(Input.mousePosition);
+				CalculateSwipeInput(Input.mousePosition);
 			}
 			else
 			{

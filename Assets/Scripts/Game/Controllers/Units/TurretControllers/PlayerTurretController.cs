@@ -1,4 +1,5 @@
 ﻿using Game.Controllers.GameControllers;
+using Game.Controllers.Units.MoveControllers;
 using Game.Data.Units;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ namespace Game.Controllers.Units.TurretController
 					return target.transform.position;
 				}
 			}
-			return _unitMoveData.GetForwardDirectionVector3(transform) + transform.position;
+			return _unitMoveData.GetForwardDirectionVector(transform) + transform.position;
 		}
 
 		public Quaternion GetNextRotationQuaternion(Vector3 axisVector3)

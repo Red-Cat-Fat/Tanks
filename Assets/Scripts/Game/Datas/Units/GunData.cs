@@ -31,6 +31,11 @@ namespace Game.Data.Units
 
 		public bool IsCanFire()
 		{
+			if (_gunPoint == null)
+			{
+				Debug.LogError("_gunPoint on "+gameObject.name + " is null");
+				return false;
+			}
 			return _cooldownTime < 0;
 		}
 	}

@@ -38,9 +38,9 @@ namespace Game.Controllers.TanksInput
 			}
 		}
 
-		public Vector3 GetDirectionVector3()
+		public Vector3 GetDirectionVector()
 		{
-			return _currentInputType.GetDirectionVector3();
+			return _currentInputType.GetDirectionVector();
 		}
 
 		public bool IsClicked()

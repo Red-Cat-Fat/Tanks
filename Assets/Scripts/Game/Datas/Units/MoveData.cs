@@ -4,21 +4,12 @@ using UnityEngine;
 
 namespace Game.Data.Units
 {
-	public enum VectorDirectionType
-	{
-		Forward,
-		Right,
-		Up
-	}
-
 	public class MoveData : MonoBehaviour
 	{
 		[SerializeField] private bool _isCanMove = true;
 		[SerializeField] private bool _isCanRotate = true;
 		[SerializeField] private float _speedMove = 3f;
 		[SerializeField] private float _speedRotation = 3f;
-		[SerializeField] private VectorDirectionType _vectorForwardDirectionType = VectorDirectionType.Forward;
-		[SerializeField] private VectorDirectionType _vectorNormalDirectionType = VectorDirectionType.Up;
 		[SerializeField] private bool _isMove = false;
 
 		private Vector3 _lastPositionVector3;
@@ -60,47 +51,16 @@ namespace Game.Data.Units
 			return _speedRotation;
 		}
 
-		public Vector3 GetForwardDirectionVector3()
+		public Vector3 GetForwardDirectionVector(Transform transform)
 		{
-			switch (_vectorForwardDirectionType)
-			{
-				case VectorDirectionType.Forward:
-					return Vector3.forward;
-				case VectorDirectionType.Right:
-					return Vector3.right;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
-		}
-
-		public Vector3 GetForwardDirectionVector3(Transform transform)
-		{
-			switch (_vectorForwardDirectionType)
-			{
-				case VectorDirectionType.Forward:
-					return transform.forward;
-				case VectorDirectionType.Right:
-					return transform.right;
-				case VectorDirectionType.Up:
-					return transform.up;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
+			Debug.DrawLine(transform.position, transform.position + transform.up);
+			return transform.right;
 		}
 
 		public Vector3 GetNormalDirectionVector3()
 		{
-			switch (_vectorNormalDirectionType)
-			{
-				case VectorDirectionType.Forward:
-					return Vector3.forward;
-				case VectorDirectionType.Right:
-					return Vector3.right;
-				case VectorDirectionType.Up:
-					return Vector3.up;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
+			Debug.DrawLine(transform.position, transform.position + transform.forward, Color.red);
+			return -transform.forward;
 		}
 
 		public bool GetIsCanMove()

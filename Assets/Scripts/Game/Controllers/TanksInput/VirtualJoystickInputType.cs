@@ -5,27 +5,47 @@ namespace Game.Controllers.TanksInput
 {
 	public class VirtualJoystickInputType : BaseInputType
 	{
+		/// <summary>
+		/// Touched is right now
+		/// </summary>
 		protected bool IsTouched = false;
+		/// <summary>
+		/// Start touch position in current swipe
+		/// </summary>
 		protected Vector2 StartTouchVector2;
+		/// <summary>
+		/// Last touch position
+		/// </summary>
 		protected Vector2 LastTouchVector2;
+		/// <summary>
+		/// Is just cloced
+		/// </summary>
 		protected bool JustClicked = false;
+		/// <summary>
+		/// Time for keep
+		/// </summary>
 		private float _keepTime = 0f;
-
+		/// <summary>
+		/// Calculate all inputs
+		/// </summary>
 		public override void CheckInput()
 		{
 			if (Input.GetMouseButton(0))
 			{
-				CalculateInput(Input.mousePosition);
+				CalculateSwipeInput(Input.mousePosition);
 			}
 			else
 			{
 				IsTouched = false;
-				LastInputVector2 = Vector2.zero;
+				LastInputSwipeVector2 = Vector2.zero;
 			}
 			CheckClicked();
 		}
-
-		protected void CalculateInput(Vector2 inputVector2)
+		/// <summary>
+		/// Calculate type current swipe input
+		/// </summary>
+		/// <param name="inputVector2">Current touch position</param>
+		protected void CalculateSwipeInput(Vector2 inputVector2)
 		{
 			if (!IsTouched)
 			{
@@ -42,14 +62,16 @@ namespace Game.Controllers.TanksInput
 					break;
 				case CommandInputType.Swipe:
 					JustClicked = false;
-					LastInputVector2 = swipe;
+					LastInputSwipeVector2 = swipe;
 					break;
 				case CommandInputType.Click:
 					JustClicked = true;
 					break;
 			}
 		}
-
+		/// <summary>
+		/// Check clicked state
+		/// </summary>
 		protected virtual void CheckClicked()
 		{
 			if (IsTouched)

@@ -14,20 +14,23 @@ namespace Game.Controllers.TanksInput
 	public interface IInputType
 	{
 		bool IsClicked();
-		Vector3 GetDirectionVector3();
+		Vector2 GetDirectionVector();
 		void CheckInput();
 	}
 
 	public abstract class BaseInputType : MonoBehaviour, IInputType
 	{
-		protected Vector2 LastInputVector2;
+		/// <summary>
+		/// Last input swipe vector
+		/// </summary>
+		protected Vector2 LastInputSwipeVector2;
+
 		protected bool Clicked = false;
 		public abstract void CheckInput();
 		
-		public virtual Vector3 GetDirectionVector3()
+		public virtual Vector2 GetDirectionVector()
 		{
-			var direction = new Vector3(LastInputVector2.x, 0, LastInputVector2.y);
-			return direction.normalized;
+			return LastInputSwipeVector2.normalized;
 		}
 
 		public virtual bool IsClicked()
@@ -42,14 +45,12 @@ namespace Game.Controllers.TanksInput
 
 		protected static CommandInputType GetTypeCommand(Vector2 inputVector2)
 		{
-			if(inputVector2.magnitude < InputSettings.ClickMagnitudeMaxSize)
+			if (inputVector2.magnitude < InputSettings.ClickMagnitudeMaxSize)
 			{
 				return CommandInputType.Click;
 			}
-			else
-			{
-				return CommandInputType.Swipe;
-			}
+
+			return CommandInputType.Swipe;
 		}
 
 	}

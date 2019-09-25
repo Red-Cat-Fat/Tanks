@@ -5,7 +5,11 @@ namespace Game.Controllers.Units.MoveControllers
 	public interface IMoveController
 	{
 		Vector3 CulculateTarget();
-		Vector3 GetNextPosirionVector3(Vector3 forwardVector3);
-		Quaternion GetNextRotationQuaternion(Vector3 axisVector3);
+		/// <summary>
+		/// Calculate next position in path
+		/// </summary>
+		/// <returns>Next position</returns>
+		Vector3 GetNextPosirionVector3();
+		Quaternion GetNextRotationQuaternion();
 	}
 }

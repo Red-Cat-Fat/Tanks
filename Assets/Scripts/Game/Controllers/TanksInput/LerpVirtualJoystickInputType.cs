@@ -2,7 +2,7 @@
 
 namespace Game.Controllers.TanksInput
 {
-	public class LerpVirtualJoystickInputType : VirtualJoystickInputType2D
+	public class LerpVirtualJoystickInputType : VirtualJoystickInputType
 	{
 		private float _lerpSpeed = 0.8f;
 

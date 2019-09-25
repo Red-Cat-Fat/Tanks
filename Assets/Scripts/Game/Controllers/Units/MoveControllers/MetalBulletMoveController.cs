@@ -15,15 +15,15 @@ namespace Game.Controllers.Units.MoveControllers
 
 		public Vector3 CulculateTarget()
 		{
-			return _moveData.GetForwardDirectionVector3(transform) * Time.fixedDeltaTime * _moveData.GetSpeedMove();
+			return _moveData.GetForwardDirectionVector(transform) * Time.fixedDeltaTime * _moveData.GetSpeedMove();
 		}
 
-		public Vector3 GetNextPosirionVector3(Vector3 forwardVector3)
+		public Vector3 GetNextPosirionVector3()
 		{
 			return transform.position + CulculateTarget();
 		}
 
-		public Quaternion GetNextRotationQuaternion(Vector3 axisVector3)
+		public Quaternion GetNextRotationQuaternion()
 		{
 			return transform.rotation;
 		}

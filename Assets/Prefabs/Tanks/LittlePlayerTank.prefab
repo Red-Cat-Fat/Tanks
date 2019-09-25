@@ -155,8 +155,6 @@ MonoBehaviour:
   _isCanRotate: 1
   _speedMove: 3
   _speedRotation: 3
-  _vectorForwardDirectionType: 0
-  _vectorNormalDirectionType: 2
   _isMove: 0
 --- !u!114 &5751694930478239252
 MonoBehaviour:
@@ -410,6 +408,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7803073166199643475, guid: 253c9674737b82c439153426a5e434a5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914643436037867094, guid: 253c9674737b82c439153426a5e434a5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914643436037867094, guid: 253c9674737b82c439153426a5e434a5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914643436037867094, guid: 253c9674737b82c439153426a5e434a5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0

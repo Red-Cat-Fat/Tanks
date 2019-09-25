@@ -8,7 +8,7 @@ namespace Game.Controllers.TanksInput
 		{
 			if (Input.touches.Length > 0)
 			{
-				CalculateInput(Input.GetTouch(0).position);
+				CalculateSwipeInput(Input.GetTouch(0).position);
 			}
 			else
 			{
