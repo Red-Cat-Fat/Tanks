@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2495792491800584220
+--- !u!1001 &1533723975744753778
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,8 +10,18 @@ PrefabInstance:
     - target: {fileID: 5555696531997543844, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
         type: 3}
       propertyPath: m_Name
-      value: LPlayerTankComponents
+      value: LightTank
       objectReference: {fileID: 0}
+    - target: {fileID: 2980957882112473496, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: _gunPoint
+      value: 
+      objectReference: {fileID: 9013074795951913176}
+    - target: {fileID: 3869013465284028679, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: _turretPivot
+      value: 
+      objectReference: {fileID: 5703562685477181013}
     - target: {fileID: 5555696531997543841, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,22 +80,27 @@ PrefabInstance:
     - target: {fileID: 5555696531997543843, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
         type: 3}
       propertyPath: m_Size.y
-      value: 3
+      value: 3.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555696531997543843, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 003c66c5b39818d4a97aeeb8f5ca6424, type: 3}
---- !u!4 &8051057909725474237 stripped
+--- !u!4 &6363917617456045523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5555696531997543841, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
     type: 3}
-  m_PrefabInstance: {fileID: 2495792491800584220}
+  m_PrefabInstance: {fileID: 1533723975744753778}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4099549556761194893
+--- !u!1001 &4923442042105987475
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8051057909725474237}
+    m_TransformParent: {fileID: 6363917617456045523}
     m_Modifications:
     - target: {fileID: 2985257428647060533, guid: 253c9674737b82c439153426a5e434a5,
         type: 3}
@@ -149,3 +164,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 253c9674737b82c439153426a5e434a5, type: 3}
+--- !u!1 &5703562685477181013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 825483061519570886, guid: 253c9674737b82c439153426a5e434a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4923442042105987475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9013074795951913176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4127350827177146699, guid: 253c9674737b82c439153426a5e434a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4923442042105987475}
+  m_PrefabAsset: {fileID: 0}
