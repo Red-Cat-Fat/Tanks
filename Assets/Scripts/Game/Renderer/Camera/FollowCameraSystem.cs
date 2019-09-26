@@ -10,17 +10,28 @@ namespace Game.Renderer.Camera
 		private Vector3 _lastAnchorPointPositionVector3;
 		private float _moveTime = 0f;
 
+		private GameObject anchorPoint = null;
+		private float moveSpeed = 0f;
+		private GameObject followObject = null;
+
 		private void OnValidate()
 		{
 			_followCameraData = GetComponent<FollowCameraData>();
 		}
 
+		private void Start()
+		{
+			if (_followCameraData != null)
+			{
+				anchorPoint = _followCameraData.GetAnchorPoint();
+				moveSpeed = _followCameraData.GetMoveSpeed();
+				followObject = _followCameraData.GetFollowObject();
+			}
+		}
+
 		private void FixedUpdate()
 		{
-			var anchorPoint = _followCameraData.GetAnchorPoint();
-			var moveSpeed = _followCameraData.GetMoveSpeed();
-			var followObject = _followCameraData.GetFollowObject();
-
+			if (anchorPoint == null) return;
 			if (anchorPoint.transform.position != _lastAnchorPointPositionVector3)
 			{
 				_lastAnchorPointPositionVector3 = anchorPoint.transform.position;
