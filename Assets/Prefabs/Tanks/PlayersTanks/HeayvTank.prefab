@@ -93,21 +93,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeayvTank
       objectReference: {fileID: 0}
-    - target: {fileID: 2980957882112473496, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
-        type: 3}
-      propertyPath: _gunPoint
-      value: 
-      objectReference: {fileID: 594587684511018466}
-    - target: {fileID: 3869013465284028679, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
-        type: 3}
-      propertyPath: _turretPivot
-      value: 
-      objectReference: {fileID: 4211878939329479535}
-    - target: {fileID: 3869013465284028679, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
-        type: 3}
-      propertyPath: _speedRotate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5555696531997543847, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
         type: 3}
       propertyPath: _speedMove
@@ -117,6 +102,21 @@ PrefabInstance:
         type: 3}
       propertyPath: _speedRotation
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555696531997543840, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555696531997543840, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 45000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555696531997543840, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 45000
       objectReference: {fileID: 0}
     - target: {fileID: 5555696531997543841, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
         type: 3}
@@ -188,6 +188,21 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3869013465284028679, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: _turretPivot
+      value: 
+      objectReference: {fileID: 4211878939329479535}
+    - target: {fileID: 3869013465284028679, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: _speedRotate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980957882112473496, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: _gunPoint
+      value: 
+      objectReference: {fileID: 594587684511018466}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 003c66c5b39818d4a97aeeb8f5ca6424, type: 3}
 --- !u!4 &3559601819962630773 stripped

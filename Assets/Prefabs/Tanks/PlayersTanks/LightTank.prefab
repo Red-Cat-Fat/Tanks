@@ -12,16 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightTank
       objectReference: {fileID: 0}
-    - target: {fileID: 2980957882112473496, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+    - target: {fileID: 5555696531997543840, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
         type: 3}
-      propertyPath: _gunPoint
-      value: 
-      objectReference: {fileID: 9013074795951913176}
-    - target: {fileID: 3869013465284028679, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
-        type: 3}
-      propertyPath: _turretPivot
-      value: 
-      objectReference: {fileID: 5703562685477181013}
+      propertyPath: m_LinearDrag
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 5555696531997543841, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -87,6 +82,16 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 1.87
       objectReference: {fileID: 0}
+    - target: {fileID: 3869013465284028679, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: _turretPivot
+      value: 
+      objectReference: {fileID: 5703562685477181013}
+    - target: {fileID: 2980957882112473496, guid: 003c66c5b39818d4a97aeeb8f5ca6424,
+        type: 3}
+      propertyPath: _gunPoint
+      value: 
+      objectReference: {fileID: 9013074795951913176}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 003c66c5b39818d4a97aeeb8f5ca6424, type: 3}
 --- !u!4 &6363917617456045523 stripped
