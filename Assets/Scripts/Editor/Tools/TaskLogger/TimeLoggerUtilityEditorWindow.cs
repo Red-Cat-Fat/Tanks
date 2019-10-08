@@ -6,10 +6,25 @@ namespace Editor.Tools.TaskLogger
 {
 	public class TimeLoggerUtilityEditorWindow : EditorWindow
 	{
-		[MenuItem("TANKS/Unitity/Timer")]
+		[MenuItem("Tools/Task time logger")]
 		public static void ShowWindow()
 		{
-			GetWindow<TimeLoggerUtilityEditorWindow>();
+			CreateWindow();
+		}
+
+		private const string WindowTitle = "Task time logger";
+		private static TimeLoggerUtilityEditorWindow _windowInstance;
+		public static void CreateWindow()
+		{
+			if (_windowInstance != null)
+			{
+				_windowInstance.Focus();
+			}
+			else
+			{
+				_windowInstance = GetWindow<TimeLoggerUtilityEditorWindow>(typeof(SceneView));
+				_windowInstance.titleContent = new GUIContent(WindowTitle);
+			}
 		}
 
 		private TimeLoggerUtility _timeLoggerUtility;

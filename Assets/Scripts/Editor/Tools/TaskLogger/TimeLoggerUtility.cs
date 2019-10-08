@@ -67,7 +67,7 @@ namespace Editor.Tools.TaskLogger
 
 		public void SaveInFile()
 		{
-			var path = Path.Combine(Application.dataPath, "TimeLoggerUtility.json");
+			var path = Path.Combine(Application.dataPath, "Scripts", "Editor", "Tools", "TaskLogger", "TaskList.json");
 			File.WriteAllText(path, JsonUtility.ToJson(this));
 		}
 		
