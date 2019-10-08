@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Editor.Utility.LogSystem.TimeLogSystem
+namespace Editor.Tools.TaskLogger
 {
 	[Serializable]
 	public class LogDateTime

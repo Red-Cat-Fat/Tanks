@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Editor.Utility.LogSystem.TimeLogSystem
+namespace Editor.Tools.TaskLogger
 {
 	[Serializable]
 	public class Task

@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.Utility.LogSystem.TimeLogSystem
+namespace Editor.Tools.TaskLogger
 {
 	public class TimeLoggerUtilityEditorWindow : EditorWindow
 	{
@@ -141,6 +141,5 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 				? currentTextInFiledTask.Substring(0, LengthTaskName) 
 				: currentTextInFiledTask;
 		}
-
 	}
 }

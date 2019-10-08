@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Editor.Utility.LogSystem.TimeLogSystem
+namespace Editor.Tools.TaskLogger
 {
 	[Serializable]
 	public class DeltaTime

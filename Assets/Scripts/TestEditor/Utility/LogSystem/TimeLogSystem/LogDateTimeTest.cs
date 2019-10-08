@@ -1,5 +1,5 @@
 ﻿using System;
-using Editor.Utility.LogSystem.TimeLogSystem;
+using Editor.Tools.TaskLogger;
 using NUnit.Framework;
 using UnityEngine;
 

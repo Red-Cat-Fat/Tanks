@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace Editor.Utility.LogSystem.TimeLogSystem
+namespace Editor.Tools.TaskLogger
 {
 	[Serializable]
 	public class TimeLoggerUtility
@@ -67,7 +67,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 
 		public void SaveInFile()
 		{
-			var path = Path.Combine(Application.persistentDataPath, "TimeLoggerUtility.json");
+			var path = Path.Combine(Application.dataPath, "TimeLoggerUtility.json");
 			File.WriteAllText(path, JsonUtility.ToJson(this));
 		}
 		
