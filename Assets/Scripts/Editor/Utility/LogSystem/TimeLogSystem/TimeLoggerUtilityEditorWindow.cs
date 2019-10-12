@@ -6,7 +6,7 @@ namespace Editor.Utility.LogSystem.TimeLogSystem
 {
 	public class TimeLoggerUtilityEditorWindow : EditorWindow
 	{
-		[MenuItem("TANKS/Unitity/Timer")]
+		[MenuItem("Tools/Task time logger")]
 		public static void ShowWindow()
 		{
 			GetWindow<TimeLoggerUtilityEditorWindow>();
