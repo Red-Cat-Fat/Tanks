@@ -22,7 +22,7 @@ namespace Game.Renderer.Camera
 				var newAcnhorPoint = FindObjectsOfType<CameraTags.PlayerCameraTag>();
 				foreach (var cameraTag in newAcnhorPoint)
 				{
-					var parentComponent = cameraTag.GetComponentInParent<PlayerMoveController>();
+					var parentComponent = cameraTag.GetPoint();
 					if (parentComponent != null)
 					{
 						SetAnchorPoint(cameraTag.gameObject);
