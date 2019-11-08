@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Controllers.Units.MoveControllers;
+using UnityEngine;
 
 namespace Game.Renderer.Camera
 {
@@ -10,8 +11,25 @@ namespace Game.Renderer.Camera
 		[SerializeField] private float _moveSpeed;
 		[SerializeField] private float _rotateSpeed;
 
+		/// <summary>
+		/// Get anchor point or find new anchor point by PlayerCameraTag
+		/// </summary>
+		/// <returns></returns>
 		public GameObject GetAnchorPoint()
 		{
+			if (_anchorPoint == null)
+			{
+				var newAcnhorPoint = FindObjectsOfType<CameraTags.PlayerCameraTag>();
+				foreach (var cameraTag in newAcnhorPoint)
+				{
+					var parentComponent = cameraTag.GetPoint();
+					if (parentComponent != null)
+					{
+						SetAnchorPoint(cameraTag.gameObject);
+						break;
+					}
+				}
+			}
 			return _anchorPoint;
 		}
 
