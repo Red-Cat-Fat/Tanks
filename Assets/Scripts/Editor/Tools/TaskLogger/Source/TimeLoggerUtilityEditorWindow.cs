@@ -144,6 +144,7 @@ namespace Editor.Tools.TaskLogger
 			if (GUILayout.Button("Add", GUILayout.MinWidth(ButtonSize)))
 			{
 				_timeLoggerUtility.TryAddNewTask(_currentTextInFiledTask);
+				_currentTextInFiledTask = "";
 			}
 			GUILayout.EndVertical();
 
