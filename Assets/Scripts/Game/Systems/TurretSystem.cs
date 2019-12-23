@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Systems
 {
 	[RequireComponent(typeof(TurretData))]
-	public class TurretSystem : MoveSystem
+	public class TurretSystem : MoveSystem, ISystem
 	{
 		private ITurretController _turretController;
 		[SerializeField, HideInInspector]

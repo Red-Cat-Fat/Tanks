@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Systems
 {
-	public class HealthSystem : MonoBehaviour
+	public class HealthSystem : MonoBehaviour, ISystem
 	{
 		private IHealthController _currentHealthController;
 		private Action _deadEvent;

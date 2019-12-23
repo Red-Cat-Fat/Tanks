@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Systems
 {
 	[RequireComponent(typeof(Rigidbody2D), typeof(MoveData))]
-	public class MoveSystem : MonoBehaviour
+	public class MoveSystem : MonoBehaviour, ISystem
 	{
 		protected IMoveController UnitsMoveController;
 		[SerializeField, HideInInspector]

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Systems
 {
-	public class GunSystem : MonoBehaviour
+	public class GunSystem : MonoBehaviour, ISystem
 	{
 		private IGunController _gunController;
 

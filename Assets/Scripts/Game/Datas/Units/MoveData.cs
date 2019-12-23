@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Data.Units
 {
-	public class MoveData : MonoBehaviour
+	public class MoveData : MonoBehaviour, IUnitsData
 	{
 		[SerializeField] private bool _isCanMove = true;
 		[SerializeField] private bool _isCanRotate = true;

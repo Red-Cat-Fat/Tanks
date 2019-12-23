@@ -2,7 +2,7 @@
 
 namespace Game.Data.Units
 {
-	public class TurretData : MonoBehaviour
+	public class TurretData : MonoBehaviour, IUnitsData
 	{
 		[SerializeField] public float _slowdownSpeedCoef = 1f;
 		[SerializeField] public float _slowdownStartAngle = 45;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Game.Controllers.Units;
+using UnityEngine;
 
 namespace Game.Controllers.Units.MoveControllers
 {
@@ -15,7 +16,7 @@ namespace Game.Controllers.Units.MoveControllers
 			return rotationAngle * Mathf.Rad2Deg;
 		}
 	}
-	public interface IMoveController
+	public interface IMoveController : IUnitsController
 	{
 		Vector3 CulculateTarget();
 		/// <summary>

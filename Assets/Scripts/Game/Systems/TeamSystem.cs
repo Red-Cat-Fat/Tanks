@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Systems
 {
 	[RequireComponent(typeof(ITeamController), typeof(TeamData))]
-	public class TeamSystem : MonoBehaviour
+	public class TeamSystem : MonoBehaviour, ISystem
 	{
 		[SerializeField, HideInInspector] private TeamData _teamData;
 		[SerializeField, HideInInspector] private ITeamController _teamController;

@@ -7,7 +7,7 @@ namespace Game.Data.Units
 		Player,
 		Computer
 	}
-	public class TeamData : MonoBehaviour
+	public class TeamData : MonoBehaviour, IUnitsData
 	{
 		[SerializeField] private TeamType _teamType;
 

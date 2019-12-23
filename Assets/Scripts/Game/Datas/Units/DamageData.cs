@@ -2,7 +2,7 @@
 
 namespace Game.Data.Units
 {
-	public class DamageData : MonoBehaviour
+	public class DamageData : MonoBehaviour, IUnitsData
 	{
 		[SerializeField] private float _damageValue = 100f;
 

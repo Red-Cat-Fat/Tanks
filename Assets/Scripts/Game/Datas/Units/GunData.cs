@@ -2,7 +2,7 @@
 
 namespace Game.Data.Units
 {
-	public class GunData : MonoBehaviour
+	public class GunData : MonoBehaviour, IUnitsData
 	{
 		private float _cooldownTime = 0f;
 		[SerializeField] private float _reloadTime = 1f;

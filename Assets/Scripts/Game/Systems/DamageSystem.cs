@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Systems
 {
-	public class DamageSystem : MonoBehaviour
+	public class DamageSystem : MonoBehaviour, ISystem
 	{
 		private void Start()
 		{

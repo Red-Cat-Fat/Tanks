@@ -1,6 +1,8 @@
-﻿namespace Game.Controllers.Units.GunControllers
+﻿using Assets.Scripts.Game.Controllers.Units;
+
+namespace Game.Controllers.Units.GunControllers
 {
-	public interface IGunController
+	public interface IGunController : IUnitsController
 	{
 		bool IsCanFire();
 		void Fire();

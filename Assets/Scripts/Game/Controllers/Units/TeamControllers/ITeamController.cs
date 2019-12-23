@@ -1,6 +1,8 @@
-﻿namespace Game.Controllers.Units.TeamControllers
+﻿using Assets.Scripts.Game.Controllers.Units;
+
+namespace Game.Controllers.Units.TeamControllers
 {
-	public interface ITeamController
+	public interface ITeamController : IUnitsController
 	{
 		void InitialAction();
 	}

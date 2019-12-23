@@ -2,7 +2,7 @@
 
 namespace Game.Data.Units
 {
-	public class HealthData : MonoBehaviour
+	public class HealthData : MonoBehaviour, IUnitsData
 	{
 		[SerializeField] private float _healthPoint = 100f;
 		[SerializeField] private GameObject _destroyedGameObject;
