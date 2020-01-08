@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Game.Controllers.Units
+﻿namespace Game.Controllers.Units
 {
 	public interface IUnitsController
 	{
