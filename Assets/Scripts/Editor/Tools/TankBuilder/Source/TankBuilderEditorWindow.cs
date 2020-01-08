@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Reflection;
-using Assets.Scripts.Game.Controllers.Units;
-using Game.Controllers.Units.HealthControllers;
+using Game.Controllers.Units;
 
 namespace Editor.Tools.TankBuilder
 {

@@ -11,6 +11,7 @@ namespace Game.Controllers.Units.DamageControllers
 		[SerializeField, HideInInspector]
 		private DamageData _damageData;
 		private Action<GameObject, float> _setDamageEvent;
+
 		private void OnValidate()
 		{
 			_damageData = GetComponent<DamageData>();

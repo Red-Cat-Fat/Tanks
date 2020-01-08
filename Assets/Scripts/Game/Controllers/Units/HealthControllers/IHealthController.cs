@@ -1,5 +1,4 @@
 ﻿using System;
-using Assets.Scripts.Game.Controllers.Units;
 
 namespace Game.Controllers.Units.HealthControllers
 {

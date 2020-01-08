@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Game.Controllers.Units;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Controllers.Units.TurretController
 {
