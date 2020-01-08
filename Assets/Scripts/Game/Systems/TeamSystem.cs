@@ -13,12 +13,12 @@ namespace Game.Systems
 		private void OnValidate()
 		{
 			_teamData = GetComponent<TeamData>();
-			_teamController = GetComponent<ITeamController>();
 		}
 
 		private void Awake()
 		{
-			_teamController.InitialAction();
+			_teamController = GetComponent<ITeamController>();
+			_teamController?.InitialAction();
 		}
 	}
 }

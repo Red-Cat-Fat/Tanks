@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5480838230712421724}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5480838232089764140}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &5480838230712421726
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -71,13 +71,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5480838231812055550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 5480838232089764140}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &5480838231812055488
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,6 +103,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -158,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 5480838232089764135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.173, y: 0.738, z: -0.38517368}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 5480838231812055489}
   - {fileID: 5480838230712421727}
@@ -198,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad8db2d29d3f5b4baf3d56eeccecac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveData: {fileID: 5480838232089764141}
 --- !u!114 &5480838232089764141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,11 +212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ba389cbd73c5144a07a45b92db9c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isOnlyRotate: 0
-  _speedMove: 3
+  _isCanMove: 1
+  _isCanRotate: 1
+  _speedMove: 6
   _speedRotation: 3
-  _vectorForwardDirectionType: 1
-  _vectorNormalDirectionType: 0
+  _isMove: 0
 --- !u!114 &5480838232089764138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e4c6381649ec54aad5e8db6eda6386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitsRigidbody2D: {fileID: 5480838232089764143}
+  UnitsMoveData: {fileID: 5480838232089764141}
 --- !u!114 &5480838232089764136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,3 +268,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4bed85b5284a34fb44eba344f24d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageData: {fileID: 5480838232089764136}

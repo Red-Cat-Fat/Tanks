@@ -15,11 +15,11 @@ namespace Game.Systems
 		{
 			_unitTurretData = GetComponent<TurretData>();
 			UnitsMoveData = GetComponent<MoveData>();
+			_turretController = GetComponent<ITurretController>();
 		}
 
-		private void Awake()
+		private void Awake()	
 		{
-			_turretController = GetComponent<ITurretController>();
 		}
 		
 		protected override void UpdateTransform()
